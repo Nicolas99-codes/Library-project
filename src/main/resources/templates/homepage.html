@@ -1,0 +1,79 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" media="all"
+      th:href="@{/style.css}" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<!-- Show amount of books in badge -->
+<div class="containerCard">
+    <div class="row">
+        <div class="col-sm-4 w-auto p-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Books available</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 w-auto p-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Active loans</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 w-auto p-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Expired loans</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="TableBooks">
+    <table>
+        <tr>
+            <td>
+                <div class="ContainerBooks">
+                    <div class="row">
+                        <div class="col-14">
+                            <h1>Latest book loans</h1>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Book ID</th>
+                                    <th scope="col" style="width: 350px;">Book Title</th>
+                                    <th scope="col" style="width: 350px;">Book Author</th>
+                                    <th scope="col">Loan date</th>
+                                    <th scope="col">Return date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="loan : ${loans}">
+                                    <td th:text="${loan.getBookID}"></td>
+                                    <td th:text="${loan.getBookTitle}"></td>
+                                    <td th:text="${loan.getBookAuthor}"></td>
+                                    <td th:text="${loan.getLoanDate}"></td>
+                                    <td th:text="${loan.getReturnDate}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

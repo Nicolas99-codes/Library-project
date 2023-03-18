@@ -1,0 +1,61 @@
+/* start layout */
+
+body {
+    background: linear-gradient(to right, darkseagreen, cadetblue);
+}
+
+/* end layout */
+
+/* start Error page */
+.ErrorPage{
+    background: linear-gradient(to right, mediumpurple, indianred, cadetblue);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.ErrorInfo {
+    text-align: center;
+}
+.ErrorInfo h1 {
+    font-size: 10rem;
+    color: white;
+}
+.Errorcode {
+    font-size: 10rem;
+    color: white;
+}
+/* end Error page */
+
+/* start Show Amount of Books */
+
+.containerCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35vh;
+}
+
+/* end Show Amount of Books */
+
+/* start Loan table */
+
+.TableBooks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* end Loan table */
+
+/* start layout table */
+
+.thead {
+    border: 1px solid black;
+}
+
+/* end layout table */
