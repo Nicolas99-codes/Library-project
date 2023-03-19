@@ -1,10 +1,9 @@
 package nicolas.library.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class Books {
+public class Book {
     @Id
     public Integer id;
 
@@ -14,20 +13,24 @@ public class Books {
 
     public String genre;
 
+    @Column(length = 1000)
     public String description;
 
     public String status;
 
-    public Books() {
+    public String release_year;
+
+    public Book() {
     }
 
-    public Books(Integer id, String title, String author, String genre, String description, String status) {
+    public Book(Integer id, String title, String author, String genre, String description, String status, String release_year) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.description = description;
         this.status = status;
+        this.release_year = release_year;
     }
 
     public Integer getId() {
@@ -76,5 +79,13 @@ public class Books {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getRelease_year() {
+        return release_year;
+    }
+
+    public void setRelease_year(String release_year) {
+        this.release_year = release_year;
     }
 }

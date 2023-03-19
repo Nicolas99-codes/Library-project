@@ -1,5 +1,6 @@
 package nicolas.library.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -12,6 +13,7 @@ public class Author {
     public String name;
     public String surname;
 
+    @Column(length = 500)
     public String bio;
     public Author() {
     }
