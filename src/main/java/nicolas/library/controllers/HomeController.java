@@ -16,4 +16,5 @@ public class HomeController {
         model.addAttribute("booksCount", booksCount);
         return "homepage";
     }
+
 }

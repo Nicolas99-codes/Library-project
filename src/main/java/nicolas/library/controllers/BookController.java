@@ -29,4 +29,5 @@ public class BookController {
         model.addAttribute("books", booksRepository.findAll());
         return "BookList";
     }
+
 }
