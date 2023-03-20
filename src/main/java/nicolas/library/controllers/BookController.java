@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+
 import java.util.Optional;
 
 @Controller
@@ -24,9 +25,9 @@ public class BookController {
         return "BookDetails";
     }
 
-    @GetMapping({ "/BookList"})
+    @GetMapping( "/BookList")
     public String showBookList(Model model) {
-        model.addAttribute("books", booksRepository.findAll());
+        model.addAttribute("books", booksRepository.findAllOrderByTitle());
         return "BookList";
     }
 

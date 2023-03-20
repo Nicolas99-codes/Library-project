@@ -50,7 +50,6 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col" style="width: 650px;">Title</th>
                     <th scope="col" style="width: 350px;">Author</th>
                     <th scope="col" style="width: 250px">Genre</th>
@@ -60,7 +59,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="book : ${books}">
-                    <td th:text="${book.getId()}"></td>
                     <td><a th:href="@{/BookDetails/{id}(id=${book.id})}" th:text="${book.getTitle()}"></a></td>
                     <td th:text="${book.getAuthor()}"></td>
                     <td th:text="${book.getGenre()}"></td>

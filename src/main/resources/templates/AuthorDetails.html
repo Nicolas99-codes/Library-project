@@ -17,7 +17,6 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Surname</th>
                     <th scope="col">Birth Date</th>
@@ -25,7 +24,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="author : ${authors}">
-                    <td th:text="${author.getID}"></td>
                     <td th:text="${author.GetName}"></td>
                     <td th:text="${author.GetSurname}"></td>
                     <td th:text="${author.GetBirthDate}"></td>
