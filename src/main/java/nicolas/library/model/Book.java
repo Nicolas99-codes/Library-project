@@ -20,10 +20,12 @@ public class Book {
 
     public String release_year;
 
+    public int views;
+
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String genre, String description, String status, String release_year) {
+    public Book(Integer id, String title, String author, String genre, String description, String status, String release_year, int views) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -31,6 +33,7 @@ public class Book {
         this.description = description;
         this.status = status;
         this.release_year = release_year;
+        this.views = views;
     }
 
     public Integer getId() {
@@ -87,5 +90,13 @@ public class Book {
 
     public void setRelease_year(String release_year) {
         this.release_year = release_year;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
 }

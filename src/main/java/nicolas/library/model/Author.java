@@ -10,19 +10,24 @@ public class Author {
     @Id
     public Integer id;
 
-    public String name;
+    public String authorName;
     public String surname;
 
     @Column(length = 500)
     public String bio;
+
+    public String country;
+
+
     public Author() {
     }
 
-    public Author(Integer id, String name, String surname, String bio) {
+    public Author(Integer id, String authorName, String surname, String bio, String country) {
         this.id = id;
-        this.name = name;
+        this.authorName = authorName;
         this.surname = surname;
         this.bio = bio;
+        this.country = country;
     }
 
     public Integer getId() {
@@ -33,12 +38,12 @@ public class Author {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthorname(String authorName) {
+        this.authorName = authorName;
     }
 
     public String getSurname() {
@@ -57,4 +62,12 @@ public class Author {
         this.bio = bio;
     }
 
+    public String getCountry() {
+        return country;
     }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+}

@@ -31,4 +31,8 @@ public class BookController {
         return "BookList";
     }
 
+    @GetMapping("/BookRequest")
+    public String showBookRequest(Model model) {
+        return "BookRequest";
+    }
 }

@@ -85,16 +85,6 @@ body {
 
 /* end card layout */
 
-/* start Loan table */
-
-.containerBooks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* end Loan table */
-
 /* start layout table */
 
 .thead {
@@ -127,3 +117,51 @@ body {
 }
 
 /* end table layout */
+
+/* start img */
+
+.img-fluid {
+    width: 193px;
+    height: 278px;
+}
+
+/* end img */
+
+/* start breadcrumbs */
+
+.breadcrumbs {
+    margin-bottom: 20px;
+}
+
+/* end breadcrumbs */
+
+/* start Library title */
+
+.LibraryTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* end Library title */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+

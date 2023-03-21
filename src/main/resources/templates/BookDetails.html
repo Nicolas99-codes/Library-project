@@ -3,17 +3,34 @@
       xmlns:th="http://www.thymeleaf.org">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" media="all"
-      th:href="@{/style.css}" href="style.css" />
+      th:href="@{/css/style.css}" href="style.css" />
 <head>
     <meta charset="UTF-8">
     <title>Book details</title>
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
-<div class="BookTitle">
-    <h1 th:text="${book.getTitle()}"></h1>
+<div class="container" style="background: navajowhite">
+        <div class="row">
+            <div class="breadcrumbs">
+                <a th:href="@{/homepage}" th:class="${currentPage == '/homepage' ? 'current-page' : ''}">Home</a>
+                / <a th:href="@{/BookList}" th:class="${currentPage == '/BookList' ? 'current-page' : ''}">Book list</a>
+                / <span th:class="${currentPage == '/BookDetails' ? 'current-page' : ''}" th:text="${book.title}"></span>
+                <h1 th:text="${book.title}" style="margin-top: 10px"></h1>
+            </div>
+            <img th:src="@{/img/{id}.jpg(id=${book.getId()})}" class="img-fluid">
+            <div class="col-8">
+                <h6>Author(s): <span th:text="${book.getAuthor()}"></span></h6>
+                <h6>Genre: <span th:text="${book.getGenre()}"></span></h6>
+                <h6>Status: <span th:text="${book.getStatus()}"></span></h6>
+                <h6>Release year: <span th:text="${book.getRelease_year()}"></span></h6>
+                <h6>Views: <span th:text="${book.getViews()}"></span></h6>
+            </div>
+            <div class="col-6">
+                <h6>Description:</h6>
+                <p th:text="${book.getDescription()}"></p>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- Informatie over de boek + foto, (previous next)? -->
-
 </body>
 </html>
