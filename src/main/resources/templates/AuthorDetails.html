@@ -4,29 +4,29 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" media="all"
       th:href="@{/css/style.css}" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Author Details</title>
 </head>
 <body>
-<div class="container">
+<div class="container" style="background: navajowhite">
     <div class="row">
-        <div class="col-10">
-            <div class="breadcrumbs">
-
-
-                <h1 th:text="${author.authorName()}" style="margin-top: 10px"></h1>
-            </div>
-            <div class="col-8">
-                <h6>Author name: <span th:text="${author.authorName()}"></span></h6>
-                <h6>Author surname: <span th:text="${author.surname()}"></span></h6>
-                <h6>Author country: <span th:text="${author.country()}"></span></h6>
-                <h6>Author bio: <span th:text="${author.bio()}"></span></h6>
-            </div>
+        <div class="breadcrumbs">
+            <a th:href="@{/homepage}" th:class="${currentPage == 'homepage'} ? 'current-page' : ''">Home</a>
+            / <a th:href="@{/AuthorList}" th:class="${currentPage == 'AuthorList'} ? 'current-page' : ''">Authors</a>
+            / <span th:class="${currentPage == '/AuthorDetails' ? 'current-page' : ''}" th:text="${author.getAuthor_name()} + ' ' + ${author.getSurname()}"></span>
+            <h1 th:text="${author.getAuthor_name()} + ' ' + ${author.getSurname()}"></h1>
+        </div>
+        <img th:src="@{/img/author/{id}.jpg(id=${author.getId()})}" class="img-fluid">
+        <div class="col-8">
+            <h6><span class="label">Author name:</span><span th:text="${author.getAuthor_name()}"></span></h6>
+            <h6><span class="label">Surname:</span><span th:text="${author.getSurname()}"></span></h6>
+            <h6><span class="label">Country:</span><span th:text="${author.getCountry()}"></span></h6>
+            <h6><span class="label">Bio:</span><span th:text="${author.getBio()}"></span></h6>
         </div>
     </div>
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

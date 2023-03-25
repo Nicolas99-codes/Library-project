@@ -11,67 +11,57 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
-<header class="LibraryTitle">
-    <h1>Library books</h1>
-</header>
-<div class="FilterBtn">
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        Filter
-    </button>
-
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filter menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="container">
+            <div class="row g-3">
+                <h1>Library books</h1>
+                <div class="col-md-3">
+                    <div th:unless="${showFilters}" class="filter">
+                        <a class="btn btn-primary" th:href="@{/BookList/filter}">Filter</a>
+                    </div>
+                    <div th:if="${showFilters}" class="filter">
+                        <a class="btn btn-primary" th:href="@{/BookList}">Hide filters</a>
+                        <form>
+                            <div class="oneFilter">
+                                <select class="form-select" aria-label="Default select example" th:value="${genre}">
+                                    <option selected>Genre</option>
+                                    <option value="1">Fantasy</option>
+                                    <option value="2">Horror</option>
+                                </select>
+                                <select class="form-select" aria-label="Default select example" th:value="${status}">
+                                    <option selected>Status</option>
+                                    <option value="1">Ongoing</option>
+                                    <option value="2">Completed</option>
+                                </select>
+                            </div>
+                            <div class="oneFilter">
+                                <input type="submit" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col" style="width: 500px;">Title</th>
+                            <th scope="col" style="width: 350px;">Author</th>
+                            <th scope="col" style="width: 250px">Genre</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="book : ${books}">
+                            <td><a th:href="@{/BookDetails/{id}(id=${book.id})}" th:text="${book.getTitle()}"></a></td>
+                            <td th:text="${book.getAuthor()}"></td>
+                            <td th:text="${book.getGenre()}"></td>
+                            <td th:text="${book.getRelease_year()}"></td>
+                            <td th:text="${book.getStatus()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="offcanvas-body">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Genre</option>
-                <option value="1">Romance</option>
-                <option value="2">Sci-Fi</option>
-                <option value="3">Adventure</option>
-                <option value="4">Horror</option>
-                <option value="5">Fantasy</option>
-                <option value="6">Mystery</option>
-                <option value="7">Thriller</option>
-                <option value="8">Drama</option>
-                <option value="9">Comedy</option>
-                <option value="10">Sport</option>
-                <option value="11">History</option>
-                <option value="12">Isekai</option>
-                <option value="13">Action</option>
-            </select>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col" style="width: 500px;">Title</th>
-                    <th scope="col" style="width: 350px;">Author</th>
-                    <th scope="col" style="width: 250px">Genre</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="book : ${books}">
-                    <td><a th:href="@{/BookDetails/{id}(id=${book.id})}" th:text="${book.getTitle()}"></a></td>
-                    <td th:text="${book.getAuthor()}"></td>
-                    <td th:text="${book.getGenre()}"></td>
-                    <td th:text="${book.getRelease_year()}"></td>
-                    <td th:text="${book.getStatus()}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-</div>
 </body>
 </html>

@@ -2,16 +2,23 @@ package nicolas.library.model;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+import java.util.List;
+
 @Entity
 public class Book {
     @Id
     public Integer id;
+
+
 
     public String title;
 
     public String author;
 
     public String genre;
+
+    public String category;
 
     @Column(length = 1000)
     public String description;
@@ -25,11 +32,15 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String genre, String description, String status, String release_year, int views) {
+    @ManyToMany
+    Collection<Author> authors;
+
+    public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year, int views) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
+        this.category = category;
         this.description = description;
         this.status = status;
         this.release_year = release_year;
@@ -68,6 +79,14 @@ public class Book {
         this.genre = genre;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -98,5 +117,13 @@ public class Book {
 
     public void setViews(int views) {
         this.views = views;
+    }
+
+    public Collection<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Collection<Author> authors) {
+        this.authors = authors;
     }
 }

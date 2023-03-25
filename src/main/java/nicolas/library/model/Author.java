@@ -3,6 +3,9 @@ package nicolas.library.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+
+import java.util.Collection;
 
 
 @Entity
@@ -10,7 +13,7 @@ public class Author {
     @Id
     public Integer id;
 
-    public String authorName;
+    public String author_name;
     public String surname;
 
     @Column(length = 500)
@@ -18,13 +21,16 @@ public class Author {
 
     public String country;
 
+    @ManyToMany (mappedBy = "authors")
+    Collection<Book> books;
+
 
     public Author() {
     }
 
-    public Author(Integer id, String authorName, String surname, String bio, String country) {
+    public Author(Integer id, String author_name, String surname, String bio, String country) {
         this.id = id;
-        this.authorName = authorName;
+        this.author_name = author_name;
         this.surname = surname;
         this.bio = bio;
         this.country = country;
@@ -38,12 +44,12 @@ public class Author {
         this.id = id;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public String getAuthor_name() {
+        return author_name;
     }
 
-    public void setAuthorname(String authorName) {
-        this.authorName = authorName;
+    public void setAuthor_name(String author_name) {
+        this.author_name = author_name;
     }
 
     public String getSurname() {
@@ -70,4 +76,11 @@ public class Author {
         this.country = country;
     }
 
+    public Collection<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Collection<Book> books) {
+        this.books = books;
+    }
 }
