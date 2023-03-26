@@ -11,6 +11,7 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+<div class="bookList">
         <div class="container">
             <div class="row g-3">
                 <h1>Library books</h1>
@@ -38,6 +39,9 @@
                             </div>
                         </form>
                     </div>
+                    <div class="addButtonDiv">
+                        <a th:href="@{|/admin/newbook|}" class="btn btn-primary">Add new book</a>
+                    </div>
                 </div>
                 <div class="col-12">
                     <table class="table table-striped">
@@ -63,5 +67,6 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>

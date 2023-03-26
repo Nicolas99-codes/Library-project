@@ -1,0 +1,59 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" media="all"
+      th:href="@{/css/style.css}" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>new book</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container" style="background: lightcyan">
+    <div class="col-8">
+    <h2>New book</h2>
+    <form th:action="@{|/admin/newbook|}" method="post" th:object="${book}">
+        <div class="infoLine">
+            <label for="bookTitle" class="infoLineName">Title: </label>
+            <input type="text" id="bookTitle" name="bookTitle" th:field="*{title}" class="infoLineValue">
+        </div>
+        <div class="infoLine">
+            <label for="bookAuthor" class="infoLineName">Author: </label>
+            <input type="text" id="bookAuthor" name="bookAuthor" th:field="*{author}" class="infoLineValue">
+        </div>
+        <div class="infoLine">
+            <label for="BookGenre" class="infoLineName">Genre: </label>
+            <input id="BookGenre" th:field="*{genre}" class="infoLineValue">
+        </div>
+        <div class="infoLine">
+            <label for="BookCategory" class="infoLineName">Category: </label>
+            <input id="BookCategory" th:field="*{category}" class="infoLineValue">
+        </div>
+        <div class="infoLine">
+            <label for="BookStatus" class="infoLineName">Status: </label>
+            <input id="BookStatus" th:field="*{status}" class="infoLineValue">
+        </div>
+        <div class="infoLine">
+            <label for="BookReleaseYear" class="infoLineName">Release Year: </label>
+            <input id="BookReleaseYear" th:field="*{release_year}" class="infoLineValue">
+        </div>
+        <div class="infoLine">
+            <label for="BookView" class="infoLineName">View: </label>
+            <input id="BookView" th:field="*{views}" class="infoLineValue">
+        </div>
+        <div class="infoLine">
+            <label for="BookDescription" class="infoLineName">Description: </label>
+            <textarea id="BookDescription" th:field="*{description}" cols="25"
+                      class="infoLineValue">Description</textarea>
+        </div>
+        <div class="col-md-3">
+            <a th:href="@{|/BookList|}" class="btn btn-primary">Cancel</a>
+            <input type="submit" value="create" class="btn btn-primary">
+        </div>
+    </form>
+    </div>
+</div>
+</body>
+</html>

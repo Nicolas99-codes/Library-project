@@ -88,8 +88,8 @@ public class BookController {
         return "BookRequest";
     }
 
-    @GetMapping("/BookCategory")
+    @GetMapping("/BookCategories")
     public String showBookCategory(Model model) {
-        return "BookCategory";
+        return "BookCategories";
     }
 }
