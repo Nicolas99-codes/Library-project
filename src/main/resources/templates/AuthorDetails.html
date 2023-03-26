@@ -25,7 +25,11 @@
             <h6><span class="label">Country:</span><span th:text="${author.getCountry()}"></span></h6>
             <h6><span class="label">Bio:</span><span th:text="${author.getBio()}"></span></h6>
         </div>
-        <div class="PrevAndNextButton" style="margin-top: 10px">
+        <h4>Written books</h4>
+        <div th:each = "book : ${author.getBooks()}" style="margin-top: 10px">
+            <a class="btn btn-primary" th:href="@{/BookDetails/{id}(id=${book.getId()})}" th:text="${book.getTitle()}"></a>
+        </div>
+        <div class="PrevAndNextButton" style="margin-top: 30px">
             <a class="btn btn-primary" th:href="@{|/AuthorDetails/*{id}/prev|}">Previous</a>
             <a class="btn btn-primary" th:href="@{|/AuthorDetails/*{id}/next|}">Next</a>
         </div>

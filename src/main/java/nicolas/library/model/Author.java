@@ -1,9 +1,6 @@
 package nicolas.library.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.Collection;
 
@@ -21,12 +18,13 @@ public class Author {
 
     public String country;
 
-    @ManyToMany (mappedBy = "authors")
-    Collection<Book> books;
-
 
     public Author() {
     }
+
+
+    @ManyToMany(mappedBy = "authors")
+    private Collection<Book> books;
 
     public Author(Integer id, String author_name, String surname, String bio, String country) {
         this.id = id;
@@ -83,4 +81,5 @@ public class Author {
     public void setBooks(Collection<Book> books) {
         this.books = books;
     }
+
 }

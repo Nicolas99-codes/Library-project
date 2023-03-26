@@ -1,7 +1,6 @@
 package nicolas.library.repositories;
 
 import nicolas.library.model.Author;
-import nicolas.library.model.Book;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

@@ -33,7 +33,8 @@ public class Book {
     }
 
     @ManyToMany
-    Collection<Author> authors;
+    private Collection<Author> authors;
+
 
     public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year, int views) {
         this.id = id;
@@ -126,4 +127,5 @@ public class Book {
     public void setAuthors(Collection<Author> authors) {
         this.authors = authors;
     }
+
 }
