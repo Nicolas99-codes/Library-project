@@ -1,6 +1,7 @@
 package nicolas.library.controllers;
 
 import nicolas.library.model.Author;
+import nicolas.library.model.Book;
 import nicolas.library.repositories.AuthorRepository;
 import nicolas.library.repositories.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,31 @@ public class AuthorController {
         if (AuthorFromDb.isPresent()) {
             model.addAttribute("author", AuthorFromDb.get());
         }
+        return "AuthorDetails";
+    }
+
+    @GetMapping({"/AuthorDetails/{id}/prev"})
+    public String showAuthorDetailsPrev(Model model, @PathVariable int id){
+        Optional<Author> prevAuthorFromDb = authorRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        if (prevAuthorFromDb.isPresent()){
+            return String.format("redirect:/AuthorDetails/%d", prevAuthorFromDb.get().getId());}
+        Optional<Author> lastAuthorFromDb = authorRepository.findFirstByOrderByIdDesc();
+        if (lastAuthorFromDb.isPresent())
+            return String.format("redirect:/AuthorDetails/%d", lastAuthorFromDb.get().getId());
+        model.addAttribute("prevDisabled", true);
+        model.addAttribute("nextDisabled", false);
+        model.addAttribute("Author", authorRepository.findById(id).get());
+        return "AuthorDetails";
+    }
+
+    @GetMapping({"/AuthorDetails/{id}/next"})
+    public String showAuthorDetailsNext(Model model, @PathVariable int id){
+        Optional<Author> nextAuthorFromDb = authorRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+        if (nextAuthorFromDb.isPresent())
+            return String.format("redirect:/AuthorDetails/%d", nextAuthorFromDb.get().getId());
+        Optional<Author> firstAuthorFromDb = authorRepository.findFirstByOrderByIdAsc();
+        if (firstAuthorFromDb.isPresent())
+            return String.format("redirect:/AuthorDetails/%d", firstAuthorFromDb.get().getId());
         return "AuthorDetails";
     }
 

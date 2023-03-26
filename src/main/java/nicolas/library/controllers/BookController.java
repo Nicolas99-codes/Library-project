@@ -29,6 +29,31 @@ public class BookController {
         return "BookDetails";
     }
 
+    @GetMapping({"/BookDetails/{id}/prev"})
+    public String showBookDetailsPrev(Model model, @PathVariable int id){
+        Optional<Book> prevBookFromDb = booksRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        if (prevBookFromDb.isPresent()){
+            return String.format("redirect:/BookDetails/%d", prevBookFromDb.get().getId());}
+        Optional<Book> lastBookFromDb = booksRepository.findFirstByOrderByIdDesc();
+        if (lastBookFromDb.isPresent())
+            return String.format("redirect:/BookDetails/%d", lastBookFromDb.get().getId());
+        model.addAttribute("prevDisabled", true);
+        model.addAttribute("nextDisabled", false);
+        model.addAttribute("book", booksRepository.findById(id).get());
+        return "BookDetails";
+    }
+
+    @GetMapping({"/BookDetails/{id}/next"})
+    public String showBookDetailsNext(Model model, @PathVariable int id){
+        Optional<Book> nextBookFromDb = booksRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+        if (nextBookFromDb.isPresent())
+            return String.format("redirect:/BookDetails/%d", nextBookFromDb.get().getId());
+        Optional<Book> firstBookFromDb = booksRepository.findFirstByOrderByIdAsc();
+        if (firstBookFromDb.isPresent())
+            return String.format("redirect:/BookDetails/%d", firstBookFromDb.get().getId());
+        return "BookDetails";
+    }
+
     @GetMapping( "/BookList")
     public String showBookList(Model model) {
         List<Book> books = booksRepository.findAll();

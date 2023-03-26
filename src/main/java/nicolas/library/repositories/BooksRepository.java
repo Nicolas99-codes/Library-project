@@ -6,11 +6,24 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BooksRepository extends CrudRepository<Book, Integer> {
     List<Book> findAll();
 
     long count();
+
+    // Book previous ID
+
+    Optional<Book> findFirstByIdLessThanOrderByIdDesc(Integer id);
+
+    Optional<Book> findFirstByOrderByIdDesc();
+
+    // Book next ID
+
+    Optional<Book> findFirstByIdGreaterThanOrderByIdAsc(Integer id);
+
+    Optional<Book> findFirstByOrderByIdAsc();
 
     @Query("SELECT b FROM Book b WHERE " +
             "(:Genre IS NULL OR :Genre = '' OR b.genre = :Genre) AND " +
@@ -20,5 +33,6 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
 
     @Query("SELECT b FROM Book b order by b.title asc")
     List<Book> findAllOrderByTitle();
+
 
 }
