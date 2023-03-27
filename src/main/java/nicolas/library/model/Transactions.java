@@ -10,21 +10,21 @@ import java.util.Date;
 @Entity
 public class Transactions {
     @Id
-    public Integer id;
+    private Integer id;
 
-    public String Book;
+    private String Book;
 
-    public String title;
+    private String title;
 
-    public String Author;
+    private String Author;
 
-    public String UserInfo;
-
-    @Temporal(TemporalType.DATE)
-    public Date LoanDate;
+    private String UserInfo;
 
     @Temporal(TemporalType.DATE)
-    public Date ReturnDate;
+    private Date LoanDate;
+
+    @Temporal(TemporalType.DATE)
+    private Date ReturnDate;
 
     public Transactions() {
 

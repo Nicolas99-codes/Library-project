@@ -6,12 +6,12 @@ import jakarta.persistence.Id;
 @Entity
 public class Users {
     @Id
-    public Integer id;
+    private Integer id;
 
-    public String username;
-    public String surname;
-    public String email;
-    public String user_role;
+    private String username;
+    private String surname;
+    private String email;
+    private String user_role;
 
     public Users() {
     }

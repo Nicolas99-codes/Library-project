@@ -7,32 +7,32 @@ import java.util.Collection;
 
 @Entity
 public class Book {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    public Integer id;
+    private Integer id;
 
-    public String title;
+    private String title;
 
-    public String author;
+    private String author;
 
-    public String genre;
+    private String genre;
 
-    public String category;
+    private String category;
 
     @Column(length = 1000)
-    public String description;
+    private String description;
 
-    public String status;
+    private String status;
 
-    public String release_year;
+    private String release_year;
 
-    public int views;
-
-    public Book() {
-    }
+    private int views;
 
     @ManyToMany
     private Collection<Author> authors;
 
+    public Book() {
+    }
 
     public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year, int views) {
         this.id = id;

@@ -8,15 +8,15 @@ import java.util.Collection;
 @Entity
 public class Author {
     @Id
-    public Integer id;
+    private Integer id;
 
-    public String author_name;
-    public String surname;
+    private String author_name;
+    private String surname;
 
     @Column(length = 500)
-    public String bio;
+    private String bio;
 
-    public String country;
+    private String country;
 
 
     public Author() {
