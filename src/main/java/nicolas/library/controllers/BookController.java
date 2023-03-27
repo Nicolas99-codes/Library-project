@@ -68,11 +68,9 @@ public class BookController {
                                  @RequestParam(required = false) String status) {
         logger.info(String.format("Show book filter: genre= %s, status= %s", genre, status));
         List<Book> bookFilter = booksRepository.findByFilter(genre, status);
-        List<Book> books = booksRepository.findAll();
-        model.addAttribute("books", books);
         model.addAttribute("bookFilter", bookFilter);
-        model.addAttribute("genre", genre);
-        model.addAttribute("status", status);
+        model.addAttribute("genres", booksRepository.findAll());
+        model.addAttribute("statuss", booksRepository.findAll());
         model.addAttribute("showFilters", true);
         return "BookList";
     }

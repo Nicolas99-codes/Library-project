@@ -21,19 +21,15 @@
                     </div>
                     <div th:if="${showFilters}" class="filter">
                         <a class="btn btn-primary" th:href="@{/BookList}">Hide filters</a>
-                        <form>
-                            <div class="oneFilter">
-                                <select class="form-select" aria-label="Default select example" th:value="${genre}">
-                                    <option selected>Genre</option>
-                                    <option value="1">Fantasy</option>
-                                    <option value="2">Horror</option>
-                                </select>
-                                <select class="form-select" aria-label="Default select example" th:value="${status}">
-                                    <option selected>Status</option>
-                                    <option value="1">Ongoing</option>
-                                    <option value="2">Completed</option>
-                                </select>
-                            </div>
+                        <form method="post">
+                            <select id="Genre" class="infoLineValue" th:field="*{genres}">
+                                <option value="">Genre</option>
+                                <option th:each="g : ${genres}" th:selected="*{genres}" th:value="${g.getId()}" th:text="${g.getGenre()}"></option>
+                            </select>
+                            <select id="status" class="infoLineValue" th:field="*{statuss}">
+                                <option value="">Status</option>
+                                <option th:each="s : ${statuss}" th:selected="*{statuss}" th:value="${s.getId()}" th:text="${s.getStatus()}"></option>
+                            </select>
                             <div class="oneFilter">
                                 <input type="submit" class="btn btn-primary">
                             </div>
