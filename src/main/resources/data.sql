@@ -180,6 +180,54 @@ VALUES
      'One day, because of a power outage, she regrettably died.' ||
      'However, just before that, her mind was moved to the world of online game she was playing.', 'Ongoing', 2019, 91781);
 
+INSERT INTO GENRE (ID, GENRE)
+VALUES (1, 'Action');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (2, 'Adventure');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (3, 'Comedy');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (4, 'Drama');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (5, 'Fantasy');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (6, 'Isekai');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (7, 'Mystery');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (8, 'Romance');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (9, 'Sports');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (10, 'Thriller');
+
+INSERT INTO GENRE (ID, GENRE)
+VALUES (11, 'Sci-fi');
+
+INSERT INTO STATUS (ID, STATUS)
+VALUES (1, 'Ongoing');
+
+INSERT INTO STATUS (ID, STATUS)
+VALUES (2, 'Completed');
+
+INSERT INTO CATEGORY (ID, CATEGORY)
+VALUES (1, 'Manga');
+
+INSERT INTO CATEGORY (ID, CATEGORY)
+VALUES (2, 'Light Novel');
+
+INSERT INTO CATEGORY (ID, CATEGORY)
+VALUES (3, 'Manhwa');
+
 INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (1, 1);
 INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (2, 2);
 INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (3, 3);

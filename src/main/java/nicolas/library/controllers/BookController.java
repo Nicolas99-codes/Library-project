@@ -3,6 +3,8 @@ package nicolas.library.controllers;
 
 import nicolas.library.model.Book;
 import nicolas.library.repositories.BooksRepository;
+import nicolas.library.repositories.GenreRepository;
+import nicolas.library.repositories.StatusRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,12 @@ public class BookController {
     private Logger logger = LoggerFactory.getLogger(BookController.class);
     @Autowired
     private BooksRepository booksRepository;
+
+    @Autowired
+    private GenreRepository genreRepository;
+
+    @Autowired
+    private StatusRepository statusRepository;
 
     @GetMapping({ "/BookDetails/{id}"})
     public String showBookDetails(Model model, @PathVariable int id) {
@@ -64,13 +72,13 @@ public class BookController {
 
     @GetMapping("/BookList/filter")
     public String showBookFilter(Model model,
-                                 @RequestParam(required = false) String genre,
-                                 @RequestParam(required = false) String status) {
+                                 @RequestParam(required = false) Integer genre,
+                                 @RequestParam(required = false) Integer status) {
         logger.info(String.format("Show book filter: genre= %s, status= %s", genre, status));
         List<Book> bookFilter = booksRepository.findByFilter(genre, status);
         model.addAttribute("bookFilter", bookFilter);
-        model.addAttribute("genres", booksRepository.findAll());
-        model.addAttribute("statuss", booksRepository.findAll());
+        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("statuss", statusRepository.findAll());
         model.addAttribute("showFilters", true);
         return "BookList";
     }

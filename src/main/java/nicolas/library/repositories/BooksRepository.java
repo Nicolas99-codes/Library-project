@@ -28,8 +28,8 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
     @Query("SELECT b FROM Book b WHERE " +
             "(:Genre IS NULL OR :Genre = '' OR b.genre = :Genre) AND " +
             "(:Status IS NULL OR :Status = '' OR b.status = :Status)")
-    List<Book> findByFilter(@Param("Genre") String genre,
-                            @Param("Status") String status);
+    List<Book> findByFilter(@Param("Genre") Integer genre,
+                            @Param("Status") Integer status);
 
     @Query("SELECT b FROM Book b order by b.title asc")
     List<Book> findAllOrderByTitle();

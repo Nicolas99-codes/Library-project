@@ -33,23 +33,6 @@
             <div class="col-6">
                 <h6>Description:</h6>
                 <p th:text="${book.getDescription()}"></p>
-                <h6>Reviews:</h6>
-                <form>
-                    <textarea name="review" placeholder="Write your review here" cols="50"></textarea>
-                    <button type="submit">Submit</button>
-                </form>
-                <div class="comments">
-                    <!-- Here you can display the comments -->
-                    <div class="comment">
-                        <h6>John Doe</h6>
-                        <p>Great book, couldn't put it down!</p>
-                    </div>
-                    <div class="comment">
-                        <h6>Jane Smith</h6>
-                        <p>Not my cup of tea, but well written.</p>
-                    </div>
-                    <!-- More comments go here -->
-                </div>
                 <div class="PrevAndNextButton">
                     <a class="btn btn-primary" th:href="@{|/BookDetails/*{id}/prev|}">Previous</a>
                     <a class="btn btn-primary" th:href="@{|/BookDetails/*{id}/next|}">Next</a>

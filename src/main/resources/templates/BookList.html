@@ -21,12 +21,12 @@
                     </div>
                     <div th:if="${showFilters}" class="filter">
                         <a class="btn btn-primary" th:href="@{/BookList}">Hide filters</a>
-                        <form method="post">
-                            <select id="Genre" class="infoLineValue" th:field="*{genres}">
+                        <form>
+                            <select id="Genre" class="infoLineValue" name="genre">
                                 <option value="">Genre</option>
                                 <option th:each="g : ${genres}" th:selected="*{genres}" th:value="${g.getId()}" th:text="${g.getGenre()}"></option>
                             </select>
-                            <select id="status" class="infoLineValue" th:field="*{statuss}">
+                            <select id="status" class="infoLineValue" name="status">
                                 <option value="">Status</option>
                                 <option th:each="s : ${statuss}" th:selected="*{statuss}" th:value="${s.getId()}" th:text="${s.getStatus()}"></option>
                             </select>
