@@ -2,12 +2,18 @@ package nicolas.library.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Category {
     @Id
     private int id;
     private String category;
+
+    @OneToMany(mappedBy = "category")
+    private List<Book> books;
 
     public Category() {
     }
@@ -31,5 +37,13 @@ public class Category {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

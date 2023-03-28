@@ -248,7 +248,11 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
 
 /* end edit page fix */
 
-/* */
+/* start card category */
+
+.card-category {
+    background-image: linear-gradient(to right, darkcyan, cadetblue);
+}
 /* */
 /* */
 /* */

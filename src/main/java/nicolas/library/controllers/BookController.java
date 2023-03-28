@@ -2,7 +2,11 @@ package nicolas.library.controllers;
 
 
 import nicolas.library.model.Book;
+import nicolas.library.model.Category;
+import nicolas.library.model.Genre;
+import nicolas.library.model.Status;
 import nicolas.library.repositories.BooksRepository;
+import nicolas.library.repositories.CategoryRepository;
 import nicolas.library.repositories.GenreRepository;
 import nicolas.library.repositories.StatusRepository;
 import org.slf4j.Logger;
@@ -27,6 +31,7 @@ public class BookController {
 
     @Autowired
     private StatusRepository statusRepository;
+
 
     @GetMapping({ "/BookDetails/{id}"})
     public String showBookDetails(Model model, @PathVariable int id) {
@@ -72,16 +77,30 @@ public class BookController {
 
     @GetMapping("/BookList/filter")
     public String showBookFilter(Model model,
-                                 @RequestParam(required = false) Integer genre,
-                                 @RequestParam(required = false) Integer status) {
+                                 @RequestParam(required = false) String genre,
+                                 @RequestParam(required = false) String status) {
         logger.info(String.format("Show book filter: genre= %s, status= %s", genre, status));
         List<Book> bookFilter = booksRepository.findByFilter(genre, status);
-        model.addAttribute("bookFilter", bookFilter);
+        if (bookFilter.isEmpty()){
+            logger.info("No book found with given filter");
+        }
+        else {
+            model.addAttribute("bookFilter", bookFilter);
+        }
+        List<Book> books;
+        if (genre != null || status != null){
+            books = booksRepository.findByFilter(genre, status);
+        }
+        else {
+            books = booksRepository.findAll();
+        }
+        model.addAttribute("books", books);
         model.addAttribute("genres", genreRepository.findAll());
         model.addAttribute("statuss", statusRepository.findAll());
         model.addAttribute("showFilters", true);
         return "BookList";
     }
+
 
     @GetMapping("/BookRequest")
     public String showBookRequest(Model model) {
@@ -94,8 +113,4 @@ public class BookController {
         return "BookRequest";
     }
 
-    @GetMapping("/BookCategories")
-    public String showBookCategory(Model model) {
-        return "BookCategories";
-    }
 }

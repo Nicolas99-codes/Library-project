@@ -31,6 +31,9 @@ public class Book {
     @ManyToMany
     private Collection<Author> authors;
 
+    @ManyToOne
+    private Category categories;
+
     public Book() {
     }
 
@@ -124,6 +127,14 @@ public class Book {
 
     public void setAuthors(Collection<Author> authors) {
         this.authors = authors;
+    }
+
+    public Category getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Category categories) {
+        this.categories = categories;
     }
 
 }

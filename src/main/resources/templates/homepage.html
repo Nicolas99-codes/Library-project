@@ -13,13 +13,6 @@
 <div th:replace="fragments/header :: header"></div>
 <div class="containerCard">
     <div class="row">
-        <div class="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" th:each="book : ${books}">
-                    <h3 th:text="${book.title}"></h3>
-                </div>
-            </div>
-        </div>
         <div class="col-sm-4 w-auto p-3">
             <div class="card card-one">
                 <div class="card-body">
