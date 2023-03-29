@@ -154,7 +154,7 @@ VALUES
 
 INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, VIEWS)
 VALUES
-    ('Sword Art Online', 'Reki Kawahara', 'Fantasy, Action, Drama', 'Light novel',
+    ('Sword Art Online', 'Reki Kawahara', 'Fantasy, Action, Drama', 'Light Novel',
      'In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. ' ||
      'With the aid of "NerveGear" technology, players can control their avatars within the game using nothing but their own thoughts. Kirito is one such player. ' ||
      'Having logged in to test the game, he is ready to begin his quest, when suddenly the game goes live. ' ||
@@ -295,14 +295,14 @@ VALUES (1, 'Ongoing');
 INSERT INTO STATUS (ID, STATUS)
 VALUES (2, 'Completed');
 
-INSERT INTO CATEGORY (ID, CATEGORY)
-VALUES (1, 'Manga');
+INSERT INTO CATEGORY (ID, CATEGORY, COUNTRY, BIO, book_language)
+VALUES (1, 'Manga', 'Japan', 'Manga is the Japanese equivalent of comics with a unique style and following.', 'Japanese');
 
-INSERT INTO CATEGORY (ID, CATEGORY)
-VALUES (2, 'Light Novel');
+INSERT INTO CATEGORY (ID, CATEGORY, COUNTRY, BIO, book_language)
+VALUES (2, 'Light Novel', 'Japan', 'Light novels are Japanese novels that are usually between 50,000 and 300,000 words long.', 'Japanese');
 
-INSERT INTO CATEGORY (ID, CATEGORY)
-VALUES (3, 'Manhwa');
+INSERT INTO CATEGORY (ID, CATEGORY, COUNTRY, BIO, book_language)
+VALUES (3, 'Manhwa', 'South Korea', 'Manhwa is the Korean equivalent of comics with a unique style and following.', 'Korean');
 
 INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (1, 1);
 INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (2, 2);

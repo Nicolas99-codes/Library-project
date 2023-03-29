@@ -36,4 +36,5 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
 
     @Query("SELECT b FROM Book b order by b.title asc")
     List<Book> findAllOrderByTitle();
+
 }

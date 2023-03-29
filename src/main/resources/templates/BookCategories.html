@@ -19,13 +19,10 @@
                 <div class="card-body">
                     <h5 class="card-title title-manga">Manga</h5>
                     <p class="card-text">Total books: <span th:text="${mangaCount}"></span></p>
-                    <div th:each="book : ${mangaBooks}">
-                        <div class="card card-manga">
-                            <div class="card-body card-body-manga">
-                                <p class="title-text" th:text="${book.title}"></p>
-                            </div>
-                        </div>
+                    <div th:each="category : ${categories}">
+                        <a th:if="${category.category == 'Manga'}" th:href="@{/categorydetails/{id}(id=${category.id})}" class="btn btn-primary" th:text="${category.category}"></a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -34,12 +31,8 @@
                 <div class="card-body">
                     <h5 class="card-title title-lightnovel">Light Novel</h5>
                     <p class="card-text">Total books: <span th:text="${lightNovelCount}"></span></p>
-                    <div th:each="book : ${lightNovelBooks}">
-                        <div class="card card-lightnovel">
-                            <div class="card-body card-body-lightnovel">
-                                <p class="title-text" th:text="${book.title}"></p>
-                            </div>
-                        </div>
+                    <div th:each="category : ${categories}">
+                        <a th:if="${category.category == 'Light Novel'}" th:href="@{/categorydetails/{id}(id=${category.id})}" class="btn btn-primary" th:text="${category.category}"></a>
                     </div>
                 </div>
             </div>
@@ -49,12 +42,8 @@
                 <div class="card-body">
                     <h5 class="card-title title-manhwa">Manga</h5>
                     <p class="card-text">Total books: <span th:text="${manhwaCount}"></span></p>
-                    <div th:each="book : ${manhwaBooks}">
-                        <div class="card card-manhwa">
-                            <div class="card-body card-body-manhwa">
-                                <p class="title-text" th:text="${book.title}"></p>
-                            </div>
-                        </div>
+                    <div th:each="category : ${categories}">
+                        <a th:if="${category.category == 'Manhwa'}" th:href="@{/categorydetails/{id}(id=${category.id})}" class="btn btn-primary" th:text="${category.category}"></a>
                     </div>
                 </div>
             </div>

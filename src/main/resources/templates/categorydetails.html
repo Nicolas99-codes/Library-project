@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" media="all"
+      th:href="@{/css/style.css}" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Category Details</title>
+</head>
+<body>
+<div class="container" style="background: lightcyan;">
+    <div class="row">
+        <div class="breadcrumbs">
+            <div class="breadcrumbs">
+                <a th:href="@{/homepage}" th:class="${currentPage == '/homepage' ? 'current-page' : ''}">Home</a>
+                / <a th:href="@{/BookCategories}" th:class="${currentPage == '/BookCategory' ? 'current-page' : ''}">Book Category</a>
+                / <span th:class="${currentPage == '/categorydetails' ? 'current-page' : ''}" th:text="${category.getCategory()}"></span>
+                <h1 th:text="${category.getCategory()}" style="margin-top: 10px"></h1>
+        </div>
+        <div class="col-8">
+            <h6><span class="label">Country:</span><span th:text="${category.getCountry()}"></span></h6>
+            <h6><span class="label">Language:</span><span th:text="${category.getBook_language()}"></span></h6>
+            <h6><span class="label">bio:</span><span th:text="${category.getBio()}"></span></h6>
+        </div>
+            <div>
+            <h4 th:text="'List of ' + ${category.getCategory()} + ' Books'">List of Books</h4>
+                <div th:each="book : ${mangaBooks}">
+                    <a class="btn btn-primary" th:href="@{|/bookdetails/*{book.getId()}|}" th:text="${book.getTitle()}"></a>
+                </div>
+            </div>
+        <div class="PrevAndNextButton" style="margin-top: 30px">
+            <a class="btn btn-primary" th:href="@{|/categorydetails/*{id}/prev|}">Previous</a>
+            <a class="btn btn-primary" th:href="@{|/categorydetails/*{id}/next|}">Next</a>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
