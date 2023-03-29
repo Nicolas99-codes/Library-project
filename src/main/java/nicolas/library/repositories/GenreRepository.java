@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface GenreRepository extends CrudRepository<Genre, Integer>{
     List<Genre> findAll();
+
+    long count();
 }

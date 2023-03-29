@@ -11,10 +11,6 @@ import java.util.Optional;
 public interface BooksRepository extends CrudRepository<Book, Integer> {
     List<Book> findAll();
 
-    List<Book> findByTitle(String title);
-
-    List<Book> findByAuthor(String author);
-
     long count();
 
     @Query("SELECT b FROM Book b WHERE b.category = :category")

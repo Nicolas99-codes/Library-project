@@ -24,16 +24,16 @@
         <div class="col-sm-4 w-auto p-3">
             <div class="card card-two">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Active loans</p>
+                    <h5 class="card-title"><span th:text="${usersCount}"></span></h5>
+                    <p class="card-text">Users</p>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 w-auto p-3">
             <div class="card card-three">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Expired loans</p>
+                    <h5 class="card-title"><span th:text="${genreCount}"></span></h5>
+                    <p class="card-text">Genre</p>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                                     <th scope="row" th:text="${transactions.getId()}"></th>
                                     <td th:text="${transactions.getTitle()}"></td>
                                     <td th:text="${transactions.getAuthor()}"></td>
-                                    <td th:text="${transactions.getUsers()}"></td>
+                                    <td><a th:href="@{/UserDetails/{id}(id=${transactions.id})}" th:text="${transactions.getUsers()}"></a></td>
                                 </tbody>
                             </table>
                         </div>
