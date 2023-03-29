@@ -77,10 +77,9 @@ public class BookController {
 
     @GetMapping("/BookList/filter")
     public String showBookFilter(Model model,
-                                 @RequestParam(required = false) String genre,
-                                 @RequestParam(required = false) String status) {
-        logger.info(String.format("Show book filter: genre= %s, status= %s", genre, status));
-        List<Book> bookFilter = booksRepository.findByFilter(genre, status);
+                                 @RequestParam(required = false) String keyword) {
+        logger.info(String.format("Show book filter: keyword= %s", keyword));
+        List<Book> bookFilter = booksRepository.findByFilter(keyword);
         if (bookFilter.isEmpty()){
             logger.info("No book found with given filter");
         }
@@ -88,8 +87,8 @@ public class BookController {
             model.addAttribute("bookFilter", bookFilter);
         }
         List<Book> books;
-        if (genre != null || status != null){
-            books = booksRepository.findByFilter(genre, status);
+        if (keyword != null){
+            books = booksRepository.findByFilter(keyword);
         }
         else {
             books = booksRepository.findAll();
@@ -98,8 +97,10 @@ public class BookController {
         model.addAttribute("genres", genreRepository.findAll());
         model.addAttribute("statuss", statusRepository.findAll());
         model.addAttribute("showFilters", true);
+        model.addAttribute("keyword", keyword);
         return "BookList";
     }
+
 
 
     @GetMapping("/BookRequest")

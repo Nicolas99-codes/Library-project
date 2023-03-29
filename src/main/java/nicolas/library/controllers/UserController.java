@@ -29,7 +29,7 @@ public class UserController {
     public String showUserDetailsPrev(Model model, @PathVariable int id){
         Optional<Users> prevUserFromDb = usersRepository.findFirstByIdLessThanOrderByIdDesc(id);
         if (prevUserFromDb.isPresent()){
-            return String.format("redirect:/BookDetails/%d", prevUserFromDb.get().getId());}
+            return String.format("redirect:/UserDetails/%d", prevUserFromDb.get().getId());}
         Optional<Users> lastUserFromDb = usersRepository.findFirstByOrderByIdDesc();
         if (lastUserFromDb.isPresent())
             return String.format("redirect:/UserDetails/%d", lastUserFromDb.get().getId());

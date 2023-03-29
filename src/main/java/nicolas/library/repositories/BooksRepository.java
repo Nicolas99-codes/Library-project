@@ -29,10 +29,14 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
     Optional<Book> findFirstByOrderByIdAsc();
 
     @Query("SELECT b FROM Book b WHERE " +
-            "(:Genre IS NULL OR :Genre = '' OR b.genre = :Genre) AND " +
-            "(:Status IS NULL OR :Status = '' OR b.status = :Status)")
-    List<Book> findByFilter(@Param("Genre") String genre,
-                            @Param("Status") String status);
+            "(:keyword IS NULL OR :keyword = '' OR " +
+            "b.author LIKE %:keyword% OR " +
+            "b.genre LIKE %:keyword% OR " +
+            "b.title LIKE %:keyword% OR " +
+            "b.release_year LIKE %:keyword% OR " +
+            "b.status LIKE %:keyword%)")
+    List<Book> findByFilter(@Param("keyword") String keyword);
+
 
     @Query("SELECT b FROM Book b order by b.title asc")
     List<Book> findAllOrderByTitle();

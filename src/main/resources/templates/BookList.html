@@ -22,18 +22,12 @@
                     <div th:if="${showFilters}" class="filter">
                         <a class="btn btn-primary" th:href="@{/BookList}">Hide filters</a>
                         <form method="get">
-                            <select id="Genre" class="infoLineValue" name="genre">
-                                <option value="">Genre</option>
-                                <option th:each="g : ${genres}" th:selected="*{genres}" th:value="${g.getId()}" th:text="${g.getGenre()}"></option>
-                            </select>
-                            <select id="status" class="infoLineValue" name="status">
-                                <option value="">Status</option>
-                                <option th:each="s : ${statuss}" th:selected="*{statuss}" th:value="${s.getId()}" th:text="${s.getStatus()}"></option>
-                            </select>
+                            <input type="text" id="keyword" class="infoLineValue" name="keyword" placeholder="Search by title,author, genre, year or status" value="">
                             <div class="oneFilter">
                                 <input type="submit" value="search" class="btn btn-primary">
                             </div>
                         </form>
+
                     </div>
                     <div class="addButtonDiv">
                         <a th:href="@{|/admin/newbook|}" class="btn btn-primary">Add new book</a>
