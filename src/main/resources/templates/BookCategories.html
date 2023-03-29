@@ -17,24 +17,45 @@
         <div class="col-sm-4 w-auto p-3">
             <div class="card card-category">
                 <div class="card-body">
-                    <h5 class="card-title">Manga</h5>
-                    <p class="card-text"><span th:text="${mangaCount}"></span></p>
+                    <h5 class="card-title title-manga">Manga</h5>
+                    <p class="card-text">Total books: <span th:text="${mangaCount}"></span></p>
+                    <div th:each="book : ${mangaBooks}">
+                        <div class="card card-manga">
+                            <div class="card-body card-body-manga">
+                                <p class="title-text" th:text="${book.title}"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 w-auto p-3">
             <div class="card card-category">
                 <div class="card-body">
-                    <h5 class="card-title">Light Novel</h5>
-                    <p class="card-text"><span th:text="${manhwaCount}"></span></p>
+                    <h5 class="card-title title-lightnovel">Light Novel</h5>
+                    <p class="card-text">Total books: <span th:text="${lightNovelCount}"></span></p>
+                    <div th:each="book : ${lightNovelBooks}">
+                        <div class="card card-lightnovel">
+                            <div class="card-body card-body-lightnovel">
+                                <p class="title-text" th:text="${book.title}"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 w-auto p-3">
             <div class="card card-category">
                 <div class="card-body">
-                    <h5 class="card-title">Manhwa</h5>
-                    <p class="card-text"><span th:text="${lightNovelCount}"></span></p>
+                    <h5 class="card-title title-manhwa">Manga</h5>
+                    <p class="card-text">Total books: <span th:text="${manhwaCount}"></span></p>
+                    <div th:each="book : ${manhwaBooks}">
+                        <div class="card card-manhwa">
+                            <div class="card-body card-body-manhwa">
+                                <p class="title-text" th:text="${book.title}"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

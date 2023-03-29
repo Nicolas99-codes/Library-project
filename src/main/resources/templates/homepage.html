@@ -54,12 +54,14 @@
                                     <th scope="col" style="width: 350px">Book Title</th>
                                     <th scope="col" style="width: 350px">Book Author</th>
                                     <th scope="col" style="width: 150px">User</th>
-                                    <th scope="col" style="width: 200px">Loan date</th>
-                                    <th scope="col" style="width: 200px">Return date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                <tr th:each="transactions : ${transactions}">
+                                    <th scope="row" th:text="${transactions.getId()}"></th>
+                                    <td th:text="${transactions.getTitle()}"></td>
+                                    <td th:text="${transactions.getAuthor()}"></td>
+                                    <td th:text="${transactions.getUsers()}"></td>
                                 </tbody>
                             </table>
                         </div>

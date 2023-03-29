@@ -1,9 +1,6 @@
 package nicolas.library.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -18,7 +15,7 @@ public class Transactions {
 
     private String Author;
 
-    private String UserInfo;
+    private String Users;
 
     @Temporal(TemporalType.DATE)
     private Date LoanDate;
@@ -26,16 +23,23 @@ public class Transactions {
     @Temporal(TemporalType.DATE)
     private Date ReturnDate;
 
+    @ManyToOne
+    private Book book;
+
+    @ManyToOne
+    private Users user;
+
+
     public Transactions() {
 
     }
 
-    public Transactions(Integer id, String book, String title, String author, String userInfo, Date loanDate, Date returnDate) {
+    public Transactions(Integer id, String book, String title, String author, String users, Date loanDate, Date returnDate) {
         this.id = id;
         this.Book = book;
         this.title = title;
         this.Author = author;
-        this.UserInfo = userInfo;
+        this.Users = users;
         this.LoanDate = loanDate;
         this.ReturnDate = returnDate;
     }
@@ -72,12 +76,12 @@ public class Transactions {
         this.Author = author;
     }
 
-    public String getUserInfo() {
-        return UserInfo;
+    public String getUsers() {
+        return Users;
     }
 
-    public void setUserInfo(String userInfo) {
-        this.UserInfo = userInfo;
+    public void setUsers(String users) {
+        this.Users = users;
     }
 
     public Date getLoanDate() {
@@ -94,5 +98,17 @@ public class Transactions {
 
     public void setReturnDate(Date returnDate) {
         this.ReturnDate = returnDate;
+    }
+
+    public void setBook(nicolas.library.model.Book book) {
+        this.book = book;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 }

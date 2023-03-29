@@ -2,6 +2,10 @@ INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
 VALUES
     (1, 'Lix', 'test', 'test@gmail.com', 'test');
 
+INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+VALUES
+    (1, 1, 'Solo Leveling', 'Chugong', 'Lix');
+
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
     (1, 'Chugong', ' ', '?', 'South Korea');

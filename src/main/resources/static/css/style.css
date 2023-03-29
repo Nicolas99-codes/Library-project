@@ -253,6 +253,39 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
 .card-category {
     background-image: linear-gradient(to right, darkcyan, cadetblue);
 }
+
+/* end card category */
+
+/* start card book list */
+
+.card-body-manga{
+    height: 10px;
+    margin-bottom: 10px;
+}
+
+.card-body-lightnovel{
+    height: 10px;
+    margin-bottom: 10px;
+}
+
+.card-body-manhwa{
+    height: 10px;
+    margin-bottom: 10px;
+}
+/* end card book list */
+
+.card-manga{
+    margin-bottom: 20px;
+}
+
+.card-lightnovel{
+    margin-bottom: 20px;
+}
+
+.card-manhwa{
+    margin-bottom: 20px;
+}
+
 /* */
 /* */
 /* */

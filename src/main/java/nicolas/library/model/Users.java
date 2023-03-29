@@ -2,6 +2,7 @@ package nicolas.library.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Users {
@@ -12,6 +13,9 @@ public class Users {
     private String surname;
     private String email;
     private String user_role;
+
+    @ManyToOne
+    private Transactions transactions;
 
     public Users() {
     }
@@ -62,5 +66,13 @@ public class Users {
 
     public void setUser_role(String user_role) {
         this.user_role = user_role;
+    }
+
+    public Transactions getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Transactions transactions) {
+        this.transactions = transactions;
     }
 }
