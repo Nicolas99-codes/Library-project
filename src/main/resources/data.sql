@@ -44,11 +44,11 @@ VALUES
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
-    (2, 1, 'Solo Leveling', 'Chugong', 'Lore');
+    (2, 1, 'Sword Art Online', 'Reki Kawahara', 'Lore');
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
-    (3, 1, 'Solo Leveling', 'Chugong', 'Ikram');
+    (3, 1, 'Tokyo Ghoul', 'Sui Ishida', 'Ikram');
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
@@ -56,19 +56,19 @@ VALUES
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
-    (5, 1, 'Solo Leveling', 'Chugong', 'Viviane');
+    (5, 1, 'Violet Evergarden', 'Kana Akatsuki', 'Viviane');
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
-    (6, 1, 'Solo Leveling', 'Chugong', 'Max');
+    (6, 1, 'In the Land of Leadale', 'Ceez', 'Max');
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
-    (7, 1, 'Solo Leveling', 'Chugong', 'Tim');
+    (7, 1, 'Darling in the franxx', 'Atsushi Nishogri, Naotaka Hayashi', 'Tim');
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
-    (8, 1, 'Solo Leveling', 'Chugong', 'Anna');
+    (8, 1, 'Blue Lock', 'Muneyuki Kaneshiro', 'Anna');
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
@@ -76,75 +76,75 @@ VALUES
 
 INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 VALUES
-    (10, 1, 'Solo Leveling', 'Chugong', 'Silke');
+    (10, 1, '86', 'Haruto Umezawa', 'Silke');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (1, 'Chugong', ' ', '?', 'South Korea');
+    (1, 'Chugong', '-', '-', 'South Korea');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (2, 'Reki', 'Kawahara', '/', 'Japan');
+    (2, 'Reki', 'Kawahara', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (3, 'Fuse', ' ', '?', 'Japan');
+    (3, 'Fuse', '-', '?', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (4, 'Kana', 'Akatsuki', '?', 'Japan');
+    (4, 'Kana', 'Akatsuki', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (5, 'Atsushi', 'Nishigori', '?', 'Japan');
+    (5, 'Atsushi', 'Nishigori', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (6, 'Naotaka', 'Hayashi', '?', '-');
+    (6, 'Naotaka', 'Hayashi', '-', '-');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (7, 'Haruto', 'Umezawa', '?', 'Japan');
+    (7, 'Haruto', 'Umezawa', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (8, 'Rifujin', 'na Magonote', '?', 'Japan');
+    (8, 'Rifujin', 'na Magonote', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (9, 'Kisetsu', 'Morita', '?', 'Japan');
+    (9, 'Kisetsu', 'Morita', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (10, 'Shinkoshoto', ' ', '?', 'Japan');
+    (10, 'Shinkoshoto', '-', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (11, 'Shogo', 'Kinugasa', '?', 'Japan');
+    (11, 'Shogo', 'Kinugasa', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (12, 'Sui', 'Ishida', '?', 'Japan');
+    (12, 'Sui', 'Ishida', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (13, 'Muneyuki', 'Kaneshiro', '?', 'Japan');
+    (13, 'Muneyuki', 'Kaneshiro', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (14, 'Miki', 'Nazuna', '?', 'Japan');
+    (14, 'Miki', 'Nazuna', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (15, 'Aneko', 'Yusagi', '?', 'Japan');
+    (15, 'Aneko', 'Yusagi', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (16, 'Kaiu', 'Shirai', '?', 'Japan');
+    (16, 'Kaiu', 'Shirai', '-', 'Japan');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (17, 'Ceez', ' ', '?', '-');
+    (17, 'Ceez', '-', '-', '-');
 
 INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, VIEWS)
 VALUES

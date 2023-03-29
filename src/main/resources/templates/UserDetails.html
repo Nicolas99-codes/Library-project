@@ -23,9 +23,6 @@
             <h6><span class="label">Email:</span><span th:text="${user.getEmail()}"></span></h6>
             <h6><span class="label">User role:</span><span th:text="${user.getUser_role()}"></span></h6>
         </div>
-        <h4>Lending books</h4>
-
-        <h5>Finished books</h5>
         <div class="PrevAndNextButton" style="margin-top: 30px">
             <a class="btn btn-primary" th:href="@{|/UserDetails/*{id}/prev|}">Previous</a>
             <a class="btn btn-primary" th:href="@{|/UserDetails/*{id}/next|}">Next</a>

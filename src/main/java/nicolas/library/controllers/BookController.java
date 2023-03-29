@@ -109,9 +109,13 @@ public class BookController {
     }
 
     @PostMapping("/Book/Request")
-    public String submitBookRequest(@ModelAttribute Book book) {
+    public String submitBookRequest(@ModelAttribute Book book, Model model) {
         logger.info(String.format("Book request: %s", book));
+        model.addAttribute("bookRequest", book);
         return "BookRequest";
     }
+
+
+
 
 }
