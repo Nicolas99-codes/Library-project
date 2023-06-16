@@ -15,8 +15,6 @@ public class Book {
 
     private String author;
 
-    private String imgSource;
-
     private String genre;
 
     private String category;
@@ -42,7 +40,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year, int views, String imgSource) {
+    public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year, int views) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -52,7 +50,6 @@ public class Book {
         this.status = status;
         this.release_year = release_year;
         this.views = views;
-        this.imgSource = imgSource;
     }
 
     public Integer getId() {
@@ -125,14 +122,6 @@ public class Book {
 
     public void setViews(int views) {
         this.views = views;
-    }
-
-    public String getImgSource() {
-        return imgSource;
-    }
-
-    public void setImgSource(String imgSource) {
-        this.imgSource = imgSource;
     }
 
     public Collection<Author> getAuthors() {
