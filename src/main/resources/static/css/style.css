@@ -286,7 +286,10 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
     margin-bottom: 20px;
 }
 
-/* */
+/* Login & logout CSS*/
+.btn-login {
+    margin: 0 auto !important;
+}
 /* */
 /* */
 /* */
