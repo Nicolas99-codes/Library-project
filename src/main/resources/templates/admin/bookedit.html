@@ -18,7 +18,86 @@
 <div class="row d-flex justify-content-center mt-5" th:object="${book}">
     <div class="col-lg-6 col-12 d-flex justify-content-center col-create flex-column align-items-center me-2">
         <div class="shadow container-editbook">
-            <img th:src="${book.getImage}"
+            <img th:src="${book.getImage()}" id="img-editbook" alt="foto boek" class="img-editbook">
+            <div class="information-overlay">
+                <div id="spinnerBookImg" class="spinner-border text-primary" role="status">
+                </div>
+            </div>
+        </div>
+        <div class="imageOptions mt-2" id="cropBtnContainer" style="visibility: hidden;">
+            <button class="btn btn-responsive btn-primary" id="cropBtn">Bijsnijden</button>
+        </div>
+    </div>
+    <div class="col-lg-5 col-12 mt-2 mt-lg-0 col-editbook">
+        <div class="login-formcontainer suggestion-formcontainer shadow mx-auto">
+            <form th:action="@{/admin/bookedit}" method="post" class="needs-validation" novalidate
+                  enctype="multipart/form-data">
+                <h3 style="text-align: center">Book edit</h3>
+                <div class="form-floating bookTitle mt-3">
+                    <input class="form-control" id="bookTitle" type="text" th:field="*{title}" required>
+                    <div class="invalid-feedback">
+                        Title is required.
+                    </div>
+                    <label for="bookTitle">Title <sup class="suggestion-required">*</sup></label>
+                </div>
+                <input type="hidden" name="croppedImage" id="cropped-image-input">
+                <div class="form-floating bookImage mt-3">
+                    <input class="form-control bookImageUpload" id="bookImage" type="file"
+                           accept=".jpeg, .png, .webp, .jpg" required style="padding: 35px 20px; object-fit: fill;">
+                    <div class="invalid-feedback">
+                        Image is required.
+                    </div>
+                    <label for="bookImage">Image <sup class="suggestion-required">*</sup></label>
+                </div>
+                <div class="form-floating bookAuthor mt-3">
+                    <input class="form-control" id="bookAuthor" type="text" th:field="*{author}" required>
+                    <div class="invalid-feedback">
+                        Author is required.
+                    </div>
+                    <label for="bookAuthor">Author <sup class="suggestion-required">*</sup></label>
+                </div>
+                <div class="form-floating bookGenre mt-3">
+                    <input class="form-control" id="bookGenre" type="text" th:field="*{genre}" required>
+                    <div class="invalid-feedback">
+                        Genre is required.
+                    </div>
+                    <label for="bookGenre">Genre <sup class="suggestion-required">*</sup></label>
+                </div>
+                <div class="form-floating bookCategory mt-3">
+                    <input class="form-control" id="bookCategory" type="text" th:field="*{category}" required>
+                    <div class="invalid-feedback">
+                        Category is required.
+                    </div>
+                    <label for="bookCategory">Category <sup class="suggestion-required">*</sup></label>
+                </div>
+                <div class="form-floating bookStatus mt-3">
+                    <input class="form-control" id="bookStatus" type="text" th:field="*{status}" required>
+                    <div class="invalid-feedback">
+                        Status is required.
+                    </div>
+                    <label for="bookStatus">Status <sup class="suggestion-required">*</sup></label>
+                </div>
+                <div class="form-floating bookReleaseYear mt-3">
+                    <input class="form-control" id="bookReleaseYear" type="number" th:field="*{release_year}" required>
+                    <div class="invalid-feedback">
+                        Release year is required.
+                    </div>
+                    <label for="bookReleaseYear">Release year <sup class="suggestion-required">*</sup></label>
+                </div>
+                <div class="form-floating bookDescription mt-3">
+                    <textarea class="form-control" id="bookDescription" type="text" th:field="*{description}"
+                              required></textarea>
+                    <div class="invalid-feedback">
+                        Description is required.
+                    </div>
+                    <label for="bookDescription">Description <sup class="suggestion-required">*</sup></label>
+                </div>
+                <div class="submitButton mt-3 text-center">
+                    <button class="btn btn-primary btn-login">
+                        <span>Edit</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
