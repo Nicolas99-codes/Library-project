@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Users {
+public class User {
     @Id
     private Integer id;
 
@@ -15,12 +15,12 @@ public class Users {
     private String user_role;
 
     @ManyToOne
-    private Transactions transactions;
+    private Transaction transaction;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(Integer id, String username, String surname, String email, String user_role) {
+    public User(Integer id, String username, String surname, String email, String user_role) {
         this.id = id;
         this.username = username;
         this.surname = surname;
@@ -68,11 +68,11 @@ public class Users {
         this.user_role = user_role;
     }
 
-    public Transactions getTransactions() {
-        return transactions;
+    public Transaction getTransactions() {
+        return transaction;
     }
 
-    public void setTransactions(Transactions transactions) {
-        this.transactions = transactions;
+    public void setTransactions(Transaction transaction) {
+        this.transaction = transaction;
     }
 }

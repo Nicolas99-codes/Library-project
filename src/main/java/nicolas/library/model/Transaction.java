@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Transactions {
+public class Transaction {
     @Id
     private Integer id;
 
@@ -27,14 +27,14 @@ public class Transactions {
     private Book book;
 
     @ManyToOne
-    private Users user;
+    private User user;
 
 
-    public Transactions() {
+    public Transaction() {
 
     }
 
-    public Transactions(Integer id, String book, String title, String author, String users, Date loanDate, Date returnDate) {
+    public Transaction(Integer id, String book, String title, String author, String users, Date loanDate, Date returnDate) {
         this.id = id;
         this.Book = book;
         this.title = title;
@@ -104,11 +104,11 @@ public class Transactions {
         this.book = book;
     }
 
-    public Users getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }
