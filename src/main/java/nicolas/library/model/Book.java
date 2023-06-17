@@ -26,7 +26,6 @@ public class Book {
 
     private String release_year;
 
-    private int views;
 
     @ManyToMany
     private Collection<Author> authors;
@@ -40,7 +39,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year, int views) {
+    public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -49,7 +48,6 @@ public class Book {
         this.description = description;
         this.status = status;
         this.release_year = release_year;
-        this.views = views;
     }
 
     public Integer getId() {
@@ -114,14 +112,6 @@ public class Book {
 
     public void setRelease_year(String release_year) {
         this.release_year = release_year;
-    }
-
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
     }
 
     public Collection<Author> getAuthors() {
