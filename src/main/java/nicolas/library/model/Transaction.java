@@ -2,7 +2,6 @@ package nicolas.library.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
 
 @Entity
 public class Transaction {
@@ -15,13 +14,7 @@ public class Transaction {
 
     private String Author;
 
-    private String Users;
-
-    @Temporal(TemporalType.DATE)
-    private Date LoanDate;
-
-    @Temporal(TemporalType.DATE)
-    private Date ReturnDate;
+    private String User;
 
     @ManyToOne
     private Book book;
@@ -34,14 +27,13 @@ public class Transaction {
 
     }
 
-    public Transaction(Integer id, String book, String title, String author, String users, Date loanDate, Date returnDate) {
+    public Transaction(Integer id, String book, String title, String author, String user) {
         this.id = id;
         this.Book = book;
         this.title = title;
         this.Author = author;
-        this.Users = users;
-        this.LoanDate = loanDate;
-        this.ReturnDate = returnDate;
+        this.User = user;
+
     }
 
     public Integer getId() {
@@ -56,8 +48,20 @@ public class Transaction {
         return Book;
     }
 
+    public void setBook(nicolas.library.model.Book book) {
+        this.book = book;
+    }
+
+    public WebUser getWebUser() {
+        return webUser;
+    }
+
+    public void setWebUser(WebUser webUser) {
+        this.webUser = webUser;
+    }
+
     public void setBook(String book) {
-        this.Book = book;
+        Book = book;
     }
 
     public String getTitle() {
@@ -73,42 +77,14 @@ public class Transaction {
     }
 
     public void setAuthor(String author) {
-        this.Author = author;
+        Author = author;
     }
 
-    public String getUsers() {
-        return Users;
+    public String getUser() {
+        return User;
     }
 
-    public void setUsers(String users) {
-        this.Users = users;
-    }
-
-    public Date getLoanDate() {
-        return LoanDate;
-    }
-
-    public void setLoanDate(Date loanDate) {
-        this.LoanDate = loanDate;
-    }
-
-    public Date getReturnDate() {
-        return ReturnDate;
-    }
-
-    public void setReturnDate(Date returnDate) {
-        this.ReturnDate = returnDate;
-    }
-
-    public void setBook(nicolas.library.model.Book book) {
-        this.book = book;
-    }
-
-    public WebUser getUser() {
-        return webUser;
-    }
-
-    public void setUser(WebUser webUser) {
-        this.webUser = webUser;
+    public void setUser(String user) {
+        User = user;
     }
 }
