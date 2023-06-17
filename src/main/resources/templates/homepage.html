@@ -57,11 +57,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="transaction : ${transactions}">
-                                    <th scope="row" th:text="${transaction.getId()}"></th>
-                                    <td th:text="${transaction.getTitle()}"></td>
-                                    <td th:text="${transaction.getAuthor()}"></td>
-                                    <td><a th:href="@{/UserDetails/{id}(id=${transaction.id})}" th:text="${transaction.getUsers()}"></a></td>
+                                <tr th:each="transactions : ${transactions}">
+                                    <th scope="row" th:text="${transactions.getId()}"></th>
+                                    <td th:text="${transactions.getTitle()}"></td>
+                                    <td th:text="${transactions.getAuthor()}"></td>
+                                    <td><a th:href="@{/UserDetails/{id}(id=${transactions.id})}" th:text="${transactions.getUsers()}"></a></td>
                                 </tbody>
                             </table>
                         </div>

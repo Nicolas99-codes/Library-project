@@ -1,6 +1,6 @@
 package nicolas.library.controllers;
 
-import nicolas.library.model.Transaction;
+import nicolas.library.model.Transactions;
 import nicolas.library.repositories.BooksRepository;
 import nicolas.library.repositories.GenreRepository;
 import nicolas.library.repositories.TransactionRepository;
@@ -32,8 +32,8 @@ public class HomeController {
         long booksCount = booksRepository.count();
         long usersCount = usersRepository.count();
         long genreCount = genreRepository.count();
-        List<Transaction> transaction = transactionRepository.findAll();
-        model.addAttribute("transactions", transaction);
+        List<Transactions> transactions = transactionRepository.findAll();
+        model.addAttribute("transactions", transactions);
         model.addAttribute("booksCount", booksCount);
         model.addAttribute("usersCount", usersCount);
         model.addAttribute("genreCount", genreCount);

@@ -1,24 +1,24 @@
 package nicolas.library.repositories;
 
-import nicolas.library.model.WebUser;
+import nicolas.library.model.Users;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends CrudRepository<WebUser, Integer> {
-    List<WebUser> findAll();
+public interface UserRepository extends CrudRepository<Users, Integer> {
+    List<Users> findAll();
 
     long count();
 
-    Optional<WebUser> findFirstByIdLessThanOrderByIdDesc(Integer id);
+    Optional<Users> findFirstByIdLessThanOrderByIdDesc(Integer id);
 
-    Optional<WebUser> findFirstByOrderByIdDesc();
+    Optional<Users> findFirstByOrderByIdDesc();
 
     // Book next ID
 
-    Optional<WebUser> findFirstByIdGreaterThanOrderByIdAsc(Integer id);
+    Optional<Users> findFirstByIdGreaterThanOrderByIdAsc(Integer id);
 
-    Optional<WebUser> findFirstByOrderByIdAsc();
+    Optional<Users> findFirstByOrderByIdAsc();
 
 }

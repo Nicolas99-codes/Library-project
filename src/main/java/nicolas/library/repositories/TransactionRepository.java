@@ -1,11 +1,11 @@
 package nicolas.library.repositories;
 
-import nicolas.library.model.Transaction;
+import nicolas.library.model.Transactions;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface TransactionRepository extends CrudRepository<Transaction, Integer> {
+public interface TransactionRepository extends CrudRepository<Transactions, Integer> {
 
-    List<Transaction> findAll();
+    List<Transactions> findAll();
 }

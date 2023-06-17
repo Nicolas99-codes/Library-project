@@ -1,6 +1,6 @@
 package nicolas.library.controllers;
 
-import nicolas.library.model.WebUser;
+import nicolas.library.model.Users;
 import nicolas.library.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping({"/UserDetails/{id}"})
     public String showUserDetails(Model model, @PathVariable int id){
-        Optional<WebUser> UserFromDb = usersRepository.findById(id);
+        Optional<Users> UserFromDb = usersRepository.findById(id);
         if (UserFromDb.isPresent()) {
             model.addAttribute("user", UserFromDb.get());
         }
@@ -26,10 +26,10 @@ public class UserController {
 
     @GetMapping({"/UserDetails/{id}/prev"})
     public String showUserDetailsPrev(Model model, @PathVariable int id){
-        Optional<WebUser> prevUserFromDb = usersRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        Optional<Users> prevUserFromDb = usersRepository.findFirstByIdLessThanOrderByIdDesc(id);
         if (prevUserFromDb.isPresent()){
             return String.format("redirect:/UserDetails/%d", prevUserFromDb.get().getId());}
-        Optional<WebUser> lastUserFromDb = usersRepository.findFirstByOrderByIdDesc();
+        Optional<Users> lastUserFromDb = usersRepository.findFirstByOrderByIdDesc();
         if (lastUserFromDb.isPresent())
             return String.format("redirect:/UserDetails/%d", lastUserFromDb.get().getId());
         model.addAttribute("prevDisabled", true);
@@ -40,10 +40,10 @@ public class UserController {
 
     @GetMapping({"/UserDetails/{id}/next"})
     public String showBookDetailsNext(Model model, @PathVariable int id){
-        Optional<WebUser> nextUserFromDb = usersRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+        Optional<Users> nextUserFromDb = usersRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
         if (nextUserFromDb.isPresent())
             return String.format("redirect:/UserDetails/%d", nextUserFromDb.get().getId());
-        Optional<WebUser> firstUserFromDb = usersRepository.findFirstByOrderByIdAsc();
+        Optional<Users> firstUserFromDb = usersRepository.findFirstByOrderByIdAsc();
         if (firstUserFromDb.isPresent())
             return String.format("redirect:/UserDetails/%d", firstUserFromDb.get().getId());
         return "UserDetails";

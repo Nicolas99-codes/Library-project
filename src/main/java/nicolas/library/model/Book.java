@@ -35,7 +35,7 @@ public class Book {
     private Category categories;
 
     @ManyToOne
-    private Transaction transaction;
+    private Transactions transactions;
 
     public Book() {
     }
@@ -140,11 +140,11 @@ public class Book {
         this.categories = categories;
     }
 
-    public Transaction getTransactions() {
-        return transaction;
+    public Transactions getTransactions() {
+        return transactions;
     }
 
-    public void setTransactions(Transaction transaction) {
-        this.transaction = transaction;
+    public void setTransactions(Transactions transactions) {
+        this.transactions = transactions;
     }
 }
