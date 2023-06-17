@@ -68,11 +68,11 @@ public class WebUser {
         this.user_role = user_role;
     }
 
-    public Transaction getTransactions() {
+    public Transaction getTransaction() {
         return transaction;
     }
 
-    public void setTransactions(Transaction transaction) {
+    public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
     }
 }
