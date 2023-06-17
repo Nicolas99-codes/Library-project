@@ -57,7 +57,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="transaction : ${transaction}">
+                                <tr th:each="transaction : ${transactions}">
                                     <th scope="row" th:text="${transaction.getId()}"></th>
                                     <td th:text="${transaction.getTitle()}"></td>
                                     <td th:text="${transaction.getAuthor()}"></td>
