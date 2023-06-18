@@ -48,6 +48,10 @@
                 <textarea id="BookDescription" th:field="*{description}" cols="25"
                           class="infoLineValue">Description</textarea>
             </div>
+            <div class="infoLine">
+                <label for="BookPrice" class="infoLineName">Price: </label>
+                <input id="BookPrice" th:field="*{price}" class="infoLineValue">
+            </div>
             <div class="col-md-3">
                 <a th:href="@{|/BookDetails/*{id}|}" class="btn btn-primary">Cancel</a>
                 <input type="submit" value="save" class="btn btn-primary">
