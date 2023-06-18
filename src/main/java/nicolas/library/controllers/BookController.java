@@ -75,31 +75,90 @@ public class BookController {
         return "BookList";
     }
 
-    @GetMapping("/BookList/filter")
-    public String showBookFilter(Model model,
-                                 @RequestParam(required = false) String keyword) {
-        logger.info(String.format("Show book filter: keyword= %s", keyword));
-        List<Book> bookFilter = booksRepository.findByFilter(keyword);
-        if (bookFilter.isEmpty()){
-            logger.info("No book found with given filter");
-        }
-        else {
-            model.addAttribute("bookFilter", bookFilter);
-        }
-        List<Book> books;
-        if (keyword != null){
-            books = booksRepository.findByFilter(keyword);
-        }
-        else {
-            books = booksRepository.findAll();
-        }
+    @GetMapping("/BookList/Price/{filter}")
+    public String showBookListByPrice(Model model, @PathVariable String filter) {
+        logger.info("Show book list by price: filter=" + filter);
+
+        // Retrieve books based on the price filter
+        List<Book> books = booksRepository.findByPrice(filter);
+
         model.addAttribute("books", books);
         model.addAttribute("genres", genreRepository.findAll());
         model.addAttribute("statuss", statusRepository.findAll());
         model.addAttribute("showFilters", true);
-        model.addAttribute("keyword", keyword);
+        model.addAttribute("filterPrice", filter);
+
         return "BookList";
     }
+
+    @GetMapping("/BookList/Status/{filter}")
+    public String showBookListByStatus(Model model, @PathVariable String filter) {
+        logger.info("Show book list by status: filter=" + filter);
+
+        // Retrieve books based on the status filter
+        List<Book> books = booksRepository.findByStatus(filter);
+
+        model.addAttribute("books", books);
+        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("statuss", statusRepository.findAll());
+        model.addAttribute("showFilters", true);
+        model.addAttribute("filterStatus", filter);
+
+        return "BookList";
+    }
+
+    @GetMapping("/BookList/Genre/{filter}")
+    public String showBookListByGenre(Model model, @PathVariable String filter) {
+        logger.info("Show book list by genre: filter=" + filter);
+
+        // Retrieve books based on the genre filter
+        List<Book> books = booksRepository.findByGenre(filter);
+
+        model.addAttribute("books", books);
+        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("statuss", statusRepository.findAll());
+        model.addAttribute("showFilters", true);
+        model.addAttribute("filterGenre", filter);
+
+        return "BookList";
+    }
+
+    @GetMapping("/BookList/ReleaseYear/{filter}")
+    public String showBookListByReleaseYear(Model model, @PathVariable String filter) {
+        logger.info("Show book list by Release year: filter=" + filter);
+
+        // Convert the filter to an Integer
+        Integer yearFilter = Integer.valueOf(filter);
+
+        // Retrieve books based on the year filter
+        List<Book> books = booksRepository.findByReleaseYear(yearFilter);
+
+        model.addAttribute("books", books);
+        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("statuss", statusRepository.findAll());
+        model.addAttribute("showFilters", true);
+        model.addAttribute("filterYear", filter);
+
+        return "BookList";
+    }
+
+
+    @GetMapping("/BookList/Title/{filter}")
+    public String showBookListByName(Model model, @PathVariable String filter) {
+        logger.info("Show book list by title: filter=" + filter);
+
+        // Retrieve books based on the name filter
+        List<Book> books = booksRepository.findByTitle(filter);
+
+        model.addAttribute("books", books);
+        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("statuss", statusRepository.findAll());
+        model.addAttribute("showFilters", true);
+        model.addAttribute("filterName", filter);
+
+        return "BookList";
+    }
+
 
 
 
