@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,20 +17,16 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
     @Query("SELECT b FROM Book b WHERE b.category = :category")
     List<Book> findByCategory(@Param("category") String category);
 
-    @Query("SELECT b FROM Book b WHERE b.price = :price")
-    List<Book> findByPrice(@Param("price") String price);
+    @Query("SELECT b FROM Book b WHERE " +
+            "(:keyword IS NULL OR :keyword = '' OR " +
+            "b.author LIKE %:keyword% OR " +
+            "b.genre LIKE %:keyword% OR " +
+            "b.title LIKE %:keyword% OR " +
+            "b.release_year LIKE %:keyword% OR " +
+            "b.status LIKE %:keyword%)")
+    List<Book> findByFilter(@Param("keyword") String keyword);
 
-    @Query("SELECT b FROM Book b WHERE b.status = :status")
-    List<Book> findByStatus(@Param("status") String status);
 
-    @Query("SELECT b FROM Book b WHERE b.genre = :genre")
-    List<Book> findByGenre(@Param("genre") String genre);
-
-    @Query("SELECT b FROM Book b WHERE b.release_year = :year")
-    List<Book> findByReleaseYear(@Param("year") Integer year);
-
-    @Query("SELECT b FROM Book b WHERE b.title = :name")
-    List<Book> findByTitle(@Param("name") String name);
 
     Optional<Book> findFirstByIdLessThanOrderByIdDesc(Integer id);
 
