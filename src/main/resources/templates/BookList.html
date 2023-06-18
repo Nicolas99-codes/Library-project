@@ -52,7 +52,7 @@
                             <td th:text="${book.getGenre()}"></td>
                             <td th:text="${book.getRelease_year()}"></td>
                             <td th:text="${book.getStatus()}"></td>
-                            <td th:text="${book.getPrice()}"></td>
+                            <td th:text="'$' + ${book.getPrice()}"></td>
                         </tr>
                         </tbody>
                     </table>
