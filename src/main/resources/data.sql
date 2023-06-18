@@ -146,13 +146,13 @@ INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
     (17, 'Ceez', '-', '-', '-');
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Solo Leveling', 'Chugong', 'Fantasy, Action', 'Manhwa',
      'In a world where hunters — human warriors who possess supernatural abilities — must battle deadly monsters to protect mankind from certain annihilation'
         , 'Ongoing', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Sword Art Online', 'Reki Kawahara', 'Fantasy, Action, Drama', 'Light Novel',
      'In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. ' ||
@@ -161,7 +161,7 @@ VALUES
      'However, in a cruel twist of fate, the players soon discover that they cannot log out, as the game creator is holding them captive unless they reach the 100th floor of the game tower and defeat the final boss. Their struggle for survival starts now.'
         , 'Completed', 2012);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('That time I got reincarnated as a slime', 'Fuse', 'Fantasy, Isekai', 'Manga',
      'Satoru Mikami is a thirty-seven-year-old office worker who has just been killed by a robber. ' ||
@@ -170,13 +170,13 @@ VALUES
      'With the future of the world at stake, Satoru must use his newfound powers to defeat the Demon King and restore peace to the land.'
         , 'Ongoing', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Violet Evergarden', 'Kana Akatsuki', 'Drama', 'Manga',
      'There was a machine invented as a prototype for the typewriter, called Auto Memory Dolls. It was originally made by Professor Orlando, the authority on letterpress printing and a researcher of mechanical dolls.'
         , 'Completed', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Darling in the Franxx', 'Atsushi Nishigori, Naotaka Hayashi', 'Action, Drama, Romance', 'Manga',
      'In the distant future, humanity has been driven to near-extinction by monstrous creatures known as Klaxosaurs, forcing the remaining humans to take refuge in massive mobile fortresses called Plantations. ' ||
@@ -184,7 +184,7 @@ VALUES
      'The story follows the adventures of Hiro and Zero Two, two Franxx pilots who are part of the experimental Strelizia Battalion, as they fight to protect humanity from the Klaxosaur threat.'
         , 'Completed', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('86', 'Haruto Umezawa', 'Action, Drama, Sci-Fi', 'Manga',
      'In the year 2086, the world is divided into two superpowers: the Empire of Japan and the Federation of North America. ' ||
@@ -193,7 +193,7 @@ VALUES
      'The story follows the adventures of Shiro Amada, a young soldier who is part of the 86th Platoon of the Imperial Army, as he fights to protect his country from the Federation of North America.'
         , 'Ongoing', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Mushoku Tensei: Jobless Reincarnation', 'Rifujin na Magonote', 'Fantasy, Isekai', 'Light Novel',
      'An unnamed 34-year old Japanese NEET is evicted from his home following his parents death and skipping the funeral. ' ||
@@ -201,55 +201,55 @@ VALUES
      'However, Rudeus is not alone, as he is accompanied by the spirit of a recently deceased sage, Libra. ' ||
      'Together, they must work to survive in this new world.', 'Ongoing', 2014);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('I have been killing slimes for 300 years and maxed out my level', 'Kisetsu Morita', 'Fantasy, Isekai', 'Manga',
      'After living a painful life as an office worker, Azusa ends up dying from overworking.' ||
      'She finds herself reincarnated as undying, unaging witch in a new world, and now she vows to spend her days as pleasantly and stress-free as possible.', 'Ongoing', 2017);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('The Strongest Sage with Weakest Crest', 'Shinkoshoto', 'Adventure, Fantasy', 'Manga',
      'In a world of magic, the powers and future of a mage are predetermined at birth through so-called Marks, four symbols that categorize a humans aptitude for magic. ' ||
      'Lamenting the fact that his mark was considered ill-suited for combat and only useful for magic augmentation, an incredibly skilled sage decided to reincarnate thousands of years in the future.', 'Ongoing', 2017);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Classroom of the Elite', 'Shogo Kinugasa', 'Thriller, Drama', 'Manga',
      'The Japanese government has established the Tokyo Metropolitan Advanced Nurturing School, dedicated to instruct and foster the generation of people that will support the country in the future.' ||
      'The students are given a high degree of freedom in order to closely mimic real life.', 'Ongoing', 2016);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Tokyo Ghoul', 'Sui Ishida', 'Thriller, Fantasy', 'Manga',
      'Ken Kaneki, a student who barely survives a deadly encounter with Rize Kamishiro, his date who reveals herself as a ghoul and tries to eat him.' ||
      'He is taken to the hospital in critical condition. After recovering, Kaneki discovers that he underwent a surgery that transformed him into a half-ghoul.', 'Completed', 2011);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('Blue Lock', 'Muneyuki Kaneshiro', 'Sports, Thriller', 'Manga',
      'In 2018, the Japenese national team finished in 16th in the FIFA World Cup. As a result, the Japan Football Association hires the football engima Ego Jinpachi.' ||
      'His master plan to lead Japan to stardom is Blue lock, a training regimen designed to create the worlds greatest egotist striker.', 'Ongoing', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('My unique Skill makes me OP even at level 1', 'Nazuna Miki', 'Fantasy, Isekai, Adventure', 'Light Novel',
      'Ryouta Satou, who died from overworking at a black company, was reincarnated to another world.' ||
      'Although Ryouta was alive, he was now burdened with the incovenience that his level is fixed to 1 in this new world.', 'Ongoing', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('The Rising of the Shield Hero', 'Aneko Yusagi', 'Action, Adventure, Fantasy', 'Light Novel',
      'Naofumi Iwatani, an uncharismatic Otaku who spends his days on games and manga, suddenly finds himself summoned to a parallel universe.' ||
      'He discovers he is one of four heroes equipped with legendary weapons and tasked with saving the world from its prophesied destruction.', 'Ongoing', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('The Promised Neverland', 'Kaiu Shirai', 'Mystery, Thriller, Fantasy', 'Manga',
      'Emma, Norman and Ray are three orphans living at Grace Field House, a seemingly idyllic orphanage.' ||
      'However, the children are actually livestock, and their caretakers are planning to kill them and eat them.', 'Ongoing', 2016);
 
-INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, AUTHOR, GENRE, CATEGORY, DESCRIPTION, STATUS, RELEASE_YEAR, PRICE)
 VALUES
     ('In the Land of Leadale', 'Ceez', 'Adventure, Fantasy', 'Manga',
      'Due to an accident, half of Keina Kagemi body was paralyzed.' ||
