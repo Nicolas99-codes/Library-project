@@ -27,7 +27,7 @@ public class Transactions {
     private Book book;
 
     @ManyToOne
-    private Users user;
+    private AppUser user;
 
 
     public Transactions() {
@@ -104,11 +104,11 @@ public class Transactions {
         this.book = book;
     }
 
-    public Users getUser() {
+    public AppUser getUser() {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(AppUser user) {
         this.user = user;
     }
 }

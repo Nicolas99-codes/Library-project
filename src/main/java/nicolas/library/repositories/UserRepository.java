@@ -1,24 +1,20 @@
 package nicolas.library.repositories;
 
-import nicolas.library.model.Users;
+import nicolas.library.model.AppUser;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends CrudRepository<Users, Integer> {
-    List<Users> findAll();
+public interface UserRepository extends CrudRepository<AppUser, Integer> {
+    List<AppUser> findAll();
 
-    long count();
+    Optional<AppUser> findByUsername(String username);
 
-    Optional<Users> findFirstByIdLessThanOrderByIdDesc(Integer id);
+    Optional<AppUser> findById(Integer id);
 
-    Optional<Users> findFirstByOrderByIdDesc();
+    Boolean existsByUsername(String username);
 
-    // Book next ID
-
-    Optional<Users> findFirstByIdGreaterThanOrderByIdAsc(Integer id);
-
-    Optional<Users> findFirstByOrderByIdAsc();
+    Boolean existsByEmail(String email);
 
 }
