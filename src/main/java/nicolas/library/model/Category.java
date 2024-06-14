@@ -18,7 +18,7 @@ public class Category {
 
     private String book_language;
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
     private Collection<Book> books;
 
     public Category() {

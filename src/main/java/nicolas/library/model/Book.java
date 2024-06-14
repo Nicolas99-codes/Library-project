@@ -27,13 +27,15 @@ public class Book {
 
     private String price;
 
+//    private boolean showDish;
+
 
     @ManyToMany
     private Collection<Author> authors;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "book_categories",
+            name = "book_category",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
@@ -143,4 +145,12 @@ public class Book {
     public void setTransactions(Transactions transactions) {
         this.transactions = transactions;
     }
+
+//    public boolean isShowDish() {
+//        return showDish;
+//    }
+//
+//    public void setShowDish(boolean showDish) {
+//        this.showDish = showDish;
+//    }
 }

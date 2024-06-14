@@ -93,49 +93,6 @@ button, input {
 
 /* end login/register */
 
-/* start Show Amount of Books */
-
-.card-one {
-    background-image: linear-gradient(to right, darkcyan, cadetblue);
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
-}
-
-/* end Show amount of books */
-
-/* start Show amount of active loans */
-
-.card-two {
-    background-image: linear-gradient(to right, yellow, coral);
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
-}
-
-/* end Show amount of active loans */
-
-/* start Show amount of expired loans */
-
-.card-three {
-    background-image: linear-gradient(to right, coral, lightsalmon);
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
-}
-
-/* end Show Amount of expired loans */
-
-/* start card layout */
-
-.card-title, .card-text {
-    color: white;
-    font-size: 1.5rem;
-    text-align: right;
-}
-
-/* end card layout */
-
 /* start layout table */
 
 .thead {
