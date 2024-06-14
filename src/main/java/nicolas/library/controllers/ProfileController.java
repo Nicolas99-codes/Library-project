@@ -64,21 +64,23 @@ public class ProfileController {
         return "dataPage";
     }
 
-    @PostMapping("/gegevensPaginaWijzigen")
-    public String gegevensPaginaWijzigen(String firstName, String surname, String email, String currentPassword, String newPassword, Principal principal){
+    @PostMapping("/gegevensPagina")
+    public String gegevensPaginaWijzigen(String firstName, String surname, String email, String currentPassword, String newPassword, Principal principal) {
         Optional<AppUser> optionalAppUser = Optional.empty();
-        if(principal != null){
+        if (principal != null) {
             optionalAppUser = userRepository.findByUsername(principal.getName());
-            if (optionalAppUser.isPresent()){
+            if (optionalAppUser.isPresent()) {
                 AppUser appUserToUpdate = optionalAppUser.get();
 
-                if (!currentPassword.isEmpty() && !newPassword.isEmpty()) {
-                    if (passwordEncoder.matches(currentPassword, appUserToUpdate.getPassword())) {
-                        return "redirect:/profielPagina";
-                    }
+                if (currentPassword != null && newPassword != null) {
+                    if (!currentPassword.isEmpty() && !newPassword.isEmpty()) {
+                        if (!passwordEncoder.matches(currentPassword, appUserToUpdate.getPassword())) {
+                            return "redirect:/profielPagina";
+                        }
 
-                    String encodedNewPassword = passwordEncoder.encode(newPassword);
-                    appUserToUpdate.setPassword(encodedNewPassword);
+                        String encodedNewPassword = passwordEncoder.encode(newPassword);
+                        appUserToUpdate.setPassword(encodedNewPassword);
+                    }
                 }
 
                 appUserToUpdate.setFirstName(firstName);

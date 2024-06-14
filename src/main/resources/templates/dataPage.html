@@ -25,39 +25,39 @@
             <div class="card mb-4">
                 <div class="card-header">Wachtwoord aanpassen</div>
                 <div class="card-body">
-                    <form th:action="@{|/gegevensPaginaWijzigen|}" method="post" autocomplete="off">
+                    <form th:action="@{/gegevensPagina}" method="post" autocomplete="off">
                         <div class="mb-3">
                             <p>Gebruikersnaam: <span th:text="${appUser.username}"></span></p>
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="currentPassword">Huidig wachtwoord</label>
-                            <input class="form-control" id="currentPassword" name="currentPassword" type="password" placeholder="Voer uw huidige wachtwoord in">
+                            <input class="form-control" id="currentPassword" name="currentPassword" type="password" placeholder="Voer uw huidige password">
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="newPassword">Nieuw wachtwoord</label>
                             <input class="form-control" id="newPassword" name="newPassword" type="password" placeholder="Voer uw nieuwe wachtwoord in">
                         </div>
-                        <button class="btn btn-primary" type="button">Wijzigen</button>
+                        <button class="btn btn-primary" type="submit">Wijzigen</button>
                     </form>
                 </div>
             </div>
             <div class="card mb-4">
                 <div class="card-header">Gegevens aanpassen</div>
                 <div class="card-body">
-                    <form th:action="@{|/gegevensPaginaWijzigen|}" method="post" autocomplete="off">
+                    <form th:action="@{/gegevensPagina}" method="post" autocomplete="off">
                         <div class="mb-3">
                             <label class="small mb-1" for="firstName">Voornaam</label>
-                            <input class="form-control" id="firstName" name="firstName" type="text" placeholder="Voer uw voornaam in">
+                            <input class="form-control" id="firstName" name="firstName" type="text" th:value="${appUser.firstName}">
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="surname">Achternaam</label>
-                            <input class="form-control" id="surname" name="surname" type="text" placeholder="Voer uw achternaam in">
+                            <input class="form-control" id="surname" name="surname" type="text" th:value="${appUser.surname}">
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="email">Email</label>
-                            <input class="form-control" id="email" name="email" type="text" placeholder="Voer uw email in">
+                            <input class="form-control" id="email" name="email" type="text" th:value="${appUser.email}">
                         </div>
-                        <button class="btn btn-primary" type="button">Wijzigen</button>
+                        <button class="btn btn-primary" type="submit">Wijzigen</button>
                     </form>
                 </div>
             </div>
