@@ -1,16 +1,16 @@
 package nicolas.library.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class AppUser {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String username;
     private String password;
+    private String firstName;
     private String surname;
     private String email;
     private String role;
@@ -21,8 +21,7 @@ public class AppUser {
     public AppUser() {
     }
 
-    public AppUser(Integer id, String username, String password ,String surname, String email, String role) {
-        this.id = id;
+    public AppUser(String username, String password ,String surname, String email, String role) {
         this.username = username;
         this.password = password;
         this.surname = surname;
@@ -84,5 +83,13 @@ public class AppUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String name) {
+        this.firstName = name;
     }
 }
