@@ -36,7 +36,7 @@ public class Book {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "book_category",
-            joinColumns = @JoinColumn(name = "book_id"),
+            joinColumns = @JoinColumn(name = "books_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Collection<Category> categories;

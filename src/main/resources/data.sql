@@ -270,7 +270,7 @@ VALUES ('Light Novel', 'Japan', 'Light novels are Japanese novels that are usual
 INSERT INTO CATEGORY (CATEGORY, COUNTRY, BIO, book_language)
 VALUES ('Manhwa', 'South Korea', 'Manhwa is the Korean equivalent of comics with a unique style and following.', 'Korean');
 
-INSERT INTO BOOK_CATEGORY (BOOK_ID, CATEGORY_ID) VALUES (1, 1);
+INSERT INTO BOOK_CATEGORY (BOOKS_ID, CATEGORY_ID) VALUES (1, 3);
 
 -- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (1, 1);
 -- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (2, 2);
