@@ -12,38 +12,19 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 <div class="container">
-    <div class="row">
-        <h1>Book Categories</h1>
-        <div class="col-sm-4 w-auto p-3">
-            <div class="card card-category">
-                <div class="card-body">
-                    <h5 class="card-title title-manga">Manga</h5>
-                    <p class="card-text">Total books: <span th:text="${mangaCount}"></span></p>
-                    <div th:each="category : ${categories}">
-                        <a th:if="${category.category == 'Manga'}" th:href="@{/categorydetails/{id}(id=${category.id})}" class="btn btn-primary" th:text="${category.category}"></a>
-                    </div>
-
-                </div>
-            </div>
+    <h1 class="fw-bolder">Categorieën</h1>
+    <div th:each="category : ${categories}">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="fw-bold" th:text="${category.category}"></h2>
+            <a th:href="@{|/selectedCategoryPage/${category.id}|}" class="btn btn-sm btn-primary ms-2">meer</a>
         </div>
-        <div class="col-sm-4 w-auto p-3">
-            <div class="card card-category">
-                <div class="card-body">
-                    <h5 class="card-title title-lightnovel">Light Novel</h5>
-                    <p class="card-text">Total books: <span th:text="${lightNovelCount}"></span></p>
-                    <div th:each="category : ${categories}">
-                        <a th:if="${category.category == 'Light Novel'}" th:href="@{/categorydetails/{id}(id=${category.id})}" class="btn btn-primary" th:text="${category.category}"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4 w-auto p-3">
-            <div class="card card-category">
-                <div class="card-body">
-                    <h5 class="card-title title-manhwa">Manga</h5>
-                    <p class="card-text">Total books: <span th:text="${manhwaCount}"></span></p>
-                    <div th:each="category : ${categories}">
-                        <a th:if="${category.category == 'Manhwa'}" th:href="@{/categorydetails/{id}(id=${category.id})}" class="btn btn-primary" th:text="${category.category}"></a>
+        <hr class="mt-2">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div class="col mb-4" th:each="books, aantal: ${category.books}" th:if="${aantal.index} <3">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-body flex-grow-1">
+                        <h5 class="card-title" th:text="${books.title}"></h5>
+                        <a th:href="@{|/bookDetailPage/${category.id}|}" class="btn btn-primary mt-auto">Details</a>
                     </div>
                 </div>
             </div>

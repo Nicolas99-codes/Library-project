@@ -1,6 +1,7 @@
 package nicolas.library.repositories;
 
 import nicolas.library.model.Book;
+import nicolas.library.model.Category;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,8 +15,8 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
 
     long count();
 
-    @Query("SELECT b FROM Book b WHERE b.category = :category")
-    List<Book> findByCategory(@Param("category") String category);
+    @Query("SELECT b FROM Book b JOIN b.categories c WHERE c = :category")
+    List<Book> findByCategory(@Param("category") Category category);
 
     @Query("SELECT b FROM Book b WHERE " +
             "(:keyword IS NULL OR :keyword = '' OR " +

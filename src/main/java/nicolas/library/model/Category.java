@@ -1,15 +1,15 @@
 package nicolas.library.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Category {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private Integer id;
     private String category;
 
     private String country;
@@ -18,13 +18,13 @@ public class Category {
 
     private String book_language;
 
-    @OneToMany(mappedBy = "category")
+    @ManyToMany(mappedBy = "categories")
     private Collection<Book> books;
 
     public Category() {
     }
 
-    public Category(int id, String category, String country, String bio, String book_language) {
+    public Category(Integer id, String category, String country, String bio, String book_language) {
         this.id = id;
         this.category = category;
         this.country = country;
@@ -32,11 +32,11 @@ public class Category {
         this.book_language = book_language;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,8 +68,8 @@ public class Category {
         return book_language;
     }
 
-    public void setBook_language(String language) {
-        this.book_language = language;
+    public void setBook_language(String book_language) {
+        this.book_language = book_language;
     }
 
     public Collection<Book> getBooks() {

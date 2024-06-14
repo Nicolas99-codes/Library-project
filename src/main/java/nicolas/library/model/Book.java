@@ -18,8 +18,6 @@ public class Book {
 
     private String genre;
 
-    private String category;
-
     @Column(length = 1000)
     private String description;
 
@@ -33,8 +31,13 @@ public class Book {
     @ManyToMany
     private Collection<Author> authors;
 
-    @ManyToOne
-    private Category categories;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "book_categories",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Collection<Category> categories;
 
     @ManyToOne
     private Transactions transactions;
@@ -42,12 +45,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String genre, String category, String description, String status, String release_year, String price) {
+    public Book(Integer id, String title, String author, String genre, String description, String status, String release_year, String price) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.category = category;
         this.description = description;
         this.status = status;
         this.release_year = release_year;
@@ -84,14 +86,6 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getDescription() {
@@ -134,11 +128,11 @@ public class Book {
         this.authors = authors;
     }
 
-    public Category getCategories() {
+    public Collection<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Category categories) {
+    public void setCategories(Collection<Category> categories) {
         this.categories = categories;
     }
 
