@@ -14,6 +14,53 @@
 
 <div th:replace="~{fragments/header :: header}">Header</div>
 
+<div class="container">
+    <div class="row">
+        <nav class="nav nav-borders">
+            <a class="nav-link active ms-0" th:href="@{/profielPagina}" th:text="${appUser.firstName}" target="__blank"></a>
+            <a class="nav-link" th:href="@{/gegevensPagina}" target="__blank">Profiel</a>
+        </nav>
+        <hr class="mt-0 mb-4">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header">Gekochte boeken</div>
+                <div class="card-body">
+                    <div class="mb-3">
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">Favoriete boeken</div>
+                <div class="card-body">
+                    <div class="mb-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">Profiel</div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p>Gebruikersnaam: <span th:text="${appUser.username}"></span></p>
+                    </div>
+                    <div class="mb-3">
+                        <p>Voornaam: <span th:text="${appUser.firstName}"></span></p>
+                    </div>
+                    <div class="mb-3">
+                        <p>Achternaam: <span th:text="${appUser.surname}"></span></p>
+                    </div>
+                    <div class="mb-3">
+                        <p>Email: <span th:text="${appUser.email}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:replace="~{fragments/footer :: footer}">footer</div>
 
 </body>
