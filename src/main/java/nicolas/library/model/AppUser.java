@@ -10,9 +10,10 @@ public class AppUser {
     private Integer id;
 
     private String username;
+    private String password;
     private String surname;
     private String email;
-    private String user_role;
+    private String role;
 
     @ManyToOne
     private Transactions transactions;
@@ -20,12 +21,13 @@ public class AppUser {
     public AppUser() {
     }
 
-    public AppUser(Integer id, String username, String surname, String email, String user_role) {
+    public AppUser(Integer id, String username, String password ,String surname, String email, String role) {
         this.id = id;
         this.username = username;
+        this.password = password;
         this.surname = surname;
         this.email = email;
-        this.user_role = user_role;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -60,12 +62,12 @@ public class AppUser {
         this.email = email;
     }
 
-    public String getUser_role() {
-        return user_role;
+    public String getRole() {
+        return role;
     }
 
-    public void setUser_role(String user_role) {
-        this.user_role = user_role;
+    public void setRole(String user_role) {
+        this.role = user_role;
     }
 
     public Transactions getTransactions() {
@@ -74,5 +76,13 @@ public class AppUser {
 
     public void setTransactions(Transactions transactions) {
         this.transactions = transactions;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -1,82 +1,48 @@
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (1, 'Lix', 'test', 'test@gmail.com', 'test');
+INSERT INTO APP_USER(USERNAME, PASSWORD, SURNAME, EMAIL, ROLE)
+VALUES ('admin', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 'admin', 'test@gmail.com', 'ADMIN');
 
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (2, 'Lore', 'test', 'test@gmail.com', 'test');
+INSERT INTO APP_USER(USERNAME, PASSWORD, SURNAME, EMAIL, ROLE)
+VALUES ('user', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 'user', 'user@gmail.com', 'USER');
 
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (3, 'Ikram', 'test', 'test@gmail.com', 'test');
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (1, 1, 'Solo Leveling', 'Chugong', 'Lix');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (2, 1, 'Sword Art Online', 'Reki Kawahara', 'Lore');
 
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (4, 'Olephia', 'test', 'test@gmail.com', 'test');
-
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (5, 'Viviane', 'test', 'test@gmail.com', 'test');
-
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (6, 'Max', 'test', 'test@gmail.com', 'test');
-
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (7, 'Tim', 'test', 'test@gmail.com', 'test');
-
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (8, 'Anna', 'test', 'test@gmail.com', 'test');
-
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (9, 'Miele', 'test', 'test@gmail.com', 'test');
-
-INSERT INTO USERS (ID, USERNAME, SURNAME, EMAIL, USER_ROLE)
-VALUES
-    (10, 'Silke', 'test', 'test@gmail.com', 'test');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (1, 1, 'Solo Leveling', 'Chugong', 'Lix');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (2, 1, 'Sword Art Online', 'Reki Kawahara', 'Lore');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (3, 1, 'Tokyo Ghoul', 'Sui Ishida', 'Ikram');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (4, 1, 'Solo Leveling', 'Chugong', 'Olephia');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (5, 1, 'Violet Evergarden', 'Kana Akatsuki', 'Viviane');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (6, 1, 'In the Land of Leadale', 'Ceez', 'Max');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (7, 1, 'Darling in the franxx', 'Atsushi Nishogri, Naotaka Hayashi', 'Tim');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (8, 1, 'Blue Lock', 'Muneyuki Kaneshiro', 'Anna');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (9, 1, 'Solo Leveling', 'Chugong', 'Miele');
-
-INSERT INTO TRANSACTIONS(ID, book, title, author, users)
-VALUES
-    (10, 1, '86', 'Haruto Umezawa', 'Silke');
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (3, 1, 'Tokyo Ghoul', 'Sui Ishida', 'Ikram');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (4, 1, 'Solo Leveling', 'Chugong', 'Olephia');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (5, 1, 'Violet Evergarden', 'Kana Akatsuki', 'Viviane');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (6, 1, 'In the Land of Leadale', 'Ceez', 'Max');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (7, 1, 'Darling in the franxx', 'Atsushi Nishogri, Naotaka Hayashi', 'Tim');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (8, 1, 'Blue Lock', 'Muneyuki Kaneshiro', 'Anna');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (9, 1, 'Solo Leveling', 'Chugong', 'Miele');
+--
+-- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
+-- VALUES
+--     (10, 1, '86', 'Haruto Umezawa', 'Silke');
 
 INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
 VALUES
