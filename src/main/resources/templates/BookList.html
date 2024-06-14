@@ -42,7 +42,6 @@
                             <th scope="col" style="width: 250px">Genre</th>
                             <th scope="col">Year</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Price</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,7 +51,6 @@
                             <td th:text="${book.getGenre()}"></td>
                             <td th:text="${book.getRelease_year()}"></td>
                             <td th:text="${book.getStatus()}"></td>
-                            <td th:text="'$' + ${book.getPrice()}"></td>
                         </tr>
                         </tbody>
                     </table>
