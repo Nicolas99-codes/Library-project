@@ -2,11 +2,7 @@ package nicolas.library.controllers;
 
 
 import nicolas.library.model.Book;
-import nicolas.library.model.Category;
-import nicolas.library.model.Genre;
-import nicolas.library.model.Status;
 import nicolas.library.repositories.BooksRepository;
-import nicolas.library.repositories.CategoryRepository;
 import nicolas.library.repositories.GenreRepository;
 import nicolas.library.repositories.StatusRepository;
 import org.slf4j.Logger;
@@ -17,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
