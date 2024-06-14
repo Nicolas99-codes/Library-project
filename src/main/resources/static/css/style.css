@@ -93,22 +93,6 @@ button, input {
 
 /* end login/register */
 
-/* start layout table */
-
-.thead {
-    border: 1px solid black;
-}
-
-/* end layout table */
-
-/* start table layout */
-
-.TableBooks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* start table layout */
 
 .table {
@@ -125,16 +109,6 @@ button, input {
 }
 
 /* end breadcrumbs */
-
-/* start Library title */
-
-.LibraryTitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* end Library title */
 
 /* start col 8 */
 
@@ -161,12 +135,6 @@ button, input {
 
 /* end col 8*/
 
-/* start review */
-.comments {
-    margin-bottom: 20px;
-}
-
-/* end review */
 
 /* start oneFilter  */
 
@@ -247,43 +215,6 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
 
 /* end edit page fix */
 
-/* start card category */
-
-.card-category {
-    background-image: linear-gradient(to right, darkcyan, cadetblue);
-}
-
-/* end card category */
-
-/* start card book list */
-
-.card-body-manga{
-    height: 10px;
-    margin-bottom: 10px;
-}
-
-.card-body-lightnovel{
-    height: 10px;
-    margin-bottom: 10px;
-}
-
-.card-body-manhwa{
-    height: 10px;
-    margin-bottom: 10px;
-}
-/* end card book list */
-
-.card-manga{
-    margin-bottom: 20px;
-}
-
-.card-lightnovel{
-    margin-bottom: 20px;
-}
-
-.card-manhwa{
-    margin-bottom: 20px;
-}
 
 /* */
 /* */

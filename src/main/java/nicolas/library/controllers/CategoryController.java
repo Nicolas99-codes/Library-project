@@ -21,7 +21,7 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping("/BookCategories")
+    @GetMapping("/categoryPage")
     public String showBookCategory(Model model){
         Iterable<Category> categories = categoryRepository.findAll();
 
@@ -35,14 +35,15 @@ public class CategoryController {
         return "BookCategories";
     }
 
-    @GetMapping({"/categorydetails/{id}"})
-    public String showCategoryDetails(Model model, @PathVariable Integer id){
-        Optional<Category> CategoryFromDb = categoryRepository.findById(id);
-        if (CategoryFromDb.isPresent()){
-            model.addAttribute("category", CategoryFromDb.get());
+    @GetMapping("/selectedCategoryPage/{id}")
+    public String selectedCategoryPage(@PathVariable(required = false) Integer id, Model model){
+        Optional<Category> category = categoryRepository.findById(id);
+        if(category.isPresent()){
+            List<Book> BooksInCategory = booksRepository.findByCategory(category.get());
+            category.get().setBooks(BooksInCategory);
+            model.addAttribute("category", category.get());
         }
-
-        return "categorydetails";
+        return "selectedCategoryPage";
     }
 
 }
