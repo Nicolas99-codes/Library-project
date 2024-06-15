@@ -18,14 +18,11 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
     @Query("SELECT b FROM Book b JOIN b.categories c WHERE c = :category")
     List<Book> findByCategory(@Param("category") Category category);
 
-    @Query("SELECT b FROM Book b WHERE " +
-            "(:keyword IS NULL OR :keyword = '' OR " +
-            "b.author LIKE %:keyword% OR " +
-            "b.genre LIKE %:keyword% OR " +
-            "b.title LIKE %:keyword% OR " +
-            "b.release_year LIKE %:keyword% OR " +
-            "b.status LIKE %:keyword%)")
-    List<Book> findByFilter(@Param("keyword") String keyword);
+    @Query("SELECT DISTINCT b.release_year FROM Book b")
+    List<String> findDistinctReleaseYear();
+
+    @Query("SELECT b FROM Book b WHERE b.release_year = :releaseYear")
+    List<Book> findByReleaseYear(@Param("releaseYear") String releaseYear);
 
 
 

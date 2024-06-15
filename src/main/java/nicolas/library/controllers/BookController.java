@@ -64,36 +64,33 @@ public class BookController {
     }
 
     @GetMapping( "/BookList")
-    public String showBookList(Model model) {
-        List<Book> books = booksRepository.findAll();
-        model.addAttribute("books", booksRepository.findAllOrderByTitle());
-        model.addAttribute("showFilters", false);
+    public String showBookList(Model model, @RequestParam(value = "showFilters", required = false, defaultValue = "false") boolean showFilters) {
+        List<Book> books = booksRepository.findAllOrderByTitle();
+        model.addAttribute("books", books);
+        model.addAttribute("showFilters", showFilters);
+
+        if (showFilters) {
+            List<String> releaseYears = booksRepository.findDistinctReleaseYear();
+            model.addAttribute("releaseYear", releaseYears);
+        }
+
         return "BookList";
     }
 
     @GetMapping("/BookList/filter")
-    public String showBookFilter(Model model,
-                                 @RequestParam(required = false) String keyword) {
-        logger.info(String.format("Show book filter: keyword= %s", keyword));
-        List<Book> bookFilter = booksRepository.findByFilter(keyword);
-        if (bookFilter.isEmpty()){
-            logger.info("No book found with given filter");
-        }
-        else {
-            model.addAttribute("bookFilter", bookFilter);
-        }
+    public String showBookFilter(Model model, @RequestParam(required = false) String releaseYear) {
+        List<String> releaseYears = booksRepository.findDistinctReleaseYear();
         List<Book> books;
-        if (keyword != null){
-            books = booksRepository.findByFilter(keyword);
+
+        if (releaseYear != null && !releaseYear.isEmpty()) {
+            books = booksRepository.findByReleaseYear(releaseYear);
+        } else {
+            books = booksRepository.findAllOrderByTitle();
         }
-        else {
-            books = booksRepository.findAll();
-        }
-        model.addAttribute("books", books);
-        model.addAttribute("genres", genreRepository.findAll());
-        model.addAttribute("statuss", statusRepository.findAll());
+
         model.addAttribute("showFilters", true);
-        model.addAttribute("keyword", keyword);
+        model.addAttribute("releaseYear", releaseYears);
+        model.addAttribute("books", books);
         return "BookList";
     }
 

@@ -24,8 +24,6 @@ public class Book {
 
     private String release_year;
 
-//    private boolean showDish;
-
 
     @ManyToMany
     private Collection<Author> authors;
@@ -133,12 +131,4 @@ public class Book {
     public void setTransactions(Transactions transactions) {
         this.transactions = transactions;
     }
-
-//    public boolean isShowDish() {
-//        return showDish;
-//    }
-//
-//    public void setShowDish(boolean showDish) {
-//        this.showDish = showDish;
-//    }
 }

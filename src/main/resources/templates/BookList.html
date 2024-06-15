@@ -27,12 +27,22 @@
                 </header>
                 <div class="card-body">
                     <div th:unless="${showFilters}">
-                        <a class="btn btn-primary" th:href="@{/BookList/filter}">Show filters</a>
+                        <a class="btn btn-primary" th:href="@{/BookList(showFilters=true)}">Show filters</a>
                     </div>
                     <div th:if="${showFilters}">
-                        <a class="btn btn-primary" th:href="@{/BookList}">Hide filters</a>
+                        <a class="btn btn-primary" th:href="@{/BookList(showFilters=false)}">Hide filters</a>
                     </div>
                     <!-- Filter options: genre, status, title, release_year and the author -->
+                    <form th:if="${showFilters}" th:action="@{/BookList/filter}" method="get">
+                        <div class="mb-3">
+                            <label for="releaseYear">Release year</label>
+                            <select id="releaseYear" name="releaseYear" class="form-select">
+                                <option value="">All</option>
+                                <option th:each="year: ${releaseYear}" th:value="${year}" th:text="${year}">Year</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </form>
                 </div>
             </section>
         </div>
