@@ -19,22 +19,29 @@
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
                 <h3 th:text="${book.title}" class="card-title mb-0"></h3>
-                <div>
+                <div class="icon-container">
+                    <form th:action="@{/admin/bookedit/{id}(id=${book.id})}" method="get" style="display: inline;">
+                        <a th:href="@{/admin/bookedit/{id}(id=${book.id})}" class="btn btn-link p-0">
+                            <img sec:authorize="isAuthenticated()"
+                                 src="https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fedit.png?alt=media&token=313695bd-bfae-43cb-b519-1675a918f2ee"
+                                 alt="edit" class="editIcon">
+                        </a>
+                    </form>
                     <div th:if="${#authorization.expression('isAuthenticated()')}">
-                        <form method="post" th:action="@{/addFavorite/{id}(id=${book.id})}" th:if="${!isFavorite}">
+                        <form method="post" th:action="@{/addFavorite/{id}(id=${book.id})}" th:if="${!isFavorite}" style="display: inline;">
                             <button type="submit" class="btn btn-link p-0">
                                 <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fstar-outlined.png?alt=media&token=9fc18461-eb4e-4713-aa75-94442d36e079'}"
                                      alt="Add to favorites" class="favoriteIcon"/>
                             </button>
                         </form>
-                        <form method="post" th:action="@{/removeFavorite/{id}(id=${book.id})}" th:if="${isFavorite}">
+                        <form method="post" th:action="@{/removeFavorite/{id}(id=${book.id})}" th:if="${isFavorite}" style="display: inline;">
                             <button type="submit" class="btn btn-link p-0">
                                 <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fstar-filled.png?alt=media&token=d90bd971-095c-4883-b97c-c2bccce5c1e7'}"
                                      alt="Remove from favorites" class="favoriteIcon"/>
                             </button>
                         </form>
                     </div>
-                    <div th:if="${!#authorization.expression('isAuthenticated()')}">
+                    <div th:if="${!#authorization.expression('isAuthenticated()')}" style="display: inline;">
                         <a th:href="@{/user/login}" class="btn btn-link p-0">
                             <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fstar-outlined.png?alt=media&token=9fc18461-eb4e-4713-aa75-94442d36e079'}"
                                  alt="Add to favorites" class="favoriteIcon"/>
@@ -50,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-6">
-                    <h4 class="mt-5">Description</h4>
+                    <h4>Description</h4>
                     <p th:text="${book.description}"></p>
                 </div>
                 <div class="mt-4 d-flex justify-content-between align-items-center">

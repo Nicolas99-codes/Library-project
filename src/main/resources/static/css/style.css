@@ -267,9 +267,22 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
 
 /* */
 
-.favoriteIcon{
+.favoriteIcon, .editIcon {
     width: 40px;
     height: 40px;
+}
+
+.icon-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.icon-container .editIcon, .icon-container .favoriteIcon {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+.btn-link {
+    padding: 0;
 }
 
 .d-flex {
@@ -277,9 +290,11 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
     justify-content: space-between;
     align-items: center;
 }
+
 .card-title {
     margin-bottom: 0;
 }
+
 
 
 /* */
