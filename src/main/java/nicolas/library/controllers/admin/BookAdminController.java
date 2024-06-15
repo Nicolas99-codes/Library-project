@@ -31,14 +31,14 @@ public class BookAdminController {
     }
 
     @GetMapping("/bookedit/{id}")
-    public String BookEdit(Model model, @PathVariable int id){
+    public String BookEdit(Model model, @PathVariable Integer id){
         logger.info("BookEdit" + id);
         model.addAttribute("books", booksRepository.findAll());
         return "admin/bookedit";
     }
 
     @PostMapping("/bookedit/{id}")
-    public String BookEditPost(@PathVariable int id,
+    public String BookEditPost(@PathVariable Integer id,
                                Book book){
         logger.info("BookEditPost " + id + " -- new book= " + book.getTitle() + ", new author = " + book.getAuthors() + ", new genre = " + book.getGenres() + ", new year = " + book.getRelease_year() + ", new description = " + book.getDescription());
         booksRepository.save(book);
