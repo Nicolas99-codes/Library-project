@@ -135,18 +135,6 @@ button, input {
 
 /* end col 8*/
 
-
-/* start oneFilter  */
-
-.oneFilter {
-    display: inline-flex;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    margin-top: 10px;
-}
-
-/* end oneFilter */
-
 /* start form select */
 
 .form-select + .form-select {
@@ -155,24 +143,7 @@ button, input {
 
 /* end form select */
 
-
-/* start editbtn*/
-
-.editButtonDiv {
-    position: absolute;
-    right: 310px;
-    top: 10px;
-}
-
-/* end editbtn */
-
 /* start addBtn */
-
-.addButtonDiv {
-    position: absolute;
-    right: 310px;
-    top: 10px;
-}
 
 /* end addBtn */
 
