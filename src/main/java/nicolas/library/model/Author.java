@@ -8,6 +8,7 @@ import java.util.Collection;
 @Entity
 public class Author {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String author_name;
@@ -21,10 +22,6 @@ public class Author {
 
     public Author() {
     }
-
-
-    @ManyToMany(mappedBy = "authors")
-    private Collection<Book> books;
 
     public Author(Integer id, String author_name, String surname, String bio, String country) {
         this.id = id;
@@ -72,14 +69,6 @@ public class Author {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public Collection<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Collection<Book> books) {
-        this.books = books;
     }
 
 }

@@ -37,7 +37,7 @@
                     <!-- Filter options: genre, status, title, release_year and the author -->
                     <form th:if="${showFilters}" th:action="@{/BookList/filter}" method="get">
                         <div class="mb-3">
-                            <label for="releaseYear">Release year</label>
+                            <label for="releaseYear">Jaar van uitgave</label>
                             <select id="releaseYear" name="releaseYear" class="form-select">
                                 <option value="">All</option>
                                 <option th:each="year: ${releaseYear}" th:value="${year}" th:text="${year}">Year</option>
@@ -55,6 +55,13 @@
                             <select id="status" name="status" class="form-select">
                                 <option value="">All</option>
                                 <option th:each="statusItem : ${statuses}" th:value="${statusItem.status}" th:text="${statusItem.status}">Status</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="authors">Gemaakt in</label>
+                            <select id="authors" name="authors" class="form-select">
+                                <option value="">All</option>
+                                <option th:each="country : ${authorCountries}" th:if="${country != ''}" th:value="${country}" th:text="${country}">Author</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Filter</button>

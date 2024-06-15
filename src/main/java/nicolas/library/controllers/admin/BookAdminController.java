@@ -40,7 +40,7 @@ public class BookAdminController {
     @PostMapping("/bookedit/{id}")
     public String BookEditPost(@PathVariable int id,
                                Book book){
-        logger.info("BookEditPost " + id + " -- new book= " + book.getTitle() + ", new author = " + book.getAuthor() + ", new genre = " + book.getGenres() + ", new year = " + book.getRelease_year() + ", new description = " + book.getDescription());
+        logger.info("BookEditPost " + id + " -- new book= " + book.getTitle() + ", new author = " + book.getAuthors() + ", new genre = " + book.getGenres() + ", new year = " + book.getRelease_year() + ", new description = " + book.getDescription());
         booksRepository.save(book);
         return "redirect:/BookDetails/" + id;
     }
@@ -54,7 +54,7 @@ public class BookAdminController {
 
     @PostMapping("/newbook")
     public String NewBookPost(Model model, Book book){
-        logger.info("NewBookPost -- new book = " + book.getTitle() + ", new author = " + book.getAuthor() + ", new genre = " + book.getGenres() + ", new year = " + book.getRelease_year() + ", new description = " + book.getDescription());
+        logger.info("NewBookPost -- new book = " + book.getTitle() + ", new author = " + book.getAuthors() + ", new genre = " + book.getGenres() + ", new year = " + book.getRelease_year() + ", new description = " + book.getDescription());
         Book newBook = booksRepository.save(book);
         return "redirect:/BookDetails/" + newBook.getId();
     }

@@ -1,9 +1,11 @@
 package nicolas.library.controllers;
 
 
+import nicolas.library.model.Author;
 import nicolas.library.model.Book;
 import nicolas.library.model.Genre;
 import nicolas.library.model.Status;
+import nicolas.library.repositories.AuthorRepository;
 import nicolas.library.repositories.BooksRepository;
 import nicolas.library.repositories.GenreRepository;
 import nicolas.library.repositories.StatusRepository;
@@ -31,6 +33,9 @@ public class BookController {
 
     @Autowired
     private StatusRepository statusRepository;
+
+    @Autowired
+    private AuthorRepository authorRepository;
 
 
     @GetMapping({ "/BookDetails/{id}"})
@@ -91,9 +96,11 @@ public class BookController {
             List<String> releaseYears = booksRepository.findDistinctReleaseYear();
             List<Genre> genres = genreRepository.findAll();
             List<Status> statuses = statusRepository.findAll();
+            List<String> authorCountries = authorRepository.findDistinctCountries();
             model.addAttribute("releaseYear", releaseYears);
             model.addAttribute("genres", genres);
             model.addAttribute("statuses", statuses);
+            model.addAttribute("authorCountries", authorCountries);
         }
 
         return "BookList";
@@ -103,7 +110,8 @@ public class BookController {
     public String showBookFilter(Model model,
                                  @RequestParam(required = false) String releaseYear,
                                  @RequestParam(required = false) String genre,
-                                 @RequestParam(required = false) String status){
+                                 @RequestParam(required = false) String status,
+                                 @RequestParam(required = false) String authors){
 
         List<Book> books;
 
@@ -116,6 +124,9 @@ public class BookController {
         else if (status != null && !status.isEmpty()) {
             books = booksRepository.findByStatusStatusOrderByTitle(status);
         }
+        else if (authors != null && !authors.isEmpty()) {
+            books = booksRepository.findByAuthorsCountry(authors);
+        }
         else {
             books = booksRepository.findAllOrderByTitle();
         }
@@ -126,11 +137,13 @@ public class BookController {
         List<String> releaseYears = booksRepository.findDistinctReleaseYear();
         List<Genre> genres = genreRepository.findAll();
         List<Status> statuses = statusRepository.findAll();
+        List<String> authorCountries = authorRepository.findDistinctCountries();
         model.addAttribute("releaseYear", releaseYears);
         model.addAttribute("genres", genres);
         model.addAttribute("statuses", statuses);
+        model.addAttribute("authorCountries", authorCountries);
 
-        // Return the view name
+
         return "BookList";
     }
 

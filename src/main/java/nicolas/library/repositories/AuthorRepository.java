@@ -23,4 +23,7 @@ public interface AuthorRepository extends CrudRepository<Author, Integer> {
     @Query("SELECT a FROM Author a order by a.author_name asc")
     List<Author> findAllOrderByName();
 
+    @Query("SELECT DISTINCT a.country FROM Author a")
+    List<String> findDistinctCountries();
+
 }

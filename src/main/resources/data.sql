@@ -44,180 +44,180 @@ VALUES ('user', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 
 -- VALUES
 --     (10, 1, '86', 'Haruto Umezawa', 'Silke');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (1, 'Chugong', '-', '-', 'South Korea');
+    ('Chugong', '', '', 'South Korea');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (2, 'Reki', 'Kawahara', '-', 'Japan');
+    ('Reki', 'Kawahara', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (3, 'Fuse', '-', '?', 'Japan');
+    ('Fuse', '', '?', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (4, 'Kana', 'Akatsuki', '-', 'Japan');
+    ('Kana', 'Akatsuki', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (5, 'Atsushi', 'Nishigori', '-', 'Japan');
+    ('Atsushi', 'Nishigori', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (6, 'Naotaka', 'Hayashi', '-', '-');
+    ('Naotaka', 'Hayashi', '', '');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (7, 'Haruto', 'Umezawa', '-', 'Japan');
+    ('Haruto', 'Umezawa', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (8, 'Rifujin', 'na Magonote', '-', 'Japan');
+    ('Rifujin', 'na Magonote', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (9, 'Kisetsu', 'Morita', '-', 'Japan');
+    ('Kisetsu', 'Morita', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (10, 'Shinkoshoto', '-', '-', 'Japan');
+    ('Shinkoshoto', '', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (11, 'Shogo', 'Kinugasa', '-', 'Japan');
+    ('Shogo', 'Kinugasa', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (12, 'Sui', 'Ishida', '-', 'Japan');
+    ('Sui', 'Ishida', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (13, 'Muneyuki', 'Kaneshiro', '-', 'Japan');
+    ('Kaneshiro', '', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (14, 'Miki', 'Nazuna', '-', 'Japan');
+    ('Miki', 'Nazuna', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (15, 'Aneko', 'Yusagi', '-', 'Japan');
+    ('Aneko', 'Yusagi', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (16, 'Kaiu', 'Shirai', '-', 'Japan');
+    ('Kaiu', 'Shirai', '', 'Japan');
 
-INSERT INTO AUTHOR(ID, author_name, SURNAME, BIO, COUNTRY)
+INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
-    (17, 'Ceez', '-', '-', '-');
+    ('Ceez', '', '', '');
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Solo Leveling', 'Chugong',
+    ('Solo Leveling',
      'In a world where hunters — human warriors who possess supernatural abilities — must battle deadly monsters to protect mankind from certain annihilation'
         , 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Sword Art Online', 'Reki Kawahara',
+    ('Sword Art Online',
      'In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. ' ||
      'With the aid of "NerveGear" technology, players can control their avatars within the game using nothing but their own thoughts. Kirito is one such player. ' ||
      'Having logged in to test the game, he is ready to begin his quest, when suddenly the game goes live. ' ||
      'However, in a cruel twist of fate, the players soon discover that they cannot log out, as the game creator is holding them captive unless they reach the 100th floor of the game tower and defeat the final boss. Their struggle for survival starts now.'
         , 2012);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('That time I got reincarnated as a slime', 'Fuse',
+    ('That time I got reincarnated as a slime',
      'Satoru Mikami is a thirty-seven-year-old office worker who has just been killed by a robber. ' ||
      'He soon awakens to find himself reincarnated in a fantasy world and he is shocked to discover he has become a slime monster! ' ||
      'However, his new life in this strange world is just beginning. ' ||
      'With the future of the world at stake, Satoru must use his newfound powers to defeat the Demon King and restore peace to the land.'
         , 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Violet Evergarden', 'Kana Akatsuki',
+    ('Violet Evergarden',
      'There was a machine invented as a prototype for the typewriter, called Auto Memory Dolls. It was originally made by Professor Orlando, the authority on letterpress printing and a researcher of mechanical dolls.'
         , 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Darling in the Franxx', 'Atsushi Nishigori, Naotaka Hayashi',
+    ('Darling in the Franxx',
      'In the distant future, humanity has been driven to near-extinction by monstrous creatures known as Klaxosaurs, forcing the remaining humans to take refuge in massive mobile fortresses called Plantations. ' ||
      'In order to combat the Klaxosaurs, humanity developed the Franxx, giant humanoid weapons that are controlled by pairs of pilots whose minds are joined by a neural bridge. ' ||
      'The story follows the adventures of Hiro and Zero Two, two Franxx pilots who are part of the experimental Strelizia Battalion, as they fight to protect humanity from the Klaxosaur threat.'
         , 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('86', 'Haruto Umezawa',
+    ('86',
      'In the year 2086, the world is divided into two superpowers: the Empire of Japan and the Federation of North America. ' ||
      'The Empire of Japan is a totalitarian state that has conquered the entire Eurasian continent, while the Federation of North America is a democratic nation that has conquered the entire North American continent. ' ||
      'The two superpowers are engaged in a cold war, and the Federation of North America has developed a new weapon called the "86" that can destroy the Empire of Japan. ' ||
      'The story follows the adventures of Shiro Amada, a young soldier who is part of the 86th Platoon of the Imperial Army, as he fights to protect his country from the Federation of North America.'
         , 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Mushoku Tensei: Jobless Reincarnation', 'Rifujin na Magonote',
+    ('Mushoku Tensei: Jobless Reincarnation',
      'An unnamed 34-year old Japanese NEET is evicted from his home following his parents death and skipping the funeral. ' ||
      'He is then reincarnated in a world of swords and magic as Rudeus Greyrat, a baby. ' ||
      'However, Rudeus is not alone, as he is accompanied by the spirit of a recently deceased sage, Libra. ' ||
      'Together, they must work to survive in this new world.', 2014);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('I have been killing slimes for 300 years and maxed out my level', 'Kisetsu Morita',
+    ('I have been killing slimes for 300 years and maxed out my level',
      'After living a painful life as an office worker, Azusa ends up dying from overworking.' ||
      'She finds herself reincarnated as undying, unaging witch in a new world, and now she vows to spend her days as pleasantly and stress-free as possible.', 2017);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('The Strongest Sage with Weakest Crest', 'Shinkoshoto',
+    ('The Strongest Sage with Weakest Crest',
      'In a world of magic, the powers and future of a mage are predetermined at birth through so-called Marks, four symbols that categorize a humans aptitude for magic. ' ||
      'Lamenting the fact that his mark was considered ill-suited for combat and only useful for magic augmentation, an incredibly skilled sage decided to reincarnate thousands of years in the future.', 2017);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Classroom of the Elite', 'Shogo Kinugasa',
+    ('Classroom of the Elite',
      'The Japanese government has established the Tokyo Metropolitan Advanced Nurturing School, dedicated to instruct and foster the generation of people that will support the country in the future.' ||
      'The students are given a high degree of freedom in order to closely mimic real life.', 2016);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Tokyo Ghoul', 'Sui Ishida',
+    ('Tokyo Ghoul',
      'Ken Kaneki, a student who barely survives a deadly encounter with Rize Kamishiro, his date who reveals herself as a ghoul and tries to eat him.' ||
      'He is taken to the hospital in critical condition. After recovering, Kaneki discovers that he underwent a surgery that transformed him into a half-ghoul.', 2011);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('Blue Lock', 'Muneyuki Kaneshiro',
+    ('Blue Lock',
      'In 2018, the Japenese national team finished in 16th in the FIFA World Cup. As a result, the Japan Football Association hires the football engima Ego Jinpachi.' ||
      'His master plan to lead Japan to stardom is Blue lock, a training regimen designed to create the worlds greatest egotist striker.', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('My unique Skill makes me OP even at level 1', 'Nazuna Miki',
+    ('My unique Skill makes me OP even at level 1',
      'Ryouta Satou, who died from overworking at a black company, was reincarnated to another world.' ||
      'Although Ryouta was alive, he was now burdened with the incovenience that his level is fixed to 1 in this new world.', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('The Rising of the Shield Hero', 'Aneko Yusagi',
+    ('The Rising of the Shield Hero',
      'Naofumi Iwatani, an uncharismatic Otaku who spends his days on games and manga, suddenly finds himself summoned to a parallel universe.' ||
      'He discovers he is one of four heroes equipped with legendary weapons and tasked with saving the world from its prophesied destruction.', 2018);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('The Promised Neverland', 'Kaiu Shirai',
+    ('The Promised Neverland',
      'Emma, Norman and Ray are three orphans living at Grace Field House, a seemingly idyllic orphanage.' ||
      'However, the children are actually livestock, and their caretakers are planning to kill them and eat them.', 2016);
 
-INSERT INTO BOOK (TITLE, AUTHOR, DESCRIPTION, RELEASE_YEAR)
+INSERT INTO BOOK (TITLE, DESCRIPTION, RELEASE_YEAR)
 VALUES
-    ('In the Land of Leadale', 'Ceez',
+    ('In the Land of Leadale',
      'Due to an accident, half of Keina Kagemi body was paralyzed.' ||
      'One day, because of a power outage, she regrettably died.' ||
      'However, just before that, her mind was moved to the world of online game she was playing.', 2019);
@@ -363,20 +363,20 @@ INSERT INTO BOOK_CATEGORY (BOOKS_ID, CATEGORY_ID) VALUES (14, 2); -- The Rising 
 INSERT INTO BOOK_CATEGORY (BOOKS_ID, CATEGORY_ID) VALUES (15, 1); -- The Promised Neverland
 INSERT INTO BOOK_CATEGORY (BOOKS_ID, CATEGORY_ID) VALUES (16, 1); -- In the Land of Leadale
 
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (1, 1);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (2, 2);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (3, 3);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (4, 4);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (5, 5);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (5, 6);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (6, 7);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (7, 8);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (8, 9);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (9, 10);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (10, 11);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (11, 12);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (12, 13);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (13, 14);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (14, 15);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (15, 16);
--- INSERT INTO BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) VALUES (16, 17);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (1, 1);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (2, 2);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (3, 3);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (4, 4);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (5, 5);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (5, 6);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (6, 7);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (7, 8);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (8, 9);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (9, 10);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (10, 11);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (11, 12);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (12, 13);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (13, 14);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (14, 15);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (15, 16);
+INSERT INTO BOOK_AUTHOR (BOOKS_ID, AUTHOR_ID) VALUES (16, 17);

@@ -13,8 +13,6 @@ public class Book {
 
     private String title;
 
-    private String author;
-
     @Column(length = 1000)
     private String description;
 
@@ -22,6 +20,11 @@ public class Book {
 
 
     @ManyToMany
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "books_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
     private Collection<Author> authors;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -54,10 +57,9 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String description, String release_year) {
+    public Book(Integer id, String title, String description, String release_year) {
         this.id = id;
         this.title = title;
-        this.author = author;
         this.description = description;
         this.release_year = release_year;
     }
@@ -76,14 +78,6 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getDescription() {
@@ -142,4 +136,5 @@ public class Book {
     public void setTransactions(Transactions transactions) {
         this.transactions = transactions;
     }
+
 }
