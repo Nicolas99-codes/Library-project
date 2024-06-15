@@ -137,4 +137,19 @@ public class Book {
         this.transactions = transactions;
     }
 
+    public Integer getStatusId() {
+        return status.stream().findFirst().get().getId();
+    }
+
+    public Integer getGenreId() {
+        return genres.stream().findFirst().get().getId();
+    }
+
+    public Integer getAuthorId() {
+        return authors.stream().findFirst().get().getId();
+    }
+
+    public Integer getCategoryId() {
+        return categories.stream().findFirst().get().getId();
+    }
 }

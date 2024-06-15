@@ -266,6 +266,22 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
 
 
 /* */
+
+.favoriteIcon{
+    width: 40px;
+    height: 40px;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-title {
+    margin-bottom: 0;
+}
+
+
 /* */
 /* */
 /* */

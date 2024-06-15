@@ -19,6 +19,15 @@ public class AppUser implements UserDetails {
     private String surname;
     private String email;
     private String role;
+    private String favoriteBook;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_favoriteBook",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private Collection<Book> favoriteBooks;
 
     @ManyToOne
     private Transactions transactions;
@@ -94,6 +103,14 @@ public class AppUser implements UserDetails {
         this.role = user_role;
     }
 
+    public String getFavoriteBook() {
+        return favoriteBook;
+    }
+
+    public void setFavoriteBook(String favoriteBook) {
+        this.favoriteBook = favoriteBook;
+    }
+
     public Transactions getTransactions() {
         return transactions;
     }
@@ -121,6 +138,14 @@ public class AppUser implements UserDetails {
 
     public void setFirstName(String name) {
         this.firstName = name;
+    }
+
+    public Collection<Book> getFavoriteBooks() {
+        return favoriteBooks;
+    }
+
+    public void setFavoriteBooks(Collection<Book> favoriteBooks) {
+        this.favoriteBooks = favoriteBooks;
     }
 
 

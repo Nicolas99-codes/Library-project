@@ -1,26 +1,21 @@
 package nicolas.library.controllers;
 
 
-import nicolas.library.model.Author;
-import nicolas.library.model.Book;
-import nicolas.library.model.Genre;
-import nicolas.library.model.Status;
-import nicolas.library.repositories.AuthorRepository;
-import nicolas.library.repositories.BooksRepository;
-import nicolas.library.repositories.GenreRepository;
-import nicolas.library.repositories.StatusRepository;
+import nicolas.library.model.*;
+import nicolas.library.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 public class BookController {
@@ -37,40 +32,11 @@ public class BookController {
     @Autowired
     private AuthorRepository authorRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    @GetMapping({ "/BookDetails/{id}"})
-    public String showBookDetails(Model model, @PathVariable int id) {
-        Optional<Book> BookFromDb = booksRepository.findById(id);
-        if (BookFromDb.isPresent()) {
-            model.addAttribute("book", BookFromDb.get());
-        }
-        return "BookDetails";
-    }
-
-    @GetMapping({"/BookDetails/{id}/prev"})
-    public String showBookDetailsPrev(Model model, @PathVariable int id){
-        Optional<Book> prevBookFromDb = booksRepository.findFirstByIdLessThanOrderByIdDesc(id);
-        if (prevBookFromDb.isPresent()){
-            return String.format("redirect:/BookDetails/%d", prevBookFromDb.get().getId());}
-        Optional<Book> lastBookFromDb = booksRepository.findFirstByOrderByIdDesc();
-        if (lastBookFromDb.isPresent())
-            return String.format("redirect:/BookDetails/%d", lastBookFromDb.get().getId());
-        model.addAttribute("prevDisabled", true);
-        model.addAttribute("nextDisabled", false);
-        model.addAttribute("book", booksRepository.findById(id).get());
-        return "BookDetails";
-    }
-
-    @GetMapping({"/BookDetails/{id}/next"})
-    public String showBookDetailsNext(Model model, @PathVariable int id){
-        Optional<Book> nextBookFromDb = booksRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
-        if (nextBookFromDb.isPresent())
-            return String.format("redirect:/BookDetails/%d", nextBookFromDb.get().getId());
-        Optional<Book> firstBookFromDb = booksRepository.findFirstByOrderByIdAsc();
-        if (firstBookFromDb.isPresent())
-            return String.format("redirect:/BookDetails/%d", firstBookFromDb.get().getId());
-        return "BookDetails";
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/BookList")
     public String showBookList(Model model,
@@ -145,6 +111,119 @@ public class BookController {
 
 
         return "BookList";
+    }
+
+    @GetMapping({"/BookDetails/{id}", "/BookDetails"})
+    public String showBookDetails(Model model, @PathVariable Integer id) {
+        Optional<Book> bookOptional = booksRepository.findById(id);
+        if (bookOptional.isPresent()) {
+            Book book = bookOptional.get();
+            model.addAttribute("book", book);
+
+            Collection<Genre> genres = book.getGenres();
+            model.addAttribute("genres", genres);
+
+            Optional<Author> authorOptional = authorRepository.findById(book.getAuthorId());
+            authorOptional.ifPresent(author -> model.addAttribute("author", author));
+
+            Optional<Status> statusOptional = statusRepository.findById(book.getStatusId());
+            statusOptional.ifPresent(status -> model.addAttribute("status", status));
+
+            Optional<Category> categoryOptional = categoryRepository.findById(book.getCategoryId());
+            categoryOptional.ifPresent(category -> model.addAttribute("category", category));
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentPrincipalName = authentication.getName();
+
+            Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
+            boolean isFavorite = optionalUser.isPresent() && optionalUser.get().getFavoriteBooks().contains(book);
+            model.addAttribute("isFavorite", isFavorite);
+
+        } else {
+            return "redirect:/error";
+        }
+        return "BookDetails";
+    }
+
+    @GetMapping({"/BookDetails/{id}/prev"})
+    public String showBookDetailsPrev(Model model, @PathVariable Integer id){
+        Optional<Book> prevBookFromDb = booksRepository.findFirstByIdLessThanOrderByIdDesc(id);
+        if (prevBookFromDb.isPresent()){
+            return String.format("redirect:/BookDetails/%d", prevBookFromDb.get().getId());}
+        Optional<Book> lastBookFromDb = booksRepository.findFirstByOrderByIdDesc();
+        if (lastBookFromDb.isPresent())
+            return String.format("redirect:/BookDetails/%d", lastBookFromDb.get().getId());
+        model.addAttribute("prevDisabled", true);
+        model.addAttribute("nextDisabled", false);
+        model.addAttribute("book", booksRepository.findById(id).get());
+        return "BookDetails";
+    }
+
+    @GetMapping({"/BookDetails/{id}/next"})
+    public String showBookDetailsNext(Model model, @PathVariable Integer id){
+        Optional<Book> nextBookFromDb = booksRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+        if (nextBookFromDb.isPresent())
+            return String.format("redirect:/BookDetails/%d", nextBookFromDb.get().getId());
+        Optional<Book> firstBookFromDb = booksRepository.findFirstByOrderByIdAsc();
+        if (firstBookFromDb.isPresent())
+            return String.format("redirect:/BookDetails/%d", firstBookFromDb.get().getId());
+        return "BookDetails";
+    }
+
+    @GetMapping("/addFavorite/{id}")
+    public String addFavorite(@PathVariable Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return "redirect:/user/login";
+        }
+
+        String currentPrincipalName = authentication.getName();
+
+        Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
+        if (optionalUser.isPresent()) {
+            AppUser user = optionalUser.get();
+
+            Optional<Book> optionalBook = booksRepository.findById(id);
+            if (optionalBook.isPresent()) {
+                Book book = optionalBook.get();
+                user.getFavoriteBooks().add(book);
+                userRepository.save(user);
+            } else {
+                logger.error("Book not found with id: " + id);
+            }
+        } else {
+            logger.error("User not found with username: " + currentPrincipalName);
+        }
+
+        return "redirect:/BookDetails/" + id;
+    }
+
+    @GetMapping("/removeFavorite/{id}")
+    public String removeFavorite(@PathVariable Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return "redirect:/user/login";
+        }
+
+        String currentPrincipalName = authentication.getName();
+
+        Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
+        if (optionalUser.isPresent()) {
+            AppUser user = optionalUser.get();
+
+            Optional<Book> optionalBook = booksRepository.findById(id);
+            if (optionalBook.isPresent()) {
+                Book book = optionalBook.get();
+                user.getFavoriteBooks().remove(book);
+                userRepository.save(user);
+            } else {
+                logger.error("Book not found with id: " + id);
+            }
+        } else {
+            logger.error("User not found with username: " + currentPrincipalName);
+        }
+
+        return "redirect:/BookDetails/" + id;
     }
 
     @GetMapping("/BookRequest")
