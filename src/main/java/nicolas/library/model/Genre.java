@@ -1,27 +1,30 @@
 package nicolas.library.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Genre {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String genre;
 
     public Genre() {
     }
 
-    public Genre(int id, String genre) {
+    public Genre(Integer id, String genre) {
         this.id = id;
         this.genre = genre;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

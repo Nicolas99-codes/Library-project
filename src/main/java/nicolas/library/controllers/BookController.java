@@ -2,6 +2,7 @@ package nicolas.library.controllers;
 
 
 import nicolas.library.model.Book;
+import nicolas.library.model.Genre;
 import nicolas.library.repositories.BooksRepository;
 import nicolas.library.repositories.GenreRepository;
 import nicolas.library.repositories.StatusRepository;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class BookController {
@@ -66,40 +69,58 @@ public class BookController {
     @GetMapping("/BookList")
     public String showBookList(Model model,
                                @RequestParam(value = "showFilters", required = false, defaultValue = "false") boolean showFilters,
-                               @RequestParam(value = "search", required = false) String search) {
+                               @RequestParam(value = "search", required = false) String search,
+                               @RequestParam(value = "genre", required = false) String genre) {
+
         List<Book> books;
+
         if (search != null && !search.isEmpty()) {
             books = booksRepository.findByTitleContainingIgnoreCaseOrderByTitle(search);
+        } else if (genre != null && !genre.isEmpty()) {
+            books = booksRepository.findByGenresGenreOrderByTitle(genre);
         } else {
             books = booksRepository.findAllOrderByTitle();
         }
+
         model.addAttribute("books", books);
         model.addAttribute("showFilters", showFilters);
         model.addAttribute("search", search);
 
         if (showFilters) {
             List<String> releaseYears = booksRepository.findDistinctReleaseYear();
+            List<Genre> genres = genreRepository.findAll();
             model.addAttribute("releaseYear", releaseYears);
+            model.addAttribute("genres", genres);
         }
 
         return "BookList";
     }
 
-
     @GetMapping("/BookList/filter")
-    public String showBookFilter(Model model, @RequestParam(required = false) String releaseYear) {
-        List<String> releaseYears = booksRepository.findDistinctReleaseYear();
+    public String showBookFilter(Model model, @RequestParam(required = false) String releaseYear,
+                                 @RequestParam(required = false) String genre) {
+
         List<Book> books;
 
         if (releaseYear != null && !releaseYear.isEmpty()) {
             books = booksRepository.findByReleaseYear(releaseYear);
-        } else {
+        }
+        else if (genre != null && !genre.isEmpty()) {
+            books = booksRepository.findByGenresGenreOrderByTitle(genre);
+        }
+        else {
             books = booksRepository.findAllOrderByTitle();
         }
 
         model.addAttribute("showFilters", true);
-        model.addAttribute("releaseYear", releaseYears);
         model.addAttribute("books", books);
+
+        List<String> releaseYears = booksRepository.findDistinctReleaseYear();
+        List<Genre> genres = genreRepository.findAll();
+        model.addAttribute("releaseYear", releaseYears);
+        model.addAttribute("genres", genres);
+
+        // Return the view name
         return "BookList";
     }
 

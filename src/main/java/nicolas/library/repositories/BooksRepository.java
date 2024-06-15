@@ -26,6 +26,9 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
 
     List<Book> findByTitleContainingIgnoreCaseOrderByTitle(String title);
 
+    List<Book> findByGenresGenreOrderByTitle(String genre);
+
+
 
 
     Optional<Book> findFirstByIdLessThanOrderByIdDesc(Integer id);

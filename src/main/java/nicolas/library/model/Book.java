@@ -15,8 +15,6 @@ public class Book {
 
     private String author;
 
-    private String genre;
-
     @Column(length = 1000)
     private String description;
 
@@ -36,17 +34,24 @@ public class Book {
     )
     private Collection<Category> categories;
 
+    @ManyToMany
+    @JoinTable(
+            name = "book_genre",
+            joinColumns = @JoinColumn(name = "books_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Collection<Genre> genres;
+
     @ManyToOne
     private Transactions transactions;
 
     public Book() {
     }
 
-    public Book(Integer id, String title, String author, String genre, String description, String status, String release_year) {
+    public Book(Integer id, String title, String author, String description, String status, String release_year) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.genre = genre;
         this.description = description;
         this.status = status;
         this.release_year = release_year;
@@ -74,14 +79,6 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getDescription() {
@@ -122,6 +119,14 @@ public class Book {
 
     public void setCategories(Collection<Category> categories) {
         this.categories = categories;
+    }
+
+    public Collection<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Collection<Genre> genres) {
+        this.genres = genres;
     }
 
     public Transactions getTransactions() {

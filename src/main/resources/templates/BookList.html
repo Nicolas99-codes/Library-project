@@ -43,6 +43,13 @@
                                 <option th:each="year: ${releaseYear}" th:value="${year}" th:text="${year}">Year</option>
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="genre">Genre</label>
+                            <select id="genre" name="genre" class="form-select">
+                                <option value="">All</option>
+                                <option th:each="genreItem : ${genres}" th:value="${genreItem.genre}" th:text="${genreItem.genre}">Genre</option>
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Filter</button>
                     </form>
                 </div>
