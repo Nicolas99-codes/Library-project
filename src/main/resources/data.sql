@@ -1,8 +1,8 @@
 INSERT INTO APP_USER(USERNAME, PASSWORD, FIRST_NAME ,SURNAME, EMAIL, ROLE)
-VALUES ('admin', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 'Vera', 'test' ,'test@gmail.com', 'ADMIN');
+VALUES ('admin', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 'Vera', 'test' ,'test@gmail.com', 'ROLE_ADMIN');
 
 INSERT INTO APP_USER(USERNAME, PASSWORD, FIRST_NAME ,SURNAME, EMAIL, ROLE)
-VALUES ('user', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 'Nicolas', 'test' ,'user@gmail.com', 'USER');
+VALUES ('user', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 'Nicolas', 'test' ,'user@gmail.com', 'ROLE_USER');
 
 -- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
 -- VALUES
