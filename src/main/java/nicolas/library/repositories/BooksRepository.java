@@ -24,6 +24,8 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
     @Query("SELECT b FROM Book b WHERE b.release_year = :releaseYear")
     List<Book> findByReleaseYear(@Param("releaseYear") String releaseYear);
 
+    List<Book> findByTitleContainingIgnoreCaseOrderByTitle(String title);
+
 
 
     Optional<Book> findFirstByIdLessThanOrderByIdDesc(Integer id);

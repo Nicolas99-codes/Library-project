@@ -63,11 +63,19 @@ public class BookController {
         return "BookDetails";
     }
 
-    @GetMapping( "/BookList")
-    public String showBookList(Model model, @RequestParam(value = "showFilters", required = false, defaultValue = "false") boolean showFilters) {
-        List<Book> books = booksRepository.findAllOrderByTitle();
+    @GetMapping("/BookList")
+    public String showBookList(Model model,
+                               @RequestParam(value = "showFilters", required = false, defaultValue = "false") boolean showFilters,
+                               @RequestParam(value = "search", required = false) String search) {
+        List<Book> books;
+        if (search != null && !search.isEmpty()) {
+            books = booksRepository.findByTitleContainingIgnoreCaseOrderByTitle(search);
+        } else {
+            books = booksRepository.findAllOrderByTitle();
+        }
         model.addAttribute("books", books);
         model.addAttribute("showFilters", showFilters);
+        model.addAttribute("search", search);
 
         if (showFilters) {
             List<String> releaseYears = booksRepository.findDistinctReleaseYear();
@@ -76,6 +84,7 @@ public class BookController {
 
         return "BookList";
     }
+
 
     @GetMapping("/BookList/filter")
     public String showBookFilter(Model model, @RequestParam(required = false) String releaseYear) {

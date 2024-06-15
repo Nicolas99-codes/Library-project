@@ -18,7 +18,9 @@
         <div class="col-md-3">
             <section class="card">
                 <div class="card-body">
-                    <input type="text" class="form-control" placeholder="Zoek boek" />
+                    <form th:action="@{/BookList}" method="get">
+                        <input type="text" class="form-control" name="search" placeholder="Zoek boek" th:value="${search}" />
+                    </form>
                 </div>
             </section>
             <section class="card mt-3">
