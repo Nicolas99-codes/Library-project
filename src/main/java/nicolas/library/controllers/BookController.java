@@ -3,6 +3,7 @@ package nicolas.library.controllers;
 
 import nicolas.library.model.Book;
 import nicolas.library.model.Genre;
+import nicolas.library.model.Status;
 import nicolas.library.repositories.BooksRepository;
 import nicolas.library.repositories.GenreRepository;
 import nicolas.library.repositories.StatusRepository;
@@ -89,16 +90,20 @@ public class BookController {
         if (showFilters) {
             List<String> releaseYears = booksRepository.findDistinctReleaseYear();
             List<Genre> genres = genreRepository.findAll();
+            List<Status> statuses = statusRepository.findAll();
             model.addAttribute("releaseYear", releaseYears);
             model.addAttribute("genres", genres);
+            model.addAttribute("statuses", statuses);
         }
 
         return "BookList";
     }
 
     @GetMapping("/BookList/filter")
-    public String showBookFilter(Model model, @RequestParam(required = false) String releaseYear,
-                                 @RequestParam(required = false) String genre) {
+    public String showBookFilter(Model model,
+                                 @RequestParam(required = false) String releaseYear,
+                                 @RequestParam(required = false) String genre,
+                                 @RequestParam(required = false) String status){
 
         List<Book> books;
 
@@ -107,6 +112,9 @@ public class BookController {
         }
         else if (genre != null && !genre.isEmpty()) {
             books = booksRepository.findByGenresGenreOrderByTitle(genre);
+        }
+        else if (status != null && !status.isEmpty()) {
+            books = booksRepository.findByStatusStatusOrderByTitle(status);
         }
         else {
             books = booksRepository.findAllOrderByTitle();
@@ -117,8 +125,10 @@ public class BookController {
 
         List<String> releaseYears = booksRepository.findDistinctReleaseYear();
         List<Genre> genres = genreRepository.findAll();
+        List<Status> statuses = statusRepository.findAll();
         model.addAttribute("releaseYear", releaseYears);
         model.addAttribute("genres", genres);
+        model.addAttribute("statuses", statuses);
 
         // Return the view name
         return "BookList";

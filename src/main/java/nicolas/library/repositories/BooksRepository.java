@@ -28,6 +28,8 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
 
     List<Book> findByGenresGenreOrderByTitle(String genre);
 
+    List<Book> findByStatusStatusOrderByTitle(String status);
+
 
 
 
