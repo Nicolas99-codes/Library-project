@@ -298,6 +298,23 @@ input.infoLineValue, select.infoLineValue, textarea.infoLineValue {
 
 
 /* */
+
+.book-card-4 .list-details {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 600;
+    color: #223035;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.book-card-4 .list-details small{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 12px;
+    font-weight: 400;
+    color: #808080;
+}
 /* */
 /* */
 /* */

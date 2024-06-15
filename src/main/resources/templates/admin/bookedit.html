@@ -14,6 +14,121 @@
 
 <div th:replace="fragments/header :: header"></div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="book-card-4 z-depth-3">
+                <div class="card">
+                    <div class="card-body text-center bg-primary rounded-top">
+                        <div class="book-box">
+                            <img class="product-img" src="https://placehold.co/330x500" alt="Book cover">
+                        </div>
+                        <h5 th:text="${book.title}" class="mt-2 text-white"></h5>
+                        <h6 class="text-light">by
+                            <span th:each="author, iterStat : ${book.authors}"
+                                  th:text="${author.author_name} + ' ' + ${author.surname}"
+                                  th:if="${!iterStat.last}">,</span>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group shadow-none">
+                            <li class="list-group-item">
+                                <div class="list-details">
+                                    <small>Status</small>
+                                    <span th:each="statuses, iterStat : ${book.status}"
+                                            th:text="${statuses.status}"></span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="list-details">
+                                    <small>Category</small>
+                                    <span th:each="category, iterStat : ${book.categories}"
+                                          th:text="${category.category}"></span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="list-details">
+                                    <small>Release year</small>
+                                    <span th:text="${book.release_year}"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card z-depth-3">
+                <div class="card-body">
+                    <div class="card-body">
+                        <form th:action="@{/admin/bookedit/{id}(id=${book.id})}" method="post" th:object="${book}">
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-control-label">Title</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" th:field="*{title}" id="title">
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-control-label">Author name</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" th:each="authors, iterStat : ${book.authors}"
+                                           th:field="*{authors[__${iterStat.index}__].author_name}" id="author_name">
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-control-label">Author surname</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" th:each="authors, iterStat : ${book.authors}"
+                                           th:field="*{authors[__${iterStat.index}__].surname}" id="author_surname">
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-control-label">Status</label>
+                                <div class="col-lg-9">
+                                    <select class="form-control" th:field="*{status}" id="status">
+                                        <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.status}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-control-label">Genres</label>
+                                <div class="col-lg-9">
+                                    <div th:each="genre : ${genres}">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" th:field="*{genres}" th:value="${genre.id}" id="genre-${genre.id}">
+                                            <label class="form-check-label" th:for="'genre-' + ${genre.id}" th:text="${genre.genre}"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-label">Categories</label>
+                                <div class="col-lg-9">
+                                    <select class="form-control" th:field="*{categories}" id="categories">
+                                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-control-label">Description</label>
+                                <div class="col-lg-9">
+                                    <textarea class="form-control" th:field="*{description}" id="description" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <div class="col-lg-12 text-center">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="reset" class="btn btn-secondary">reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:replace="~{fragments/footer :: footer}">footer</div>
 </body>
 </html>

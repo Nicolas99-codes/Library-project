@@ -1,5 +1,6 @@
 package nicolas.library.controllers.admin;
 
+import jakarta.validation.Valid;
 import nicolas.library.model.*;
 import nicolas.library.repositories.*;
 import org.slf4j.Logger;
@@ -7,8 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,31 +60,43 @@ public class BookAdminController {
         if (currentBookFromDb.isPresent()) {
             Book currentBook = currentBookFromDb.get();
             model.addAttribute("book", currentBook);
+
+            List<Author> authors = authorRepository.findAll();
+            List<Genre> genres = genreRepository.findAll();
+            List<Status> statuses = statusRepository.findAll();
+            List<Category> categories = categoryRepository.findAll();
+
+            model.addAttribute("authors", authors);
+            model.addAttribute("genres", genres);
+            model.addAttribute("statuses", statuses);
+            model.addAttribute("categories", categories);
+
         } else {
             logger.warn("Book with id " + id + " not found");
             return "redirect:/bookDetails/" + id;
         }
 
-        List<Genre> allGenres = genreRepository.findAll();
-        List<Author> allAuthors = authorRepository.findAll();
-        List<Category> allCategories = categoryRepository.findAll();
-        List<Status> allStatuses = statusRepository.findAll();
-
-        model.addAttribute("allGenres", allGenres);
-        model.addAttribute("allAuthors", allAuthors);
-        model.addAttribute("allCategories", allCategories);
-        model.addAttribute("allStatuses", allStatuses);
-
         return "admin/bookedit";
     }
 
-//    @PostMapping("/bookedit/{id}")
-//    public String BookEditPost(@PathVariable Integer id,
-//                               Book book){
-//        logger.info("BookEditPost " + id + " -- new book= " + book.getTitle() + ", new author = " + book.getAuthors() + ", new genre = " + book.getGenres() + ", new year = " + book.getRelease_year() + ", new description = " + book.getDescription());
-//        booksRepository.save(book);
-//        return "redirect:/BookDetails/" + id;
-//    }
+    @PostMapping("/bookedit/{id}")
+    public String BookEditPost(@PathVariable(required = false) Integer id,
+                               @Valid Book book,
+                               BindingResult result,
+                               Model model) {
+
+        if (result.hasErrors()) {
+            return "admin/bookedit";
+        }
+
+
+        booksRepository.save(book);
+
+
+        return "redirect:/BookDetails/" + id;
+    }
+
+
 //
 //    @GetMapping("/newbook")
 //    public String NewBook(Model model){
