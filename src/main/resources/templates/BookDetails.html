@@ -21,7 +21,7 @@
                 <h3 th:text="${book.title}" class="card-title mb-0"></h3>
                 <div class="icon-container">
                     <form th:action="@{/admin/bookedit/{id}(id=${book.id})}" method="get" style="display: inline;">
-                        <a th:href="@{/admin/bookedit/{id}(id=${book.id})}" class="btn btn-link p-0">
+                        <a th:href="@{/admin/bookedit/{id}(id=${book.id})}" th:if="${isAdmin}" class="btn btn-link p-0">
                         <img sec:authorize="isAuthenticated()"
                                  src="https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fedit.png?alt=media&token=313695bd-bfae-43cb-b519-1675a918f2ee"
                                  alt="edit" class="editIcon">

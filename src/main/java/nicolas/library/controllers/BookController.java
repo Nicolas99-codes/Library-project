@@ -135,6 +135,11 @@ public class BookController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String currentPrincipalName = authentication.getName();
 
+            Authentication authenticationAdmin = SecurityContextHolder.getContext().getAuthentication();
+            boolean isAdmin = authenticationAdmin.getAuthorities().stream()
+                    .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
+            model.addAttribute("isAdmin", isAdmin);
+
             Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
             boolean isFavorite = optionalUser.isPresent() && optionalUser.get().getFavoriteBooks().contains(book);
             model.addAttribute("isFavorite", isFavorite);
