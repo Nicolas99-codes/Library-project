@@ -36,10 +36,38 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-
+                        <div th:each="book, iterStat : ${favoriteBooks}">
+                            <div th:if="${iterStat.count <= 3}" class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 th:text="${book.title}" class="card-title mb-0"></h5>
+                                        <div class="icon-container">
+                                            <form th:action="@{/removeFavoriteFromProfile/{id}(id=${book.id})}" method="post" style="display: inline;">
+                                                <button type="submit" class="btn btn-link p-0">
+                                                    <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fstar-filled.png?alt=media&token=d90bd971-095c-4883-b97c-c2bccce5c1e7'}"
+                                                         alt="Remove from favorites" class="favoriteIcon"/>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:if="${#lists.size(favoriteBooks) > 3}">
+                            <p>Er zijn meer favorieten. Klik op "Bekijk favorieten" om ze allemaal te zien.</p>
+                        </div>
+                        <div class="row mt-4" th:unless="${favoriteBooks.size() > 0}">
+                            <div class="col">
+                                <div class="alert alert-info" role="alert">
+                                    <h4 class="alert-heading">Geen favoriete boeken gevonden</h4>
+                                    <p>Voeg boeken toe aan je favorieten om ze hier te zien.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="col-lg-4">
             <div class="card mb-4">

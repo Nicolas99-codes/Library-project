@@ -231,6 +231,34 @@ public class BookController {
         return "redirect:/BookDetails/" + id;
     }
 
+    @PostMapping("/removeFavoriteFromProfile/{id}")
+    public String removeFavoriteFromProfile(@PathVariable Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return "redirect:/user/login";
+        }
+
+        String currentPrincipalName = authentication.getName();
+
+        Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
+        if (optionalUser.isPresent()) {
+            AppUser user = optionalUser.get();
+
+            Optional<Book> optionalBook = booksRepository.findById(id);
+            if (optionalBook.isPresent()) {
+                Book book = optionalBook.get();
+                user.getFavoriteBooks().remove(book);
+                userRepository.save(user);
+            } else {
+                logger.error("Book not found with id: " + id);
+            }
+        } else {
+            logger.error("User not found with username: " + currentPrincipalName);
+        }
+
+        return "redirect:/profielPagina";
+    }
+
     @GetMapping("/BookRequest")
     public String showBookRequest(Model model) {
         return "BookRequest";

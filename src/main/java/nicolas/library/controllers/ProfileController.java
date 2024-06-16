@@ -58,7 +58,9 @@ public class ProfileController {
         if(principal != null){
             optionalAppUser = userRepository.findByUsername(principal.getName());
             if (optionalAppUser.isPresent()) {
-                model.addAttribute("appUser", optionalAppUser.get());
+                AppUser user = optionalAppUser.get();
+                model.addAttribute("appUser", user);
+                model.addAttribute("favoriteBooks", user.getFavoriteBooks());
             }
         }
         return "profilePage";
