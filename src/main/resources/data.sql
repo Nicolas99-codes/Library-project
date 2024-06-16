@@ -4,46 +4,6 @@ VALUES ('admin', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO',
 INSERT INTO APP_USER(USERNAME, PASSWORD, FIRST_NAME ,SURNAME, EMAIL, ROLE)
 VALUES ('user', '$2a$10$CmNH0hEDvSeAZJfqmRZBwus9dZOkxHGwfDeoDnK/WNHPBKrDPa3IO', 'Nicolas', 'test' ,'user@gmail.com', 'ROLE_USER');
 
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (1, 1, 'Solo Leveling', 'Chugong', 'Lix');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (2, 1, 'Sword Art Online', 'Reki Kawahara', 'Lore');
-
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (3, 1, 'Tokyo Ghoul', 'Sui Ishida', 'Ikram');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (4, 1, 'Solo Leveling', 'Chugong', 'Olephia');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (5, 1, 'Violet Evergarden', 'Kana Akatsuki', 'Viviane');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (6, 1, 'In the Land of Leadale', 'Ceez', 'Max');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (7, 1, 'Darling in the franxx', 'Atsushi Nishogri, Naotaka Hayashi', 'Tim');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (8, 1, 'Blue Lock', 'Muneyuki Kaneshiro', 'Anna');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (9, 1, 'Solo Leveling', 'Chugong', 'Miele');
---
--- INSERT INTO TRANSACTIONS(ID, book, title, author, users)
--- VALUES
---     (10, 1, '86', 'Haruto Umezawa', 'Silke');
-
 INSERT INTO AUTHOR(author_name, SURNAME, BIO, COUNTRY)
 VALUES
     ('Chugong', '', '', 'South Korea');

@@ -2,8 +2,6 @@ package nicolas.library.model;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
-
 
 @Entity
 public class Author {

@@ -3,7 +3,6 @@ package nicolas.library.model;
 import jakarta.persistence.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Category {

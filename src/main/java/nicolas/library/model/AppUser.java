@@ -29,9 +29,6 @@ public class AppUser implements UserDetails {
     )
     private Collection<Book> favoriteBooks;
 
-    @ManyToOne
-    private Transactions transactions;
-
     public AppUser() {
     }
 
@@ -109,14 +106,6 @@ public class AppUser implements UserDetails {
 
     public void setFavoriteBook(String favoriteBook) {
         this.favoriteBook = favoriteBook;
-    }
-
-    public Transactions getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(Transactions transactions) {
-        this.transactions = transactions;
     }
 
     @Override

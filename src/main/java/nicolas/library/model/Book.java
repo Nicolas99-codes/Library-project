@@ -51,9 +51,6 @@ public class Book {
     )
     private Collection<Status> status;
 
-    @ManyToOne
-    private Transactions transactions;
-
     public Book() {
     }
 
@@ -127,14 +124,6 @@ public class Book {
 
     public void setStatus(Collection<Status> status) {
         this.status = status;
-    }
-
-    public Transactions getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(Transactions transactions) {
-        this.transactions = transactions;
     }
 
     public Integer getStatusId() {

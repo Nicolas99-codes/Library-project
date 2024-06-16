@@ -3,7 +3,6 @@ package nicolas.library.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import nicolas.library.model.AppUser;
-import nicolas.library.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +15,6 @@ import java.util.Enumeration;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private HttpSession httpSession;

@@ -1,9 +1,7 @@
 package nicolas.library.controllers;
 
 import nicolas.library.model.Author;
-import nicolas.library.model.Book;
 import nicolas.library.repositories.AuthorRepository;
-import nicolas.library.repositories.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
