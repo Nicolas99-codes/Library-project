@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -97,18 +98,73 @@ public class BookAdminController {
     }
 
 
-//
-//    @GetMapping("/newbook")
-//    public String NewBook(Model model){
-//        logger.info("NewBook");
-//        model.addAttribute("books", booksRepository.findAll());
-//        return "admin/newbook";
-//    }
-//
-//    @PostMapping("/newbook")
-//    public String NewBookPost(Model model, Book book){
-//        logger.info("NewBookPost -- new book = " + book.getTitle() + ", new author = " + book.getAuthors() + ", new genre = " + book.getGenres() + ", new year = " + book.getRelease_year() + ", new description = " + book.getDescription());
-//        Book newBook = booksRepository.save(book);
-//        return "redirect:/BookDetails/" + newBook.getId();
-//    }
+
+    @GetMapping("/newbook")
+    public String NewBook(Model model) {
+        logger.info("NewBook");
+
+        List<Author> authors = authorRepository.findAll();
+        List<Genre> genres = genreRepository.findAll();
+        List<Status> statuses = statusRepository.findAll();
+        List<Category> categories = categoryRepository.findAll();
+
+
+        if (authors.isEmpty()) {
+            authors.add(new Author());
+        }
+
+        model.addAttribute("authors", authors);
+        model.addAttribute("genres", genres);
+        model.addAttribute("statuses", statuses);
+        model.addAttribute("categories", categories);
+
+        model.addAttribute("book", new Book());
+
+        return "admin/newbook";
+    }
+
+
+    @PostMapping("/newbook")
+    public String NewBookPost(@Valid Book book, BindingResult result, Model model,
+                              @RequestParam String author_name,
+                              @RequestParam String author_surname,
+                              @RequestParam String author_country) {
+        if (result.hasErrors()) {
+            List<Author> authors = authorRepository.findAll();
+            List<Genre> genres = genreRepository.findAll();
+            List<Status> statuses = statusRepository.findAll();
+            List<Category> categories = categoryRepository.findAll();
+
+            model.addAttribute("authors", authors);
+            model.addAttribute("genres", genres);
+            model.addAttribute("statuses", statuses);
+            model.addAttribute("categories", categories);
+
+            return "admin/newbook";
+        }
+
+        Author author = new Author();
+        author.setAuthor_name(author_name);
+        author.setSurname(author_surname);
+        author.setCountry(author_country);
+
+
+        Author savedAuthor = authorRepository.save(author);
+
+
+        List<Author> authors = new ArrayList<>();
+        authors.add(savedAuthor);
+
+
+        book.setAuthors(authors);
+
+        Book newBook = booksRepository.save(book);
+
+        return "redirect:/BookDetails/" + newBook.getId();
+    }
+
+
+
+
+
 }

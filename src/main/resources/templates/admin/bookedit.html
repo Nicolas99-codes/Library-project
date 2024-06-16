@@ -24,11 +24,6 @@
                             <img class="product-img" src="https://placehold.co/330x500" alt="Book cover">
                         </div>
                         <h5 th:text="${book.title}" class="mt-2 text-white"></h5>
-                        <h6 class="text-light">by
-                            <span th:each="author, iterStat : ${book.authors}"
-                                  th:text="${author.author_name} + ' ' + ${author.surname}"
-                                  th:if="${!iterStat.last}">,</span>
-                        </h6>
                     </div>
                     <div class="card-body">
                         <ul class="list-group shadow-none">
@@ -68,18 +63,30 @@
                                     <input class="form-control" type="text" th:field="*{title}" id="title">
                                 </div>
                             </div>
-                            <div th:each="authors, iterStat : ${book.authors}" class="author-container">
+                            <div class="author-container" th:each="author, iterStat : ${book.authors}">
                                 <div class="form-group row mt-3">
                                     <label class="col-lg-3 col-form-label form-control-label">Author name</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].author_name}" id="author_name">
+                                        <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].author_name}" th:id="'author_name_' + ${iterStat.index}" />
                                     </div>
                                 </div>
                                 <div class="form-group row mt-3">
                                     <label class="col-lg-3 col-form-label form-control-label">Author surname</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].surname}" id="author_surname">
+                                        <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].surname}" th:id="'author_surname_' + ${iterStat.index}" />
                                     </div>
+                                </div>
+                                <div class="form-group row mt-3">
+                                    <label class="col-lg-3 col-form-label form-control-label">Country</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].country}" th:id="'author_country_' + ${iterStat.index}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <label class="col-lg-3 col-form-label form-control-label">Release year</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" th:field="*{release_year}" id="releaseYear">
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
@@ -123,8 +130,8 @@
                             </div>
                             <div class="form-group row mt-3">
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Save</button>
                                     <button type="reset" class="btn btn-secondary">reset</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>
                         </form>
