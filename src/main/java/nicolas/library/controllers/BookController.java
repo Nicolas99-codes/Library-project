@@ -54,6 +54,11 @@ public class BookController {
             books = booksRepository.findAllOrderByTitle();
         }
 
+        Authentication authenticationAdmin = SecurityContextHolder.getContext().getAuthentication();
+        boolean isAdmin = authenticationAdmin.getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
+        model.addAttribute("isAdmin", isAdmin);
+
         model.addAttribute("books", books);
         model.addAttribute("showFilters", showFilters);
         model.addAttribute("search", search);

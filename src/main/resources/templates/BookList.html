@@ -73,7 +73,13 @@
             <section class="card">
                 <div class="card-body">
                     <div class="float-end">
-                        <a th:href="@{|/admin/newbook|}" class="btn btn-primary">Add new book</a>
+                        <form th:action="@{/admin/newbook}" method="get">
+                            <a th:href="@{|/admin/newbook|}" th:if="${isAdmin}" class="btn btn-link p-0">
+                            <img sec:authorize="isAuthenticated()"
+                                 src="https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fedit.png?alt=media&token=313695bd-bfae-43cb-b519-1675a918f2ee"
+                                 alt="edit" class="editIcon">
+                            </a>
+                        </form>
                     </div>
                 </div>
             </section>
