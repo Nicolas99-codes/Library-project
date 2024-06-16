@@ -3,6 +3,7 @@ package nicolas.library.controllers;
 import nicolas.library.controllers.services.GoogleService;
 import nicolas.library.controllers.services.UserService;
 import nicolas.library.model.AppUser;
+import nicolas.library.model.Book;
 import nicolas.library.repositories.BooksRepository;
 import nicolas.library.repositories.CategoryRepository;
 import nicolas.library.repositories.UserRepository;
@@ -13,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
@@ -39,6 +42,15 @@ public class ProfileController {
 
     @Autowired
     private GoogleService googleService;
+
+    @ModelAttribute("book")
+    public Book findBook(@PathVariable(required = false) Integer id) {
+        if (id == null) return new Book();
+        Optional<Book> optionalBook = booksRepository.findById(id);
+        if (optionalBook.isPresent())
+            return optionalBook.get();
+        return null;
+    }
 
     @GetMapping("/profielPagina")
     public String profielPagina(Model model, Principal principal){
@@ -92,5 +104,19 @@ public class ProfileController {
         }
 
         return "redirect:/profielPagina";
+    }
+
+    @GetMapping("/favoritePage")
+    public String favoritePage(Model model, Principal principal) {
+        Optional<AppUser> optionalAppUser = Optional.empty();
+        if (principal != null) {
+            optionalAppUser = userRepository.findByUsername(principal.getName());
+            if (optionalAppUser.isPresent()) {
+                AppUser user = optionalAppUser.get();
+                model.addAttribute("favoriteBooks", user.getFavoriteBooks());
+            }
+        }
+
+        return "favoritePage";
     }
 }

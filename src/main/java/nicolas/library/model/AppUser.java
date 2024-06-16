@@ -23,7 +23,7 @@ public class AppUser implements UserDetails {
 
     @ManyToMany
     @JoinTable(
-            name = "user_favoriteBook",
+            name = "user_favoriteBooks",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )

@@ -175,7 +175,7 @@ public class BookController {
         return "BookDetails";
     }
 
-    @GetMapping("/addFavorite/{id}")
+    @PostMapping("/addFavorite/{id}")
     public String addFavorite(@PathVariable Integer id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
@@ -203,7 +203,7 @@ public class BookController {
         return "redirect:/BookDetails/" + id;
     }
 
-    @GetMapping("/removeFavorite/{id}")
+    @PostMapping("/removeFavorite/{id}")
     public String removeFavorite(@PathVariable Integer id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
