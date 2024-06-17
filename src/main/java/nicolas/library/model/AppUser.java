@@ -20,6 +20,7 @@ public class AppUser implements UserDetails {
     private String email;
     private String role;
     private String favoriteBook;
+    private String ReadBook;
 
     @ManyToMany
     @JoinTable(
@@ -28,6 +29,14 @@ public class AppUser implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private Collection<Book> favoriteBooks;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_readBooks",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private Collection<Book> readBooks;
 
     public AppUser() {
     }
@@ -135,6 +144,14 @@ public class AppUser implements UserDetails {
 
     public void setFavoriteBooks(Collection<Book> favoriteBooks) {
         this.favoriteBooks = favoriteBooks;
+    }
+
+    public Collection<Book> getReadBooks() {
+        return readBooks;
+    }
+
+    public void setReadBooks(Collection<Book> readBooks) {
+        this.readBooks = readBooks;
     }
 
 

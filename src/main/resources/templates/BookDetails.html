@@ -28,6 +28,18 @@
                         </a>
                     </form>
                     <div th:if="${#authorization.expression('isAuthenticated()')}">
+                        <form method="post" th:action="@{/addRead/{id}(id=${book.id})}" th:if="${!isRead}" style="display: inline;">
+                            <button type="submit" class="btn btn-link p-0">
+                                <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Funread.png?alt=media&token=f40eed9c-8e91-4eee-b344-a583ee95ee61'}"
+                                     alt="Add to read" class="readIcon"/>
+                            </button>
+                        </form>
+                        <form method="post" th:action="@{/removeRead/{id}(id=${book.id})}" th:if="${isRead}" style="display: inline;">
+                            <button type="submit" class="btn btn-link p-0">
+                                <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Feye.png?alt=media&token=7e0a920e-53f8-4ec2-afa5-4694771edb9f'}"
+                                     alt="Remove from read" class="readIcon"/>
+                            </button>
+                        </form>
                         <form method="post" th:action="@{/addFavorite/{id}(id=${book.id})}" th:if="${!isFavorite}" style="display: inline;">
                             <button type="submit" class="btn btn-link p-0">
                                 <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fstar-outlined.png?alt=media&token=9fc18461-eb4e-4713-aa75-94442d36e079'}"

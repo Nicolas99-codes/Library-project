@@ -23,10 +23,39 @@
         <hr class="mt-0 mb-4">
         <div class="col-lg-8">
             <div class="card mb-4">
-                <div class="card-header">Uitgelezen boeken</div>
+                <div class="card-header">Uitgelezen boeken
+                    <a th:href="@{/readBooksPage}" class="btn btn-primary float-end">Bekijk uitgelezen boeken</a>
+                </div>
                 <div class="card-body">
                     <div class="mb-3">
-
+                        <div th:each="book, iterStat : ${readBooks}">
+                            <div th:if="${iterStat.count <= 3}" class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 th:text="${book.title}" class="card-title mb-0"></h5>
+                                        <div class="icon-container">
+                                            <form th:action="@{/removeReadFromProfile/{id}(id=${book.id})}" method="post" style="display: inline;">
+                                                <button type="submit" class="btn btn-link p-0">
+                                                    <img th:src="@{'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Feye.png?alt=media&token=7e0a920e-53f8-4ec2-afa5-4694771edb9f'}"
+                                                         alt="Remove from read" class="readIcon"/>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:if="${#lists.size(readBooks) > 3}">
+                            <p>Er zijn meer uitgelezen boeken. Klik op "Bekijk uitgelezen boeken" om ze allemaal te zien.</p>
+                        </div>
+                        <div class="row mt-4" th:unless="${readBooks.size() > 0}">
+                            <div class="col">
+                                <div class="alert alert-info" role="alert">
+                                    <h4 class="alert-heading">Geen uitgelezen boeken gevonden</h4>
+                                    <p>Voeg boeken toe aan je uitgelezen boeken om ze hier te zien.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

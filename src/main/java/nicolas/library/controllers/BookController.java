@@ -149,6 +149,10 @@ public class BookController {
             boolean isFavorite = optionalUser.isPresent() && optionalUser.get().getFavoriteBooks().contains(book);
             model.addAttribute("isFavorite", isFavorite);
 
+            Optional<AppUser> user = userRepository.findByUsername(currentPrincipalName);
+            boolean isRead = user.isPresent() && user.get().getReadBooks().contains(book);
+            model.addAttribute("isRead", isRead);
+
         } else {
             return "redirect:/error";
         }
@@ -236,6 +240,62 @@ public class BookController {
         return "redirect:/BookDetails/" + id;
     }
 
+    @PostMapping("/addRead/{id}")
+    public String addRead(@PathVariable Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return "redirect:/user/login";
+        }
+
+        String currentPrincipalName = authentication.getName();
+
+        Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
+        if (optionalUser.isPresent()) {
+            AppUser user = optionalUser.get();
+
+            Optional<Book> optionalBook = booksRepository.findById(id);
+            if (optionalBook.isPresent()) {
+                Book book = optionalBook.get();
+                user.getReadBooks().add(book);
+                userRepository.save(user);
+            } else {
+                logger.error("Book not found with id: " + id);
+            }
+        } else {
+            logger.error("User not found with username: " + currentPrincipalName);
+        }
+
+        return "redirect:/BookDetails/" + id;
+    }
+
+    @PostMapping("/removeRead/{id}")
+    public String removeRead(@PathVariable Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return "redirect:/user/login";
+        }
+
+        String currentPrincipalName = authentication.getName();
+
+        Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
+        if (optionalUser.isPresent()) {
+            AppUser user = optionalUser.get();
+
+            Optional<Book> optionalBook = booksRepository.findById(id);
+            if (optionalBook.isPresent()) {
+                Book book = optionalBook.get();
+                user.getReadBooks().remove(book);
+                userRepository.save(user);
+            } else {
+                logger.error("Book not found with id: " + id);
+            }
+        } else {
+            logger.error("User not found with username: " + currentPrincipalName);
+        }
+
+        return "redirect:/BookDetails/" + id;
+    }
+
     @PostMapping("/removeFavoriteFromProfile/{id}")
     public String removeFavoriteFromProfile(@PathVariable Integer id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -253,6 +313,34 @@ public class BookController {
             if (optionalBook.isPresent()) {
                 Book book = optionalBook.get();
                 user.getFavoriteBooks().remove(book);
+                userRepository.save(user);
+            } else {
+                logger.error("Book not found with id: " + id);
+            }
+        } else {
+            logger.error("User not found with username: " + currentPrincipalName);
+        }
+
+        return "redirect:/profielPagina";
+    }
+
+    @PostMapping("/removeReadFromProfile/{id}")
+    public String removeReadFromProfile(@PathVariable Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return "redirect:/user/login";
+        }
+
+        String currentPrincipalName = authentication.getName();
+
+        Optional<AppUser> optionalUser = userRepository.findByUsername(currentPrincipalName);
+        if (optionalUser.isPresent()) {
+            AppUser user = optionalUser.get();
+
+            Optional<Book> optionalBook = booksRepository.findById(id);
+            if (optionalBook.isPresent()) {
+                Book book = optionalBook.get();
+                user.getReadBooks().remove(book);
                 userRepository.save(user);
             } else {
                 logger.error("Book not found with id: " + id);

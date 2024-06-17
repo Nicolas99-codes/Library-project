@@ -61,6 +61,7 @@ public class ProfileController {
                 AppUser user = optionalAppUser.get();
                 model.addAttribute("appUser", user);
                 model.addAttribute("favoriteBooks", user.getFavoriteBooks());
+                model.addAttribute("readBooks", user.getReadBooks());
             }
         }
         return "profilePage";
@@ -120,5 +121,19 @@ public class ProfileController {
         }
 
         return "favoritePage";
+    }
+
+    @GetMapping("/readBooksPage")
+    public String readBooksPage(Model model, Principal principal) {
+        Optional<AppUser> optionalAppUser = Optional.empty();
+        if (principal != null) {
+            optionalAppUser = userRepository.findByUsername(principal.getName());
+            if (optionalAppUser.isPresent()) {
+                AppUser user = optionalAppUser.get();
+                model.addAttribute("readBooks", user.getReadBooks());
+            }
+        }
+
+        return "readBooksPage";
     }
 }
