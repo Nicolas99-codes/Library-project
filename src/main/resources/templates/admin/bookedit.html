@@ -36,14 +36,14 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="list-details">
-                                    <small>Category</small>
+                                    <small>Categorie</small>
                                     <span th:each="category, iterStat : ${book.categories}"
                                           th:text="${category.category}"></span>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="list-details">
-                                    <small>Release year</small>
+                                    <small>Jaar van uitgave</small>
                                     <span th:text="${book.release_year}"></span>
                                 </div>
                             </li>
@@ -65,26 +65,26 @@
                             </div>
                             <div class="author-container" th:each="author, iterStat : ${book.authors}">
                                 <div class="form-group row mt-3">
-                                    <label class="col-lg-3 col-form-label form-control-label">Author name</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Schrijver naam</label>
                                     <div class="col-lg-9">
                                         <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].author_name}" th:id="'author_name_' + ${iterStat.index}" />
                                     </div>
                                 </div>
                                 <div class="form-group row mt-3">
-                                    <label class="col-lg-3 col-form-label form-control-label">Author surname</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Schrijver achternaam</label>
                                     <div class="col-lg-9">
                                         <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].surname}" th:id="'author_surname_' + ${iterStat.index}" />
                                     </div>
                                 </div>
                                 <div class="form-group row mt-3">
-                                    <label class="col-lg-3 col-form-label form-control-label">Country</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Land</label>
                                     <div class="col-lg-9">
                                         <input class="form-control" type="text" th:field="*{authors[__${iterStat.index}__].country}" th:id="'author_country_' + ${iterStat.index}" />
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-control-label">Release year</label>
+                                <label class="col-lg-3 col-form-label form-control-label">Jaar van uitgave</label>
                                 <div class="col-lg-9">
                                     <input class="form-control" type="text" th:field="*{release_year}" id="releaseYear">
                                 </div>
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-label">Categories</label>
+                                <label class="col-lg-3 col-form-label form-label">Categorieën</label>
                                 <div class="col-lg-9">
                                     <select class="form-control" th:field="*{categories}" id="categories">
                                         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}"></option>
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-control-label">Description</label>
+                                <label class="col-lg-3 col-form-label form-control-label">Beschrijving</label>
                                 <div class="col-lg-9">
                                     <textarea class="form-control" th:field="*{description}" id="description" rows="5"></textarea>
                                 </div>

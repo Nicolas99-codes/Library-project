@@ -33,13 +33,13 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="list-details">
-                                    <small>Category</small>
+                                    <small>Categorie</small>
                                     <span th:each="category, iterStat : ${book.categories}" th:text="${category.category}"></span>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="list-details">
-                                    <small>Release year</small>
+                                    <small>Jaar van uitgave</small>
                                     <span th:text="${book.release_year}"></span>
                                 </div>
                             </li>
@@ -60,25 +60,25 @@
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-control-label">Author Name</label>
+                                <label class="col-lg-3 col-form-label form-control-label">Schrijver naam</label>
                                 <div class="col-lg-9">
                                     <input class="form-control" type="text" name="author_name" id="authorName">
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-control-label">Author Surname</label>
+                                <label class="col-lg-3 col-form-label form-control-label">Schrijver achternaam</label>
                                 <div class="col-lg-9">
                                     <input class="form-control" type="text" name="author_surname" id="authorSurname">
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-control-label">Release year</label>
+                                <label class="col-lg-3 col-form-label form-control-label">Jaar van uitgave</label>
                                 <div class="col-lg-9">
                                     <input class="form-control" type="text" th:field="*{release_year}" id="releaseYear">
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-control-label">Country</label>
+                                <label class="col-lg-3 col-form-label form-control-label">Land</label>
                                 <div class="col-lg-9">
                                     <input class="form-control" type="text" name="author_country" id="authorCountry">
                                 </div>
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-label">Categories</label>
+                                <label class="col-lg-3 col-form-label form-label">Categorieën</label>
                                 <div class="col-lg-9">
                                     <select class="form-control" th:field="*{categories}" id="categories">
                                         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}"></option>
@@ -117,7 +117,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
-                                <label class="col-lg-3 col-form-label form-control-label">Description</label>
+                                <label class="col-lg-3 col-form-label form-control-label">Beschrijving</label>
                                 <div class="col-lg-9">
                                     <textarea class="form-control" th:field="*{description}" id="description" rows="5"></textarea>
                                 </div>
@@ -125,8 +125,8 @@
                             <div class="form-group row mt-3">
                                 <div class="col-lg-12 text-center">
                                     <button type="reset" class="btn btn-secondary">Reset</button>
-                                    <button type="submit" class="btn btn-primary" name="action" value="save">Save</button>
-                                    <button type="submit" class="btn btn-primary" name="action" value="confirm">Confirm</button>
+                                    <button type="submit" class="btn btn-primary" name="action" value="save">Opslaan</button>
+                                    <button type="submit" class="btn btn-primary" name="action" value="confirm">Bevestig</button>
                                 </div>
                             </div>
                         </form>

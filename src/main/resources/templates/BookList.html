@@ -58,7 +58,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="authors">Gemaakt in</label>
+                            <label for="authors">Land</label>
                             <select id="authors" name="authors" class="form-select">
                                 <option value="">All</option>
                                 <option th:each="country : ${authorCountries}" th:if="${country != ''}" th:value="${country}" th:text="${country}">Author</option>

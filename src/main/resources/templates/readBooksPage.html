@@ -38,6 +38,12 @@
             </div>
         </div>
     </div>
+    <div th:unless="${readBooks.size() > 0}">
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Geen boeken gevonden</h4>
+            <p>Er zijn geen boeken gevonden die je hebt uitgelezen.</p>
+        </div>
+    </div>
 </div>
 
 <div th:replace="~{fragments/footer :: footer}">footer</div>
