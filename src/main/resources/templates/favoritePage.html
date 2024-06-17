@@ -13,26 +13,27 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
-<div class="container mt-4" th:if="${favoriteBooks}">
-    <h1 class="mb-4">Favoriete boeken</h1>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <div class="col" th:each="book : ${favoriteBooks}">
-            <div class="card h-100">
-                <div class="bg-secondary text-center rounded-top" style="height: 150px;">
-                    <!-- Image -->
-                </div>
-                <a th:href="@{|/BookDetails/${book.id}|}" class="stretched-link"></a>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold" th:text="${book.title}"></h5>
+<div class="container" th:if="${favoriteBooks}">
+    <div class="row">
+        <div th:each="book : ${favoriteBooks}">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="fw-bold" th:text="${book.title}"></h1>
+            </div>
+            <hr class="mt-2">
+            <div class="col-md-12">
+                <div class="row product-list">
+                    <div class="col mb-4" th:each="book, aantal: ${favoriteBooks}">
+                        <section class="card mt-4 book-card">
+                            <div class="card-body text-center">
+                                <div class="product-img-box">
+                                    <img class="product-img" th:src="${book.imageUrl ?: 'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fno-image-placeholder.png?alt=media&token=223cae15-d5b0-4987-ad91-c0e2fe9034e5'}" alt="Book cover">
+                                </div>
+                                <h4 class="card-title book-title" th:text="${book.title}"></h4>
+                                <a th:href="@{|/BookDetails/${book.id}|}" class="btn btn-primary mt-auto">Details</a>
+                            </div>
+                        </section>
                     </div>
                 </div>
-            </div>
-        </div>
-    <div class="row mt-4" th:unless="${favoriteBooks.size() > 0}">
-        <div class="col">
-            <div class="alert alert-info" role="alert">
-                <h4 class="alert-heading">Geen favoriete boeken gevonden</h4>
-                <p>Voeg boeken toe aan je favorieten om ze hier te zien.</p>
             </div>
         </div>
     </div>
