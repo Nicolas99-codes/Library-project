@@ -2,6 +2,8 @@ package nicolas.library.model;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 
 @Entity
 public class Author {
@@ -16,6 +18,9 @@ public class Author {
     private String bio;
 
     private String country;
+
+    @ManyToMany(mappedBy = "authors")
+    private Collection<Book> books;
 
 
     public Author() {
@@ -67,6 +72,14 @@ public class Author {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Collection<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Collection<Book> books) {
+        this.books = books;
     }
 
 }

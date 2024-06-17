@@ -16,17 +16,26 @@ public class AuthorController {
     @Autowired
     private AuthorRepository authorRepository;
 
+    @GetMapping("/AuthorList")
+    public String showAuthorList(Model model) {
+        List<Author> authors = authorRepository.findAll();
+        model.addAttribute("authors", authorRepository.findAllOrderByName());
+        return "AuthorList";
+    }
+
     @GetMapping({"/AuthorDetails/{id}"})
-    public String authorDetails(Model model, @PathVariable int id) {
-        Optional<Author> AuthorFromDb = authorRepository.findById(id);
-        if (AuthorFromDb.isPresent()) {
-            model.addAttribute("author", AuthorFromDb.get());
+    public String authorDetails(Model model, @PathVariable(required = false) Integer id) {
+        Optional<Author> authorFromDb = authorRepository.findById(id);
+        if (authorFromDb.isPresent()) {
+            Author author = authorFromDb.get();
+            model.addAttribute("author", author);
+            model.addAttribute("books", author.getBooks());
         }
         return "AuthorDetails";
     }
 
     @GetMapping({"/AuthorDetails/{id}/prev"})
-    public String showAuthorDetailsPrev(Model model, @PathVariable int id){
+    public String showAuthorDetailsPrev(Model model, @PathVariable(required = false) Integer id){
         Optional<Author> prevAuthorFromDb = authorRepository.findFirstByIdLessThanOrderByIdDesc(id);
         if (prevAuthorFromDb.isPresent()){
             return String.format("redirect:/AuthorDetails/%d", prevAuthorFromDb.get().getId());}
@@ -40,7 +49,7 @@ public class AuthorController {
     }
 
     @GetMapping({"/AuthorDetails/{id}/next"})
-    public String showAuthorDetailsNext(Model model, @PathVariable int id){
+    public String showAuthorDetailsNext(Model model, @PathVariable(required = false) Integer id){
         Optional<Author> nextAuthorFromDb = authorRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
         if (nextAuthorFromDb.isPresent())
             return String.format("redirect:/AuthorDetails/%d", nextAuthorFromDb.get().getId());
@@ -48,12 +57,5 @@ public class AuthorController {
         if (firstAuthorFromDb.isPresent())
             return String.format("redirect:/AuthorDetails/%d", firstAuthorFromDb.get().getId());
         return "AuthorDetails";
-    }
-
-    @GetMapping("/AuthorList")
-    public String showAuthorList(Model model) {
-        List<Author> authors = authorRepository.findAll();
-        model.addAttribute("authors", authorRepository.findAllOrderByName());
-        return "AuthorList";
     }
 }

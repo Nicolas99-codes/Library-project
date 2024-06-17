@@ -1,40 +1,59 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" media="all"
-      th:href="@{/css/style.css}" href="style.css" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Author Details</title>
+    <title>Schrijver detail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<div class="container" style="background: lightcyan;">
-    <div class="row">
-        <div class="breadcrumbs">
-            <a th:href="@{/homepage}" th:class="${currentPage == 'homepage'} ? 'current-page' : ''">Home</a>
-            / <a th:href="@{/AuthorList}" th:class="${currentPage == 'AuthorList'} ? 'current-page' : ''">Authors</a>
-            / <span th:class="${currentPage == '/AuthorDetails' ? 'current-page' : ''}" th:text="${author.getAuthor_name()} + ' ' + ${author.getSurname()}"></span>
-            <h1 th:text="${author.getAuthor_name()} + ' ' + ${author.getSurname()}"></h1>
-        </div>
-        <img th:src="@{/img/author/{id}.jpg(id=${author.getId()})}" class="img-fluid">
-        <div class="col-8">
-            <h6><span class="label">Author name:</span><span th:text="${author.getAuthor_name()}"></span></h6>
-            <h6><span class="label">Surname:</span><span th:text="${author.getSurname()}"></span></h6>
-            <h6><span class="label">Country:</span><span th:text="${author.getCountry()}"></span></h6>
-            <h6><span class="label">Bio:</span><span th:text="${author.getBio()}"></span></h6>
-        </div>
-        <h4>Written books</h4>
-        <div th:each = "book : ${author.getBooks()}" style="margin-top: 10px">
-            <a class="btn btn-primary" th:href="@{/BookDetails/{id}(id=${book.getId()})}" th:text="${book.getTitle()}"></a>
-        </div>
-        <div class="PrevAndNextButton" style="margin-top: 30px">
-            <a class="btn btn-primary" th:href="@{|/AuthorDetails/*{id}/prev|}">Previous</a>
-            <a class="btn btn-primary" th:href="@{|/AuthorDetails/*{id}/next|}">Next</a>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items center">
+                <h3 th:text="${author.author_name} + ' ' + ${author.surname}" class="card-title mb-0"></h3>
+            </div>
+            <h6 th:text="${author.country}" class="card-subtitle text-muted"></h6>
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6">
+                    <div class="mt-2">
+                        <img class="product-img" src="https://placehold.co/430x600" alt="Author cover">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <h4>Biografie</h4>
+                    <p th:text="${author.bio}"></p>
+                    <h4 class="mt-4">Boeken geschreven</h4>
+                    <div class="card mb-4">
+                        <div class="car-body">
+                            <div>
+                                <div th:each="book : ${author.books}">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 th:text="${book.title}" class="card-title mb-0"></h5>
+                                                <a th:href="@{|/BookDetails/${book.id}|}" class="btn btn-primary">Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<div th:replace="~{fragments/footer :: footer}">footer</div>
 
 </body>
 </html>
