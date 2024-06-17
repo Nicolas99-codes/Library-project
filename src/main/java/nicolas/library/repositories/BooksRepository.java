@@ -12,8 +12,6 @@ import java.util.Optional;
 public interface BooksRepository extends CrudRepository<Book, Integer> {
     List<Book> findAll();
 
-    long count();
-
     @Query("SELECT b FROM Book b JOIN b.categories c WHERE c = :category")
     List<Book> findByCategory(@Param("category") Category category);
 
@@ -44,4 +42,6 @@ public interface BooksRepository extends CrudRepository<Book, Integer> {
     List<Book> findAllOrderByTitle();
 
     List<Book> findByAuthorsCountry(String country);
+
+    List<Book> findTop5ByOrderByAddedDateDesc();
 }

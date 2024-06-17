@@ -20,6 +20,8 @@ public class Book {
 
     private String imageUrl;
 
+    private String addedDate;
+
 
     @ManyToMany
     @JoinTable(
@@ -56,11 +58,12 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String title, String description, String release_year) {
+    public Book(Integer id, String title, String description, String release_year, String addedDate) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.release_year = release_year;
+        this.addedDate = addedDate;
     }
 
     public Integer getId() {
@@ -150,5 +153,13 @@ public class Book {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(String addedDate) {
+        this.addedDate = addedDate;
     }
 }

@@ -14,6 +14,41 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="main-title">
+                <h2 class="mb-3">Onze nieuwe boeken</h2>
+            </div>
+        </div>
+    </div>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active" th:each="book, iterStat : ${recentBooks}">
+                <img class="d-block w-100" th:src="${book.imageUrl ?: 'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fno-image-placeholder.png?alt=media&token=223cae15-d5b0-4987-ad91-c0e2fe9034e5'}" th:alt="${book.title}" style="max-height: 600px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 th:text="${book.title}">Titel</h5>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+
+
 <div th:replace="~{fragments/footer :: footer}">footer</div>
+
 </body>
 </html>
