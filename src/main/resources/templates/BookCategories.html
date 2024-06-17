@@ -27,7 +27,7 @@
                         <section class="card mt-4 book-card">
                             <div class="card-body text-center">
                                 <div class="product-img-box">
-                                    <img class="product-img" src="https://via.placeholder.com/300" alt="Book cover">
+                                    <img class="product-img" th:src="${book.imageUrl ?: 'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fno-image-placeholder.png?alt=media&token=223cae15-d5b0-4987-ad91-c0e2fe9034e5'}" alt="Book cover">
                                 </div>
                                 <h4 class="card-title book-title" th:text="${book.title}"></h4>
                                 <a th:href="@{|/BookDetails/${book.id}|}" class="btn btn-primary mt-auto">Details</a>

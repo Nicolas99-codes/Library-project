@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-body text-center bg-primary rounded-top">
                         <div class="book-box">
-                            <img class="product-img" src="https://placehold.co/330x500" alt="Book cover">
+                            <img class="product-edit-img" th:src="${book.imageUrl ?: 'https://firebasestorage.googleapis.com/v0/b/bibliotheek-fedaf.appspot.com/o/images%2Futil%2Fno-image-placeholder.png?alt=media&token=223cae15-d5b0-4987-ad91-c0e2fe9034e5'}" alt="Book cover">
                         </div>
                         <h5 th:text="${book.title}" class="mt-2 text-white"></h5>
                     </div>

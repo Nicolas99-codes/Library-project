@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,19 +88,38 @@ public class BookAdminController {
 
     @PostMapping("/bookedit/{id}")
     public String BookEditPost(@PathVariable(required = false) Integer id,
-                               @Valid Book book,
-                               BindingResult result,
-                               Model model) {
+                               @RequestParam(required = false) MultipartFile image,
+                               Book book,
+                               BindingResult result) throws IOException {
+
+        Optional<Book> optionalBook = booksRepository.findById(id);
+        if (!optionalBook.isPresent()) {
+            logger.warn("Book with id " + id + " not found");
+            return "redirect:/bookDetails/" + id;
+        }
+
+        Book existingBook = optionalBook.get();
 
         if (result.hasErrors()) {
             return "admin/bookedit";
         }
 
+        if (image != null && !image.isEmpty()) {
+            existingBook.setImageUrl(uploadImageForEdit(image, "images/book", existingBook.getImageUrl()));
+        }
 
-        booksRepository.save(book);
+
+        booksRepository.save(existingBook);
 
 
         return "redirect:/BookDetails/" + id;
+    }
+
+    private String uploadImageForEdit(MultipartFile multipartFile, String folderName, String existingImageUrl) throws IOException {
+        if (multipartFile.isEmpty()) return existingImageUrl;
+        final String filename = multipartFile.getOriginalFilename();
+        InputStream inputStream = multipartFile.getInputStream();
+        return googleService.toFirebase(inputStream, folderName, filename);
     }
 
 
