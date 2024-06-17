@@ -17,16 +17,20 @@
 <div class="container">
     <h1 class="fw-bold">Schrijvers lijst</h1>
     <div class="row">
-        <div th:each="author : ${authors}" class="col-4">
-            <section class="card mt-4 book-card">
-                <div class="card-body text-center">
-                    <div class="product-img-box">
-                        <img class="product-img" src="https://via.placeholder.com/300" alt="Author image">
-                    </div>
-                    <h4 class="card-title book-title" th:text="${author.author_name} + ' ' + ${author.surname}"></h4>
-                    <a th:href="@{|/AuthorDetails/${author.id}|}" class="btn btn-primary mt-auto">Details</a>
+        <div class="col-md-12">
+            <div class="row product-list">
+                <div th:each="author : ${authors}" class="col-md-4">
+                    <section class="card mt-4 book-card">
+                        <div class="card-body text-center">
+                            <div class="product-img-box">
+                                <img class="product-img" src="https://via.placeholder.com/300" alt="Author image">
+                            </div>
+                            <h4 class="card-title book-title" th:text="${author.author_name} + ' ' + ${author.surname}"></h4>
+                            <a th:href="@{|/AuthorDetails/${author.id}|}" class="btn btn-primary mt-auto">Details</a>
+                        </div>
+                    </section>
                 </div>
-            </section>
+            </div>
         </div>
     </div>
 </div>

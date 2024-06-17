@@ -17,36 +17,32 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <div class="d-flex justify-content-between align-items center">
+            <div class="d-flex justify-content-between align-items-center">
                 <h3 th:text="${author.author_name} + ' ' + ${author.surname}" class="card-title mb-0"></h3>
             </div>
             <h6 th:text="${author.country}" class="card-subtitle text-muted"></h6>
             <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-6">
+                <div class="col-lg-5 col-md-6 col-sm-12">
                     <div class="mt-2">
-                        <img class="product-img" src="https://placehold.co/430x600" alt="Author cover">
+                        <img class="img-fluid" src="https://placehold.co/430x600" alt="Author cover">
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-7 col-sm-6">
+                <div class="col-lg-7 col-md-6 col-sm-12">
                     <h4>Biografie</h4>
                     <p th:text="${author.bio}"></p>
                     <h4 class="mt-4">Boeken geschreven</h4>
-                    <div class="card mb-4">
-                        <div class="car-body">
-                            <div>
-                                <div th:each="book : ${author.books}">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h5 th:text="${book.title}" class="card-title mb-0"></h5>
-                                                <a th:href="@{|/BookDetails/${book.id}|}" class="btn btn-primary">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div th:each="book : ${author.books}" class="card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 th:text="${book.title}" class="card-title mb-0"></h5>
+                                <a th:href="@{|/BookDetails/${book.id}|}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="mt-4 d-flex justify-content-between align-items-center">
+                    <a class="btn btn-primary" th:href="@{|/AuthorDetails/*{id}/prev|}">&lt;</a>
+                    <a class="btn btn-primary" th:href="@{|/AuthorDetails/*{id}/next|}">&gt;</a>
                 </div>
             </div>
         </div>

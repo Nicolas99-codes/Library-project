@@ -21,17 +21,19 @@
                 <h1 class="fw-bold" th:text="${category.category}"></h1>
             </div>
             <hr class="mt-2">
-            <div class="row product-list">
-                <div class="col mb-4" th:each="book, aantal: ${category.books}">
-                    <section class="card mt-4 book-card">
-                        <div class="card-body text-center">
-                            <div class="product-img-box">
-                                <img class="product-img" src="https://via.placeholder.com/300" alt="Book cover">
+            <div class="col-md-12">
+                <div class="row product-list">
+                    <div class="col mb-4" th:each="book, aantal: ${category.books}">
+                        <section class="card mt-4 book-card">
+                            <div class="card-body text-center">
+                                <div class="product-img-box">
+                                    <img class="product-img" src="https://via.placeholder.com/300" alt="Book cover">
+                                </div>
+                                <h4 class="card-title book-title" th:text="${book.title}"></h4>
+                                <a th:href="@{|/BookDetails/${book.id}|}" class="btn btn-primary mt-auto">Details</a>
                             </div>
-                            <h4 class="card-title book-title" th:text="${book.title}"></h4>
-                            <a th:href="@{|/BookDetails/${book.id}|}" class="btn btn-primary mt-auto">Details</a>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
                 </div>
             </div>
         </div>
