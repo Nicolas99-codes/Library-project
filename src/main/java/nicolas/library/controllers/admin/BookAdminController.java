@@ -1,6 +1,7 @@
 package nicolas.library.controllers.admin;
 
 import jakarta.validation.Valid;
+import nicolas.library.controllers.services.GoogleService;
 import nicolas.library.model.*;
 import nicolas.library.repositories.*;
 import org.slf4j.Logger;
@@ -10,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -35,6 +39,9 @@ public class BookAdminController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private GoogleService googleService;
 
     @ModelAttribute("book")
     public Book findBook(@PathVariable(required = false) Integer id){
@@ -128,7 +135,8 @@ public class BookAdminController {
     public String NewBookPost(@Valid Book book, BindingResult result, Model model,
                               @RequestParam String author_name,
                               @RequestParam String author_surname,
-                              @RequestParam String author_country) {
+                              @RequestParam String author_country,
+                              @RequestParam(required = false) MultipartFile image) throws IOException {
         if (result.hasErrors()) {
             List<Author> authors = authorRepository.findAll();
             List<Genre> genres = genreRepository.findAll();
@@ -141,6 +149,10 @@ public class BookAdminController {
             model.addAttribute("categories", categories);
 
             return "admin/newbook";
+        }
+
+        if (image != null && !image.isEmpty()) {
+            book.setImageUrl(uploadImage(image, "images/book"));
         }
 
         Author author = new Author();
@@ -163,8 +175,11 @@ public class BookAdminController {
         return "redirect:/BookDetails/" + newBook.getId();
     }
 
-
-
-
+    private String uploadImage(MultipartFile multipartFile, String folderName) throws IOException {
+        if (multipartFile.isEmpty()) return null;
+        final String filename = multipartFile.getOriginalFilename();
+        InputStream inputStream = multipartFile.getInputStream();
+        return googleService.toFirebase(inputStream, folderName, filename);
+    }
 
 }

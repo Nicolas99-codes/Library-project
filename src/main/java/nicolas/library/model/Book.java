@@ -18,6 +18,8 @@ public class Book {
 
     private String release_year;
 
+    private String imageUrl;
+
 
     @ManyToMany
     @JoinTable(
@@ -140,5 +142,13 @@ public class Book {
 
     public Integer getCategoryId() {
         return categories.stream().findFirst().get().getId();
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
