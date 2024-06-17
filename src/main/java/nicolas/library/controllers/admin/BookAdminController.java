@@ -150,7 +150,7 @@ public class BookAdminController {
 
 
     @PostMapping("/newbook")
-    public String NewBookPost(@Valid Book book, BindingResult result, Model model,
+    public String NewBookPost(Book book, BindingResult result, Model model,
                               @RequestParam String author_name,
                               @RequestParam String author_surname,
                               @RequestParam String author_country,
