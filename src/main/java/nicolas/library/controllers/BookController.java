@@ -263,20 +263,4 @@ public class BookController {
 
         return "redirect:/profielPagina";
     }
-
-    @GetMapping("/BookRequest")
-    public String showBookRequest(Model model) {
-        return "BookRequest";
-    }
-
-    @PostMapping("/Book/Request")
-    public String submitBookRequest(@ModelAttribute Book book, Model model) {
-        logger.info(String.format("Book request: %s", book));
-        model.addAttribute("bookRequest", book);
-        return "BookRequest";
-    }
-
-
-
-
 }
